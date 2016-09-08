@@ -2,20 +2,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="maa.hse.webyneter.app">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="Mobile Applications Analytics Course Artifacts"
+        android:label="HSE MAA"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="maa.hse.webyneter.app.MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Task1Activity"/>
+        <activity android:name=".Task1Activity" />
+        <activity android:name=".Task4Activity" />
     </application>
 
 </manifest>

@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         redirectToActivityOnButtonClick(R.id.btnTask1, Task1Activity.class);
 //        redirectToActivityOnButtonClick(R.id.btnTask2, Task2Activity.class);
 //        redirectToActivityOnButtonClick(R.id.btnTask3, Task3Activity.class);
-//        redirectToActivityOnButtonClick(R.id.btnTask4, Task4Activity.class);
+        redirectToActivityOnButtonClick(R.id.btnTask4, Task4Activity.class);
 //        redirectToActivityOnButtonClick(R.id.btnTask5, Task5Activity.class);
 //        redirectToActivityOnButtonClick(R.id.btnTask6, Task6Activity.class);
 //        redirectToActivityOnButtonClick(R.id.btnTask7, Task7Activity.class);
