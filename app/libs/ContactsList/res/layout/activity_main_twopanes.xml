@@ -19,26 +19,26 @@
      of that contact on the right. -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:baselineAligned="false"
-    android:divider="?android:attr/listDivider"
-    android:orientation="horizontal"
-    android:showDividers="middle"
-    android:weightSum="100">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:baselineAligned="false"
+              android:divider="?android:attr/listDivider"
+              android:orientation="horizontal"
+              android:showDividers="middle"
+              android:weightSum="100">
 
     <fragment
         android:id="@+id/contact_list"
         class="com.example.android.contactslist.ui.ContactsListFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="@integer/contact_list_percent" />
+        android:layout_weight="@integer/contact_list_percent"/>
 
     <fragment
         android:id="@+id/contact_detail"
         class="com.example.android.contactslist.ui.ContactDetailFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="@integer/contact_detail_percent" />
+        android:layout_weight="@integer/contact_detail_percent"/>
 
 </LinearLayout>

@@ -14,7 +14,7 @@
   limitations under the License.
 -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+      xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <!-- The search menu item. Honeycomb and above uses an ActionView or specifically a SearchView
          which expands within the Action Bar directly. Note the initial collapsed state set using
@@ -24,12 +24,12 @@
         android:actionViewClass="android.widget.SearchView"
         android:icon="@drawable/ic_action_search"
         android:title="@string/menu_search"
-        app:showAsAction="ifRoom|collapseActionView" />
+        app:showAsAction="ifRoom|collapseActionView"/>
 
     <item
         android:id="@+id/menu_add_contact"
         android:icon="@drawable/ic_action_add"
         android:title="@string/menu_add_contact"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom"/>
 
 </menu>

@@ -75,10 +75,10 @@ public class Task2Activity extends ListActivity {
     };
     private GesturesAdapter gesturesAdapter;
     private GesturesLoadTask gesturesLoadTask;
-    private TextView mEmpty;
+    private TextView tvEmpty;
     private Dialog dialog;
-    private EditText mInput;
-    private NamedGesture mCurrentRenameGesture;
+    private EditText dlgInput;
+    private NamedGesture currentRenameGesture;
     private Button btnListCreate;
     private Button btnListReload;
     private Button btnListRecognize;
@@ -113,7 +113,7 @@ public class Task2Activity extends ListActivity {
         if (gestureLibrary == null) {
             gestureLibrary = GestureLibraries.fromFile(gestureStorageFile);
         }
-        mEmpty = (TextView) findViewById(android.R.id.empty);
+        tvEmpty = (TextView) findViewById(android.R.id.empty);
         loadOrReloadGestures();
 
         registerForContextMenu(getListView());
@@ -178,7 +178,7 @@ public class Task2Activity extends ListActivity {
 
     private void checkForEmpty() {
         if (gesturesAdapter.getCount() == 0) {
-            mEmpty.setText(R.string.gestures_empty);
+            tvEmpty.setText(R.string.gestures_empty);
         }
     }
 
@@ -186,8 +186,8 @@ public class Task2Activity extends ListActivity {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
-        if (mCurrentRenameGesture != null) {
-            outState.putLong(GESTURES_INFO_ID, mCurrentRenameGesture.gesture.getID());
+        if (currentRenameGesture != null) {
+            outState.putLong(GESTURES_INFO_ID, currentRenameGesture.gesture.getID());
         }
     }
 
@@ -202,9 +202,9 @@ public class Task2Activity extends ListActivity {
             for (String name : entries) {
                 for (Gesture gesture : gestureLibrary.getGestures(name)) {
                     if (gesture.getID() == id) {
-                        mCurrentRenameGesture = new NamedGesture();
-                        mCurrentRenameGesture.name = name;
-                        mCurrentRenameGesture.gesture = gesture;
+                        currentRenameGesture = new NamedGesture();
+                        currentRenameGesture.name = name;
+                        currentRenameGesture.gesture = gesture;
                         break out;
                     }
                 }
@@ -241,7 +241,7 @@ public class Task2Activity extends ListActivity {
     }
 
     private void renameGesture(NamedGesture gesture) {
-        mCurrentRenameGesture = gesture;
+        currentRenameGesture = gesture;
         showDialog(DIALOG_RENAME_GESTURE);
     }
 
@@ -257,13 +257,13 @@ public class Task2Activity extends ListActivity {
     protected void onPrepareDialog(int id, Dialog dialog) {
         super.onPrepareDialog(id, dialog);
         if (id == DIALOG_RENAME_GESTURE) {
-            mInput.setText(mCurrentRenameGesture.name);
+            dlgInput.setText(currentRenameGesture.name);
         }
     }
 
     private Dialog createRenameDialog() {
         final View layout = View.inflate(this, R.layout.activity_task2_dialog_rename, null);
-        mInput = (EditText) layout.findViewById(R.id.task2_etDialogName);
+        dlgInput = (EditText) layout.findViewById(R.id.task2_etDialogName);
         ((TextView) layout.findViewById(R.id.task2_lblDialogRename)).setText(R.string.gestures_rename_label);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -294,9 +294,9 @@ public class Task2Activity extends ListActivity {
     }
 
     private void changeGestureName() {
-        final String name = mInput.getText().toString();
+        final String name = dlgInput.getText().toString();
         if (!TextUtils.isEmpty(name)) {
-            final NamedGesture renameGesture = mCurrentRenameGesture;
+            final NamedGesture renameGesture = currentRenameGesture;
             final GesturesAdapter adapter = gesturesAdapter;
             final int count = adapter.getCount();
 
@@ -306,7 +306,7 @@ public class Task2Activity extends ListActivity {
                 final NamedGesture gesture = adapter.getItem(i);
                 if (gesture.gesture.getID() == renameGesture.gesture.getID()) {
                     gestureLibrary.removeGesture(gesture.name, gesture.gesture);
-                    gesture.name = mInput.getText().toString();
+                    gesture.name = dlgInput.getText().toString();
                     gestureLibrary.addGesture(gesture.name, gesture.gesture);
                     break;
                 }
@@ -314,7 +314,7 @@ public class Task2Activity extends ListActivity {
 
             adapter.notifyDataSetChanged();
         }
-        mCurrentRenameGesture = null;
+        currentRenameGesture = null;
     }
 
     private void cleanupRenameDialog() {
@@ -322,7 +322,7 @@ public class Task2Activity extends ListActivity {
             dialog.dismiss();
             dialog = null;
         }
-        mCurrentRenameGesture = null;
+        currentRenameGesture = null;
     }
 
     private void deleteGesture(NamedGesture gesture) {
@@ -418,8 +418,8 @@ public class Task2Activity extends ListActivity {
 
             if (result == STATUS_NO_STORAGE) {
                 getListView().setVisibility(View.GONE);
-                mEmpty.setVisibility(View.VISIBLE);
-                mEmpty.setText(getString(R.string.gestures_error_loading,
+                tvEmpty.setVisibility(View.VISIBLE);
+                tvEmpty.setText(getString(R.string.gestures_error_loading,
                         gestureStorageFile.getAbsolutePath()));
             } else {
                 btnListCreate.setEnabled(true);

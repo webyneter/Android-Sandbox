@@ -39,7 +39,6 @@ import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.TextAppearanceSpan;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -85,35 +84,30 @@ import maa.hse.webyneter.app.misc.ImageLoader;
  */
 public class ContactsListFragment extends ListFragment implements
         AdapterView.OnItemClickListener, LoaderManager.LoaderCallbacks<Cursor> {
-
-    // Defines a tag for identifying log entries
-    private static final String TAG = ContactsListFragment.class.getSimpleName();
-
     // Bundle key for saving previously selected search result item
-    private static final String STATE_PREVIOUSLY_SELECTED_KEY =
-            "maa.hse.webyneter.app.task6.SELECTED_ITEM";
+    private static final String STATE_PREVIOUSLY_SELECTED_KEY = "maa.hse.webyneter.app.task6.SELECTED_ITEM";
 
-    private ContactsAdapter mAdapter; // The main query adapter
-    private ImageLoader mImageLoader; // Handles loading the contact image in a background thread
-    private String mSearchTerm; // Stores the current search query term
+    private ContactsAdapter contactsAdapter; // The main query adapter
+    private ImageLoader imageLoader; // Handles loading the contact image in a background thread
+    private String searchTerm; // Stores the current search query term
 
     // Contact selected listener that allows the activity holding this fragment to be notified of
     // a contact being selected
-    private OnContactsInteractionListener mOnContactSelectedListener;
+    private OnContactsInteractionListener onContactsInteractionListener;
 
     // Stores the previously selected search item so that on a configuration change the same item
     // can be reselected again
-    private int mPreviouslySelectedSearchItem = 0;
+    private int previouslySelectedSearchItem = 0;
 
     // Whether or not the search query has changed since the last time the loader was refreshed
-    private boolean mSearchQueryChanged;
+    private boolean searchQueryChanged;
 
     // Whether or not this fragment is showing in a two-pane layout
-    private boolean mIsTwoPaneLayout;
+    private boolean isTwoPaneLayout;
 
     // Whether or not this is a search result view of this fragment, only used on pre-honeycomb
     // OS versions as search results are shown in-line via Action Bar search from honeycomb onward
-    private boolean mIsSearchResultView = false;
+    private boolean isSearchResultView = false;
 
     /**
      * Fragments require an empty constructor.
@@ -133,10 +127,10 @@ public class ContactsListFragment extends ListFragment implements
      */
     public void setSearchQuery(String query) {
         if (TextUtils.isEmpty(query)) {
-            mIsSearchResultView = false;
+            isSearchResultView = false;
         } else {
-            mSearchTerm = query;
-            mIsSearchResultView = true;
+            searchTerm = query;
+            isSearchResultView = true;
         }
     }
 
@@ -148,20 +142,20 @@ public class ContactsListFragment extends ListFragment implements
         // boolean from the application resource directories. This lets allows us to easily specify
         // which screen sizes should use a two-pane layout by setting this boolean in the
         // corresponding resource size-qualified directory.
-        mIsTwoPaneLayout = getResources().getBoolean(R.bool.has_two_panes);
+        isTwoPaneLayout = getResources().getBoolean(R.bool.has_two_panes);
 
         // Let this fragment contribute menu items
         setHasOptionsMenu(true);
 
         // Create the main contacts adapter
-        mAdapter = new ContactsAdapter(getActivity());
+        contactsAdapter = new ContactsAdapter(getActivity());
 
         if (savedInstanceState != null) {
             // If we're restoring state after this fragment was recreated then
             // retrieve previous search term and previously selected search
             // result.
-            mSearchTerm = savedInstanceState.getString(SearchManager.QUERY);
-            mPreviouslySelectedSearchItem =
+            searchTerm = savedInstanceState.getString(SearchManager.QUERY);
+            previouslySelectedSearchItem =
                     savedInstanceState.getInt(STATE_PREVIOUSLY_SELECTED_KEY, 0);
         }
 
@@ -176,7 +170,7 @@ public class ContactsListFragment extends ListFragment implements
          *
          * http://developer.android.com/training/displaying-bitmaps/
          */
-        mImageLoader = new ImageLoader(getActivity(), getListPreferredItemHeight()) {
+        imageLoader = new ImageLoader(getActivity(), getListPreferredItemHeight()) {
             @Override
             protected Bitmap processBitmap(Object data) {
                 // This gets called in a background thread and passed the data from
@@ -186,10 +180,10 @@ public class ContactsListFragment extends ListFragment implements
         };
 
         // Set a placeholder loading image for the image loader
-        mImageLoader.setLoadingImage(R.drawable.ic_contact_picture_holo_light);
+        imageLoader.setLoadingImage(R.drawable.ic_contact_picture_holo_light);
 
         // Add a cache to the image loader
-        mImageLoader.addImageCache(getActivity().getSupportFragmentManager(), 0.1f);
+        imageLoader.addImageCache(getActivity().getSupportFragmentManager(), 0.1f);
     }
 
     @Override
@@ -205,16 +199,16 @@ public class ContactsListFragment extends ListFragment implements
 
         // Set up ListView, assign adapter and set some listeners. The adapter was previously
         // created in onCreate().
-        setListAdapter(mAdapter);
+        setListAdapter(contactsAdapter);
         getListView().setOnItemClickListener(this);
         getListView().setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView absListView, int scrollState) {
                 // Pause image loader to ensure smoother scrolling when flinging
                 if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_FLING) {
-                    mImageLoader.setPauseWork(true);
+                    imageLoader.setDoPauseWork(true);
                 } else {
-                    mImageLoader.setPauseWork(false);
+                    imageLoader.setDoPauseWork(false);
                 }
             }
 
@@ -223,7 +217,7 @@ public class ContactsListFragment extends ListFragment implements
             }
         });
 
-        if (mIsTwoPaneLayout) {
+        if (isTwoPaneLayout) {
             // In a two-pane layout, set choice mode to single as there will be two panes
             // when an item in the ListView is selected it should remain highlighted while
             // the content shows in the second pane.
@@ -233,7 +227,7 @@ public class ContactsListFragment extends ListFragment implements
         // If there's a previously selected search item from a saved state then don't bother
         // initializing the loader as it will be restarted later when the query is populated into
         // the action bar search view (see onQueryTextChange() in onCreateOptionsMenu()).
-        if (mPreviouslySelectedSearchItem == 0) {
+        if (previouslySelectedSearchItem == 0) {
             // Initialize the loader, and create a loader identified by ContactsQuery.QUERY_ID
             getLoaderManager().initLoader(ContactsQuery.QUERY_ID, null, this);
         }
@@ -249,7 +243,7 @@ public class ContactsListFragment extends ListFragment implements
             // activity will be notified and can take further action such as populating the contact
             // detail pane (if in multi-pane layout) or starting a new activity with the contact
             // details (single pane layout).
-            mOnContactSelectedListener = (OnContactsInteractionListener) activity;
+            onContactsInteractionListener = (OnContactsInteractionListener) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
                     + " must implement OnContactsInteractionListener");
@@ -262,13 +256,13 @@ public class ContactsListFragment extends ListFragment implements
 
         // In the case onPause() is called during a fling the image loader is
         // un-paused to let any remaining background work complete.
-        mImageLoader.setPauseWork(false);
+        imageLoader.setDoPauseWork(false);
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
         // Gets the Cursor object currently bound to the ListView
-        final Cursor cursor = mAdapter.getCursor();
+        final Cursor cursor = contactsAdapter.getCursor();
 
         // Moves to the Cursor row corresponding to the ListView item that was clicked
         cursor.moveToPosition(position);
@@ -282,11 +276,11 @@ public class ContactsListFragment extends ListFragment implements
         // parent activity loads a ContactDetailFragment that displays the details for the selected
         // contact. In a single-pane layout, the parent activity starts a new activity that
         // displays contact details in its own Fragment.
-        mOnContactSelectedListener.onContactSelected(uri);
+        onContactsInteractionListener.onContactSelected(uri);
 
         // If two-pane layout sets the selected item to checked so it remains highlighted. In a
         // single-pane layout a new activity is started so this is not needed.
-        if (mIsTwoPaneLayout) {
+        if (isTwoPaneLayout) {
             getListView().setItemChecked(position, true);
         }
     }
@@ -298,7 +292,7 @@ public class ContactsListFragment extends ListFragment implements
      */
     private void onSelectionCleared() {
         // Uses callback to notify activity this contains this fragment
-        mOnContactSelectedListener.onSelectionCleared();
+        onContactsInteractionListener.onSelectionCleared();
 
         // Clears currently checked item
         getListView().clearChoices();
@@ -320,7 +314,7 @@ public class ContactsListFragment extends ListFragment implements
         // searches. In Android 3.0 and later, searching is done via a SearchView in the ActionBar.
         // Since the search doesn't create a new Activity to do the searching, the menu item
         // doesn't need to be turned off.
-        if (mIsSearchResultView) {
+        if (isSearchResultView) {
             searchItem.setVisible(false);
         }
 
@@ -352,21 +346,21 @@ public class ContactsListFragment extends ListFragment implements
                     String newFilter = !TextUtils.isEmpty(newText) ? newText : null;
 
                     // Don't do anything if the filter is empty
-                    if (mSearchTerm == null && newFilter == null) {
+                    if (searchTerm == null && newFilter == null) {
                         return true;
                     }
 
                     // Don't do anything if the new filter is the same as the current filter
-                    if (mSearchTerm != null && mSearchTerm.equals(newFilter)) {
+                    if (searchTerm != null && searchTerm.equals(newFilter)) {
                         return true;
                     }
 
                     // Updates current filter to new filter
-                    mSearchTerm = newFilter;
+                    searchTerm = newFilter;
 
                     // Restarts the loader. This triggers onCreateLoader(), which builds the
-                    // necessary content Uri from mSearchTerm.
-                    mSearchQueryChanged = true;
+                    // necessary content Uri from searchTerm.
+                    searchQueryChanged = true;
                     getLoaderManager().restartLoader(
                             ContactsQuery.QUERY_ID, null, ContactsListFragment.this);
                     return true;
@@ -386,10 +380,10 @@ public class ContactsListFragment extends ListFragment implements
                     public boolean onMenuItemActionCollapse(MenuItem menuItem) {
                         // When the user collapses the SearchView the current search string is
                         // cleared and the loader restarted.
-                        if (!TextUtils.isEmpty(mSearchTerm)) {
+                        if (!TextUtils.isEmpty(searchTerm)) {
                             onSelectionCleared();
                         }
-                        mSearchTerm = null;
+                        searchTerm = null;
                         getLoaderManager().restartLoader(
                                 ContactsQuery.QUERY_ID, null, ContactsListFragment.this);
                         return true;
@@ -397,14 +391,14 @@ public class ContactsListFragment extends ListFragment implements
                 });
             }
 
-            if (mSearchTerm != null) {
+            if (searchTerm != null) {
                 // If search term is already set here then this fragment is
                 // being restored from a saved state and the search menu item
                 // needs to be expanded and populated again.
 
                 // Stores the search term (as it will be wiped out by
                 // onQueryTextChange() when the menu item is expanded).
-                final String savedSearchTerm = mSearchTerm;
+                final String savedSearchTerm = searchTerm;
 
                 // Expands the search menu item
                 if (Utils.hasICS()) {
@@ -420,9 +414,9 @@ public class ContactsListFragment extends ListFragment implements
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        if (!TextUtils.isEmpty(mSearchTerm)) {
+        if (!TextUtils.isEmpty(searchTerm)) {
             // Saves the current search string
-            outState.putString(SearchManager.QUERY, mSearchTerm);
+            outState.putString(SearchManager.QUERY, searchTerm);
 
             // Saves the currently selected contact
             outState.putInt(STATE_PREVIOUSLY_SELECTED_KEY, getListView().getCheckedItemPosition());
@@ -456,10 +450,10 @@ public class ContactsListFragment extends ListFragment implements
             Uri contentUri;
 
             // There are two types of searches, one which displays all contacts and
-            // one which filters contacts by a search query. If mSearchTerm is set
+            // one which filters contacts by a search query. If searchTerm is set
             // then a search query has been entered and the latter should be used.
 
-            if (mSearchTerm == null) {
+            if (searchTerm == null) {
                 // Since there's no search string, use the content URI that searches the entire
                 // Contacts table
                 contentUri = ContactsQuery.CONTENT_URI;
@@ -467,7 +461,7 @@ public class ContactsListFragment extends ListFragment implements
                 // Since there's a search string, use the special content Uri that searches the
                 // Contacts table. The URI consists of a base Uri and the search string.
                 contentUri =
-                        Uri.withAppendedPath(ContactsQuery.FILTER_URI, Uri.encode(mSearchTerm));
+                        Uri.withAppendedPath(ContactsQuery.FILTER_URI, Uri.encode(searchTerm));
             }
 
             // Returns a new CursorLoader for querying the Contacts table. No arguments are used
@@ -481,8 +475,6 @@ public class ContactsListFragment extends ListFragment implements
                     null,
                     ContactsQuery.SORT_ORDER);
         }
-
-        Log.e(TAG, "onCreateLoader - incorrect ID provided (" + id + ")");
         return null;
     }
 
@@ -490,22 +482,22 @@ public class ContactsListFragment extends ListFragment implements
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         // This swaps the new cursor into the adapter.
         if (loader.getId() == ContactsQuery.QUERY_ID) {
-            mAdapter.swapCursor(data);
+            contactsAdapter.swapCursor(data);
 
             // If this is a two-pane layout and there is a search query then
             // there is some additional work to do around default selected
             // search item.
-            if (mIsTwoPaneLayout && !TextUtils.isEmpty(mSearchTerm) && mSearchQueryChanged) {
+            if (isTwoPaneLayout && !TextUtils.isEmpty(searchTerm) && searchQueryChanged) {
                 // Selects the first item in results, unless this fragment has
                 // been restored from a saved state (like orientation change)
                 // in which case it selects the previously selected search item.
-                if (data != null && data.moveToPosition(mPreviouslySelectedSearchItem)) {
+                if (data != null && data.moveToPosition(previouslySelectedSearchItem)) {
                     // Creates the content Uri for the previously selected contact by appending the
                     // contact's ID to the Contacts table content Uri
                     final Uri uri = Uri.withAppendedPath(
                             Contacts.CONTENT_URI, String.valueOf(data.getLong(ContactsQuery.ID)));
-                    mOnContactSelectedListener.onContactSelected(uri);
-                    getListView().setItemChecked(mPreviouslySelectedSearchItem, true);
+                    onContactsInteractionListener.onContactSelected(uri);
+                    getListView().setItemChecked(previouslySelectedSearchItem, true);
                 } else {
                     // No results, clear selection.
                     onSelectionCleared();
@@ -513,8 +505,8 @@ public class ContactsListFragment extends ListFragment implements
                 // Only restore from saved state one time. Next time fall back
                 // to selecting first item. If the fragment state is saved again
                 // then the currently selected item will once again be saved.
-                mPreviouslySelectedSearchItem = 0;
-                mSearchQueryChanged = false;
+                previouslySelectedSearchItem = 0;
+                searchQueryChanged = false;
             }
         }
     }
@@ -524,7 +516,7 @@ public class ContactsListFragment extends ListFragment implements
         if (loader.getId() == ContactsQuery.QUERY_ID) {
             // When the loader is being reset, clear the cursor from the adapter. This allows the
             // cursor resources to be freed.
-            mAdapter.swapCursor(null);
+            contactsAdapter.swapCursor(null);
         }
     }
 
@@ -752,7 +744,7 @@ public class ContactsListFragment extends ListFragment implements
 
         /**
          * Identifies the start of the search string in the display name column of a Cursor row.
-         * E.g. If displayName was "Adam" and search query (mSearchTerm) was "da" this would
+         * E.g. If displayName was "Adam" and search query (searchTerm) was "da" this would
          * return 1.
          *
          * @param displayName The contact display name.
@@ -761,10 +753,10 @@ public class ContactsListFragment extends ListFragment implements
          * string is empty or null.
          */
         private int indexOfSearchQuery(String displayName) {
-            if (!TextUtils.isEmpty(mSearchTerm)) {
+            if (!TextUtils.isEmpty(searchTerm)) {
                 return displayName
                         .toLowerCase(Locale.getDefault())
-                        .indexOf(mSearchTerm.toLowerCase(Locale.getDefault()));
+                        .indexOf(searchTerm.toLowerCase(Locale.getDefault()));
             }
             return -1;
         }
@@ -817,7 +809,7 @@ public class ContactsListFragment extends ListFragment implements
                 // name, show the display name without highlighting
                 holder.text1.setText(displayName);
 
-                if (TextUtils.isEmpty(mSearchTerm)) {
+                if (TextUtils.isEmpty(searchTerm)) {
                     // If the search search is empty, hide the second line of text
                     holder.text2.setVisibility(View.GONE);
                 } else {
@@ -834,7 +826,7 @@ public class ContactsListFragment extends ListFragment implements
 
                 // Sets the span to start at the starting point of the match and end at "length"
                 // characters beyond the starting point
-                highlightedName.setSpan(highlightTextSpan, startIndex, startIndex + mSearchTerm.length(), 0);
+                highlightedName.setSpan(highlightTextSpan, startIndex, startIndex + searchTerm.length(), 0);
 
                 // Binds the SpannableString to the display name View object
                 holder.text1.setText(highlightedName);
@@ -857,7 +849,7 @@ public class ContactsListFragment extends ListFragment implements
 
             // Loads the thumbnail image pointed to by photoUri into the QuickContactBadge in a
             // background worker thread
-            mImageLoader.loadImage(photoUri, holder.icon);
+            imageLoader.loadImage(photoUri, holder.icon);
         }
 
         /**

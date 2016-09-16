@@ -14,9 +14,9 @@
   limitations under the License.
 -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/listViewActivatedStyle"
-    android:layout_width="match_parent"
-    android:layout_height="?android:attr/listPreferredItemHeight">
+                style="@style/listViewActivatedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/listPreferredItemHeight">
 
     <!-- Use standard android.R class icon id instead of app specific id. This is just useful for
          consistency. Use scaleType=centerCrop to give a nice full cropped image in the assigned
@@ -27,7 +27,7 @@
         android:layout_width="?android:attr/listPreferredItemHeight"
         android:layout_height="?android:attr/listPreferredItemHeight"
         android:scaleType="centerCrop"
-        android:src="@drawable/ic_contact_picture_holo_light" />
+        android:src="@drawable/ic_contact_picture_holo_light"/>
 
     <!-- Use standard android.R class text2 id instead of app specific id. This is just useful for
          consistency. This is secondary text and not always visible so by default is has its
@@ -46,7 +46,7 @@
         android:singleLine="true"
         android:text="@string/search_match_other"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:visibility="gone" />
+        android:visibility="gone"/>
 
     <!-- Use standard android.R class text1 id instead of app specific id. This is just useful for
          consistency. This view also sets layout_alignWithParentIfMissing=true which lets the view
@@ -67,6 +67,6 @@
         android:paddingLeft="@dimen/listview_item_padding"
         android:paddingRight="@dimen/listview_item_padding"
         android:singleLine="true"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
 
 </RelativeLayout>

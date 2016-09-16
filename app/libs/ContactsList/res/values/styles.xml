@@ -20,7 +20,7 @@
 
 <resources>
 
-    <style name="AppTheme" parent="@android:style/Theme" />
+    <style name="AppTheme" parent="@android:style/Theme"/>
 
     <style name="ContactListView">
         <item name="android:verticalScrollbarPosition">right</item>
@@ -28,7 +28,7 @@
         <item name="android:scrollbarStyle">outsideInset</item>
     </style>
 
-    <style name="listViewActivatedStyle" />
+    <style name="listViewActivatedStyle"/>
 
     <style name="quickContactBadgeStyle">
         <item name="android:background">@drawable/quickcontact_badge_small</item>
@@ -55,6 +55,6 @@
         <item name="android:textIsSelectable">true</item>
     </style>
 
-    <style name="addressButton" />
+    <style name="addressButton"/>
 
 </resources>

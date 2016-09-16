@@ -69,27 +69,25 @@ import maa.hse.webyneter.app.misc.ImageLoader;
  */
 public class ContactDetailFragment extends Fragment implements
         LoaderManager.LoaderCallbacks<Cursor> {
-
-    public static final String EXTRA_CONTACT_URI =
-            " maa.hse.webyneter.app.task6.EXTRA_CONTACT_URI";
+    public static final String EXTRA_CONTACT_URI = " maa.hse.webyneter.app.task6.EXTRA_CONTACT_URI";
 
     // The geo Uri scheme prefix, used with Intent.ACTION_VIEW to form a geographical address
     // intent that will trigger available apps to handle viewing a location (such as Maps)
     private static final String GEO_URI_SCHEME_PREFIX = "geo:0,0?q=";
 
     // Whether or not this fragment is showing in a two pane layout
-    private boolean mIsTwoPaneLayout;
+    private boolean isTwoPaneLayout;
 
-    private Uri mContactUri; // Stores the contact Uri for this fragment instance
-    private ImageLoader mImageLoader; // Handles loading the contact image in a background thread
+    private Uri contactUri; // Stores the contact Uri for this fragment instance
+    private ImageLoader imageLoader; // Handles loading the contact image in a background thread
 
     // Used to store references to key views, layouts and menu items as these need to be updated
     // in multiple methods throughout this class.
-    private ImageView mImageView;
-    private LinearLayout mDetailsLayout;
-    private TextView mEmptyView;
-    private TextView mContactName;
-    private MenuItem mEditContactMenuItem;
+    private ImageView imageView;
+    private LinearLayout detailsLayout;
+    private TextView tvEmpty;
+    private TextView tvContactName;
+    private MenuItem miEditContact;
 
     /**
      * Fragments require an empty constructor.
@@ -133,29 +131,29 @@ public class ContactDetailFragment extends Fragment implements
         // In version 3.0 and later, stores the provided contact lookup Uri in a class field. This
         // Uri is then used at various points in this class to map to the provided contact.
         if (Utils.hasHoneycomb()) {
-            mContactUri = contactLookupUri;
+            contactUri = contactLookupUri;
         } else {
             // For versions earlier than Android 3.0, stores a contact Uri that's constructed from
             // contactLookupUri. Later on, the resulting Uri is combined with
             // Contacts.Data.CONTENT_DIRECTORY to map to the provided contact. It's done
             // differently for these earlier versions because Contacts.Data.CONTENT_DIRECTORY works
             // differently for Android versions before 3.0.
-            mContactUri = Contacts.lookupContact(getActivity().getContentResolver(),
+            contactUri = Contacts.lookupContact(getActivity().getContentResolver(),
                     contactLookupUri);
         }
 
         // If the Uri contains data, load the contact's image and load contact details.
         if (contactLookupUri != null) {
             // Asynchronously loads the contact image
-            mImageLoader.loadImage(mContactUri, mImageView);
+            imageLoader.loadImage(contactUri, imageView);
 
             // Shows the contact photo ImageView and hides the empty view
-            mImageView.setVisibility(View.VISIBLE);
-            mEmptyView.setVisibility(View.GONE);
+            imageView.setVisibility(View.VISIBLE);
+            tvEmpty.setVisibility(View.GONE);
 
             // Shows the edit contact action/menu item
-            if (mEditContactMenuItem != null) {
-                mEditContactMenuItem.setVisible(true);
+            if (miEditContact != null) {
+                miEditContact.setVisible(true);
             }
 
             // Starts two queries to to retrieve contact information from the Contacts Provider.
@@ -170,14 +168,14 @@ public class ContactDetailFragment extends Fragment implements
             // account for the view's space in the layout. Turn on the TextView that appears when
             // the layout is empty, and set the contact name to the empty string. Turn off any menu
             // items that are visible.
-            mImageView.setVisibility(View.GONE);
-            mEmptyView.setVisibility(View.VISIBLE);
-            mDetailsLayout.removeAllViews();
-            if (mContactName != null) {
-                mContactName.setText("");
+            imageView.setVisibility(View.GONE);
+            tvEmpty.setVisibility(View.VISIBLE);
+            detailsLayout.removeAllViews();
+            if (tvContactName != null) {
+                tvContactName.setText("");
             }
-            if (mEditContactMenuItem != null) {
-                mEditContactMenuItem.setVisible(false);
+            if (miEditContact != null) {
+                miEditContact.setVisible(false);
             }
         }
     }
@@ -191,7 +189,7 @@ public class ContactDetailFragment extends Fragment implements
         super.onCreate(savedInstanceState);
 
         // Check if this fragment is part of a two pane set up or a single pane
-        mIsTwoPaneLayout = getResources().getBoolean(R.bool.has_two_panes);
+        isTwoPaneLayout = getResources().getBoolean(R.bool.has_two_panes);
 
         // Let this fragment contribute menu items
         setHasOptionsMenu(true);
@@ -202,7 +200,7 @@ public class ContactDetailFragment extends Fragment implements
          * details on how it works can be found in the following Android Training class:
          * http://developer.android.com/training/displaying-bitmaps/
          */
-        mImageLoader = new ImageLoader(getActivity(), getLargestScreenDimension()) {
+        imageLoader = new ImageLoader(getActivity(), getLargestScreenDimension()) {
             @Override
             protected Bitmap processBitmap(Object data) {
                 // This gets called in a background thread and passed the data from
@@ -213,11 +211,11 @@ public class ContactDetailFragment extends Fragment implements
         };
 
         // Set a placeholder loading image for the image loader
-//        mImageLoader.setLoadingImage(R.drawable.ic_contact_picture_180_holo_light);
+//        imageLoader.setLoadingImage(R.drawable.ic_contact_picture_180_holo_light);
 
         // Tell the image loader to set the image directly when it's finished loading
         // rather than fading in
-        mImageLoader.setImageFadeIn(false);
+        imageLoader.setImageFadeIn(false);
     }
 
     @Override
@@ -228,15 +226,15 @@ public class ContactDetailFragment extends Fragment implements
                 inflater.inflate(R.layout.fragment_task6_contact_detail, container, false);
 
         // Gets handles to view objects in the layout
-        mImageView = (ImageView) detailView.findViewById(R.id.contact_image);
-        mDetailsLayout = (LinearLayout) detailView.findViewById(R.id.contact_details_layout);
-        mEmptyView = (TextView) detailView.findViewById(android.R.id.empty);
+        imageView = (ImageView) detailView.findViewById(R.id.contact_image);
+        detailsLayout = (LinearLayout) detailView.findViewById(R.id.contact_details_layout);
+        tvEmpty = (TextView) detailView.findViewById(android.R.id.empty);
 
-        if (mIsTwoPaneLayout) {
+        if (isTwoPaneLayout) {
             // If this is a two pane view, the following code changes the visibility of the contact
             // name in details. For a one-pane view, the contact name is displayed as a title.
-            mContactName = (TextView) detailView.findViewById(R.id.contact_name);
-            mContactName.setVisibility(View.VISIBLE);
+            tvContactName = (TextView) detailView.findViewById(R.id.contact_name);
+            tvContactName.setVisibility(View.VISIBLE);
         }
 
         return detailView;
@@ -264,7 +262,7 @@ public class ContactDetailFragment extends Fragment implements
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         // Saves the contact Uri
-        outState.putParcelable(EXTRA_CONTACT_URI, mContactUri);
+        outState.putParcelable(EXTRA_CONTACT_URI, contactUri);
     }
 
     @Override
@@ -273,7 +271,7 @@ public class ContactDetailFragment extends Fragment implements
             // When "edit" menu option selected
             case R.id.menu_edit_contact:
                 // Standard system edit contact intent
-                Intent intent = new Intent(Intent.ACTION_EDIT, mContactUri);
+                Intent intent = new Intent(Intent.ACTION_EDIT, contactUri);
 
                 // Because of an issue in Android 4.0 (API level 14), clicking Done or Back in the
                 // People app doesn't return the user to your app; instead, it displays the People
@@ -298,11 +296,11 @@ public class ContactDetailFragment extends Fragment implements
         inflater.inflate(R.menu.contact_detail_menu, menu);
 
         // Gets a handle to the "find" menu item
-        mEditContactMenuItem = menu.findItem(R.id.menu_edit_contact);
+        miEditContact = menu.findItem(R.id.menu_edit_contact);
 
         // If contactUri is null the edit menu item should be hidden, otherwise
         // it is visible.
-        mEditContactMenuItem.setVisible(mContactUri != null);
+        miEditContact.setVisible(contactUri != null);
     }
 
     @Override
@@ -312,13 +310,13 @@ public class ContactDetailFragment extends Fragment implements
             case ContactDetailQuery.QUERY_ID:
                 // This query loads main contact details, see
                 // ContactDetailQuery for more information.
-                return new CursorLoader(getActivity(), mContactUri,
+                return new CursorLoader(getActivity(), contactUri,
                         ContactDetailQuery.PROJECTION,
                         null, null, null);
             case ContactAddressQuery.QUERY_ID:
                 // This query loads contact address details, see
                 // ContactAddressQuery for more information.
-                final Uri uri = Uri.withAppendedPath(mContactUri, Contacts.Data.CONTENT_DIRECTORY);
+                final Uri uri = Uri.withAppendedPath(contactUri, Contacts.Data.CONTENT_DIRECTORY);
                 return new CursorLoader(getActivity(), uri,
                         ContactAddressQuery.PROJECTION,
                         ContactAddressQuery.SELECTION,
@@ -332,7 +330,7 @@ public class ContactDetailFragment extends Fragment implements
         // If this fragment was cleared while the query was running
         // eg. from from a call like setContact(uri) then don't do
         // anything.
-        if (mContactUri == null) {
+        if (contactUri == null) {
             return;
         }
         switch (loader.getId()) {
@@ -343,10 +341,10 @@ public class ContactDetailFragment extends Fragment implements
                     // ContactDetailQuery.DISPLAY_NAME maps to the appropriate display
                     // name field based on OS version.
                     final String contactName = data.getString(ContactDetailQuery.DISPLAY_NAME);
-                    if (mIsTwoPaneLayout && mContactName != null) {
+                    if (isTwoPaneLayout && tvContactName != null) {
                         // In the two pane layout, there is a dedicated TextView
                         // that holds the contact name.
-                        mContactName.setText(contactName);
+                        tvContactName.setText(contactName);
                     } else {
                         // In the single pane layout, sets the activity title
                         // to the contact name. On HC+ this will be set as
@@ -370,7 +368,7 @@ public class ContactDetailFragment extends Fragment implements
                 // Clears out the details layout first in case the details
                 // layout has addresses from a previous data load still
                 // added as children.
-                mDetailsLayout.removeAllViews();
+                detailsLayout.removeAllViews();
 
                 // Loops through all the rows in the Cursor
                 if (data.moveToFirst()) {
@@ -381,11 +379,11 @@ public class ContactDetailFragment extends Fragment implements
                                 data.getString(ContactAddressQuery.LABEL),
                                 data.getString(ContactAddressQuery.ADDRESS));
                         // Adds the new address layout to the details layout
-                        mDetailsLayout.addView(layout, layoutParams);
+                        detailsLayout.addView(layout, layoutParams);
                     } while (data.moveToNext());
                 } else {
                     // If nothing found, adds an empty address layout
-                    mDetailsLayout.addView(buildEmptyAddressLayout(), layoutParams);
+                    detailsLayout.addView(buildEmptyAddressLayout(), layoutParams);
                 }
                 break;
         }
@@ -425,7 +423,7 @@ public class ContactDetailFragment extends Fragment implements
                                             final String address) {
         // Inflates the address layout
         final LinearLayout addressLayout = (LinearLayout) LayoutInflater.from(getActivity())
-                .inflate(R.layout.activity_task6_contact_detail_item, mDetailsLayout, false);
+                .inflate(R.layout.activity_task6_contact_detail_item, detailsLayout, false);
 
         // Gets handles to the view objects in the layout
         final TextView headerTextView =

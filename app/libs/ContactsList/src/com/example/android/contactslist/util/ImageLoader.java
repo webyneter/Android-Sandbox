@@ -287,7 +287,7 @@ public abstract class ImageLoader {
      * {@link android.widget.AbsListView.OnScrollListener} to keep
      * scrolling smooth.
      * <p/>
-     * If work is paused, be sure setPauseWork(false) is called again
+     * If work is paused, be sure setDoPauseWork(false) is called again
      * before your fragment or activity is destroyed (for example during
      * {@link android.app.Activity#onPause()}), or there is a risk the
      * background thread will never finish.

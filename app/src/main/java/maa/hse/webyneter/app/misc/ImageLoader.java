@@ -37,19 +37,18 @@ import java.lang.ref.WeakReference;
  * thread and setting a placeholder image.
  */
 public abstract class ImageLoader {
-    private static final String TAG = "ImageLoader";
     private static final int FADE_IN_TIME = 200;
-    private final Object mPauseWorkLock = new Object();
-    private ImageCache mImageCache;
-    private Bitmap mLoadingBitmap;
-    private boolean mFadeInBitmap = true;
-    private boolean mPauseWork = false;
-    private int mImageSize;
-    private Resources mResources;
+    private final Object syncRoot = new Object();
+    private ImageCache imageCache;
+    private Bitmap loadingBitmap;
+    private boolean fadeBitmapIn = true;
+    private boolean doPauseWork = false;
+    private int imageSize;
+    private Resources resources;
 
     protected ImageLoader(Context context, int imageSize) {
-        mResources = context.getResources();
-        mImageSize = imageSize;
+        resources = context.getResources();
+        this.imageSize = imageSize;
     }
 
     /**
@@ -174,7 +173,7 @@ public abstract class ImageLoader {
     }
 
     public int getImageSize() {
-        return mImageSize;
+        return imageSize;
     }
 
     /**
@@ -188,14 +187,14 @@ public abstract class ImageLoader {
      */
     public void loadImage(Object data, ImageView imageView) {
         if (data == null) {
-            imageView.setImageBitmap(mLoadingBitmap);
+            imageView.setImageBitmap(loadingBitmap);
             return;
         }
 
         Bitmap bitmap = null;
 
-        if (mImageCache != null) {
-            bitmap = mImageCache.getBitmapFromMemCache(String.valueOf(data));
+        if (imageCache != null) {
+            bitmap = imageCache.getBitmapFromMemCache(String.valueOf(data));
         }
 
         if (bitmap != null) {
@@ -204,7 +203,7 @@ public abstract class ImageLoader {
         } else if (cancelPotentialWork(data, imageView)) {
             final BitmapWorkerTask task = new BitmapWorkerTask(imageView);
             final AsyncDrawable asyncDrawable =
-                    new AsyncDrawable(mResources, mLoadingBitmap, task);
+                    new AsyncDrawable(resources, loadingBitmap, task);
             imageView.setImageDrawable(asyncDrawable);
             task.execute(data);
         }
@@ -216,7 +215,7 @@ public abstract class ImageLoader {
      * @param resId Resource ID of loading image.
      */
     public void setLoadingImage(int resId) {
-        mLoadingBitmap = BitmapFactory.decodeResource(mResources, resId);
+        loadingBitmap = BitmapFactory.decodeResource(resources, resId);
     }
 
     /**
@@ -227,14 +226,14 @@ public abstract class ImageLoader {
      * @param memCacheSizePercent The cache size as a percent of available app memory.
      */
     public void addImageCache(FragmentManager fragmentManager, float memCacheSizePercent) {
-        mImageCache = ImageCache.getInstance(fragmentManager, memCacheSizePercent);
+        imageCache = ImageCache.getInstance(fragmentManager, memCacheSizePercent);
     }
 
     /**
      * If set to true, the image will fade-in once it has been loaded by the background thread.
      */
     public void setImageFadeIn(boolean fadeIn) {
-        mFadeInBitmap = fadeIn;
+        fadeBitmapIn = fadeIn;
     }
 
     /**
@@ -255,12 +254,12 @@ public abstract class ImageLoader {
      * @param bitmap    The new bitmap to set.
      */
     private void setImageBitmap(ImageView imageView, Bitmap bitmap) {
-        if (mFadeInBitmap) {
+        if (fadeBitmapIn) {
             // Transition drawable to fade from loading bitmap to final bitmap
             final TransitionDrawable td =
                     new TransitionDrawable(new Drawable[]{
                             new ColorDrawable(android.R.color.transparent),
-                            new BitmapDrawable(mResources, bitmap)
+                            new BitmapDrawable(resources, bitmap)
                     });
             imageView.setBackgroundDrawable(imageView.getDrawable());
             imageView.setImageDrawable(td);
@@ -277,16 +276,16 @@ public abstract class ImageLoader {
      * {@link android.widget.AbsListView.OnScrollListener} to keep
      * scrolling smooth.
      * <p/>
-     * If work is paused, be sure setPauseWork(false) is called again
+     * If work is paused, be sure setDoPauseWork(false) is called again
      * before your fragment or activity is destroyed (for example during
      * {@link android.app.Activity#onPause()}), or there is a risk the
      * background thread will never finish.
      */
-    public void setPauseWork(boolean pauseWork) {
-        synchronized (mPauseWorkLock) {
-            mPauseWork = pauseWork;
-            if (!mPauseWork) {
-                mPauseWorkLock.notifyAll();
+    public void setDoPauseWork(boolean doPauseWork) {
+        synchronized (syncRoot) {
+            this.doPauseWork = doPauseWork;
+            if (!this.doPauseWork) {
+                syncRoot.notifyAll();
             }
         }
     }
@@ -332,10 +331,10 @@ public abstract class ImageLoader {
             Bitmap bitmap = null;
 
             // Wait here if work is paused and the task is not cancelled
-            synchronized (mPauseWorkLock) {
-                while (mPauseWork && !isCancelled()) {
+            synchronized (syncRoot) {
+                while (doPauseWork && !isCancelled()) {
                     try {
-                        mPauseWorkLock.wait();
+                        syncRoot.wait();
                     } catch (InterruptedException e) {
                     }
                 }
@@ -352,8 +351,8 @@ public abstract class ImageLoader {
             // bitmap to the cache for future use. Note we don't check if the task was cancelled
             // here, if it was, and the thread is still running, we may as well add the processed
             // bitmap to our cache as it might be used again in the future
-            if (bitmap != null && mImageCache != null) {
-                mImageCache.addBitmapToCache(dataString, bitmap);
+            if (bitmap != null && imageCache != null) {
+                imageCache.addBitmapToCache(dataString, bitmap);
             }
 
             return bitmap;
@@ -378,8 +377,8 @@ public abstract class ImageLoader {
         @Override
         protected void onCancelled(Bitmap bitmap) {
             super.onCancelled(bitmap);
-            synchronized (mPauseWorkLock) {
-                mPauseWorkLock.notifyAll();
+            synchronized (syncRoot) {
+                syncRoot.notifyAll();
             }
         }
 

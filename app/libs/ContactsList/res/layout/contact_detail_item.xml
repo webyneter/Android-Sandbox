@@ -19,17 +19,17 @@
      to let the user more easily scroll over all addresses. -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingLeft="@dimen/padding"
-    android:paddingTop="@dimen/padding">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:paddingLeft="@dimen/padding"
+              android:paddingTop="@dimen/padding">
 
     <TextView
         android:id="@+id/contact_detail_header"
         style="@style/addressHeader"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:paddingRight="@dimen/padding" />
+            android:paddingRight="@dimen/padding"/>
 
         <ImageButton
             android:id="@+id/button_view_address"
@@ -58,7 +58,7 @@
             android:contentDescription="@string/address_button_description"
             android:paddingBottom="8dp"
             android:paddingTop="8dp"
-            android:src="@drawable/ic_action_map" />
+            android:src="@drawable/ic_action_map"/>
 
     </LinearLayout>
 

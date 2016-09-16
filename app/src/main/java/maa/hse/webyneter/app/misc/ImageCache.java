@@ -30,8 +30,8 @@ import maa.hse.webyneter.app.task6.Utils;
  * This class holds our bitmap caches (memory and disk).
  */
 public class ImageCache {
-    private static final String TAG = "ImageCache";
-    private LruCache<String, Bitmap> mMemoryCache;
+    private static final String TAG = ImageCache.class.getSimpleName();
+    private LruCache<String, Bitmap> stringBitmapLruCache;
 
     /**
      * Creating a new ImageCache object using the specified parameters.
@@ -133,7 +133,7 @@ public class ImageCache {
     private void init(float memCacheSizePercent) {
         int memCacheSize = calculateMemCacheSize(memCacheSizePercent);
 
-        mMemoryCache = new LruCache<String, Bitmap>(memCacheSize) {
+        stringBitmapLruCache = new LruCache<String, Bitmap>(memCacheSize) {
             /**
              * Measure item size in kilobytes rather than units which is more practical
              * for a bitmap cache
@@ -158,8 +158,8 @@ public class ImageCache {
         }
 
         // Add to memory cache
-        if (mMemoryCache != null && mMemoryCache.get(data) == null) {
-            mMemoryCache.put(data, bitmap);
+        if (stringBitmapLruCache != null && stringBitmapLruCache.get(data) == null) {
+            stringBitmapLruCache.put(data, bitmap);
         }
     }
 
@@ -170,8 +170,8 @@ public class ImageCache {
      * @return The bitmap if found in cache, null otherwise
      */
     public Bitmap getBitmapFromMemCache(String data) {
-        if (mMemoryCache != null) {
-            final Bitmap memBitmap = mMemoryCache.get(data);
+        if (stringBitmapLruCache != null) {
+            final Bitmap memBitmap = stringBitmapLruCache.get(data);
             if (memBitmap != null) {
                 return memBitmap;
             }

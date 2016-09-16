@@ -21,8 +21,6 @@ import android.os.Build;
 import android.os.StrictMode;
 
 public class Utils {
-
-    // Prevents instantiation.
     private Utils() {
     }
 

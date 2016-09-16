@@ -31,7 +31,7 @@ import maa.hse.webyneter.app.R;
  */
 public class Task6Activity extends FragmentActivity implements
         ContactsListFragment.OnContactsInteractionListener {
-    private ContactDetailFragment mContactDetailFragment;
+    private ContactDetailFragment contactDetailFragment;
 
     // If true, this is a larger screen device which fits two panes
     private boolean isTwoPaneLayout;
@@ -77,7 +77,7 @@ public class Task6Activity extends FragmentActivity implements
 
         if (isTwoPaneLayout) {
             // If two pane layout, locate the contact detail fragment
-            mContactDetailFragment = (ContactDetailFragment)
+            contactDetailFragment = (ContactDetailFragment)
                     getSupportFragmentManager().findFragmentById(R.id.contact_detail);
         }
     }
@@ -99,9 +99,9 @@ public class Task6Activity extends FragmentActivity implements
      */
     @Override
     public void onContactSelected(Uri contactUri) {
-        if (isTwoPaneLayout && mContactDetailFragment != null) {
+        if (isTwoPaneLayout && contactDetailFragment != null) {
             // If two pane layout then update the detail fragment to show the selected contact
-            mContactDetailFragment.setContact(contactUri);
+            contactDetailFragment.setContact(contactUri);
         } else {
             // Otherwise single pane layout, start a new ContactDetailActivity with
             // the contact Uri
@@ -117,8 +117,8 @@ public class Task6Activity extends FragmentActivity implements
      */
     @Override
     public void onSelectionCleared() {
-        if (isTwoPaneLayout && mContactDetailFragment != null) {
-            mContactDetailFragment.setContact(null);
+        if (isTwoPaneLayout && contactDetailFragment != null) {
+            contactDetailFragment.setContact(null);
         }
     }
 
