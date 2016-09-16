@@ -1,4 +1,4 @@
-package maa.hse.webyneter.app;
+package maa.hse.webyneter.app.task1;
 
 /**
  * Created by webyn on 9/7/2016.
@@ -13,14 +13,14 @@ public enum GestureKind {
     onSingleTapUp("Single Tap Up"),
     onDoubleTap("Double Tap");
 
-    public String getValue() {
-        return this.value;
-    }
-
     private final String value;
 
     GestureKind(String value) {
         this.value = value;
+    }
+
+    public String getValue() {
+        return this.value;
     }
 
 }

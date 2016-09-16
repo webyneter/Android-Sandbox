@@ -1,4 +1,4 @@
-package maa.hse.webyneter.app;
+package maa.hse.webyneter.app.task1;
 
 import android.os.Bundle;
 import android.support.v4.view.GestureDetectorCompat;
@@ -7,18 +7,23 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.widget.TextView;
 
+import maa.hse.webyneter.app.R;
+
 public class Task1Activity extends AppCompatActivity implements GestureDetector.OnGestureListener,
         GestureDetector.OnDoubleTapListener {
-    private GestureDetectorCompat gestureDetector;
     private TextView tvGesture;
+
+    private GestureDetectorCompat gestureDetector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task1);
+
+        tvGesture = (TextView) findViewById(R.id.tvGesture);
+
         gestureDetector = new GestureDetectorCompat(this, this);
         gestureDetector.setOnDoubleTapListener(this);
-        tvGesture = (TextView) findViewById(R.id.tvGesture);
     }
 
     @Override

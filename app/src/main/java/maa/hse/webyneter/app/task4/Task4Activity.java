@@ -1,4 +1,4 @@
-package maa.hse.webyneter.app;
+package maa.hse.webyneter.app.task4;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -13,8 +13,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import maa.hse.webyneter.app.R;
+
 public class Task4Activity extends AppCompatActivity implements LocationListener {
-    final private int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 666;
+    private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 666;
 
     private TextView btnRequestGpsPermission;
     private TextView tvGpsStatus;
@@ -32,7 +34,7 @@ public class Task4Activity extends AppCompatActivity implements LocationListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task4);
 
-        initializeControlsByIds();
+        initializeControls();
 
         btnRequestGpsPermission.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +47,19 @@ public class Task4Activity extends AppCompatActivity implements LocationListener
 
         requestGPSUpdatesIfGPSPermissionGranted();
         toggleUIEnabledIfGPSPermissionGrantedOrDenied();
+    }
+
+    private void initializeControls() {
+        btnRequestGpsPermission = (Button) findViewById(R.id.btnRequestGpsPermission);
+        tvGpsStatus = (TextView) findViewById(R.id.tvGpsStatus);
+        tvLongitude = (TextView) findViewById(R.id.tvLongitude);
+        tvLongitudeValue = (TextView) findViewById(R.id.tvLongitudeValue);
+        tvLatitude = (TextView) findViewById(R.id.tvLatitude);
+        tvLatitudeValue = (TextView) findViewById(R.id.tvLatitudeValue);
+        tvAltitude = (TextView) findViewById(R.id.tvAltitude);
+        tvAltitudeValue = (TextView) findViewById(R.id.tvAltitudeValue);
+        tvAccuracy = (TextView) findViewById(R.id.tvAccuracy);
+        tvAccuracyValue = (TextView) findViewById(R.id.tvAccuracyValue);
     }
 
     @Override
@@ -135,19 +150,6 @@ public class Task4Activity extends AppCompatActivity implements LocationListener
         }
         LocationManager lm = getLocationManager();
         lm.removeUpdates(this);
-    }
-
-    private void initializeControlsByIds() {
-        btnRequestGpsPermission = (Button) findViewById(R.id.btnRequestGpsPermission);
-        tvGpsStatus = (TextView) findViewById(R.id.tvGpsStatus);
-        tvLongitude = (TextView) findViewById(R.id.tvLongitude);
-        tvLongitudeValue = (TextView) findViewById(R.id.tvLongitudeValue);
-        tvLatitude = (TextView) findViewById(R.id.tvLatitude);
-        tvLatitudeValue = (TextView) findViewById(R.id.tvLatitudeValue);
-        tvAltitude = (TextView) findViewById(R.id.tvAltitude);
-        tvAltitudeValue = (TextView) findViewById(R.id.tvAltitudeValue);
-        tvAccuracy = (TextView) findViewById(R.id.tvAccuracy);
-        tvAccuracyValue = (TextView) findViewById(R.id.tvAccuracyValue);
     }
 
     private void populateValues(Location location) {

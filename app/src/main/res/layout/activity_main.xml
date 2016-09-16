@@ -10,70 +10,70 @@
     tools:context="maa.hse.webyneter.app.MainActivity">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="false">
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tvMsg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_gravity="left"
             android:text="Choose the task to proceed with:"
-            android:id="@+id/tvMsg"
-            android:layout_gravity="left" />
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
 
             <Button
+                android:id="@+id/btnTask1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Task #1"
-                android:id="@+id/btnTask1" />
+                android:text="Task #1" />
 
             <Button
+                android:id="@+id/btnTask2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Task #2"
-                android:id="@+id/btnTask2" />
+                android:text="Task #2" />
 
             <Button
+                android:id="@+id/btnTask3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Task #3"
-                android:id="@+id/btnTask3" />
+                android:text="Task #3" />
 
             <Button
+                android:id="@+id/btnTask4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Task #4"
-                android:id="@+id/btnTask4" />
+                android:text="Task #4" />
 
             <Button
+                android:id="@+id/btnTask5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Task #5"
-                android:id="@+id/btnTask5" />
+                android:text="Task #5" />
 
             <Button
+                android:id="@+id/btnTask6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Task #6"
-                android:id="@+id/btnTask6" />
+                android:text="Task #6" />
 
             <Button
+                android:id="@+id/btnTask7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Task #7"
-                android:id="@+id/btnTask7" />
+                android:text="Task #7" />
         </LinearLayout>
 
     </LinearLayout>
