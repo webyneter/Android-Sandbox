@@ -225,7 +225,7 @@ public class ContactDetailFragment extends Fragment implements
                              Bundle savedInstanceState) {
         // Inflates the main layout to be used by this fragment
         final View detailView =
-                inflater.inflate(R.layout.task6_contact_detail_fragment, container, false);
+                inflater.inflate(R.layout.fragment_task6_contact_detail, container, false);
 
         // Gets handles to view objects in the layout
         mImageView = (ImageView) detailView.findViewById(R.id.contact_image);
@@ -425,7 +425,7 @@ public class ContactDetailFragment extends Fragment implements
                                             final String address) {
         // Inflates the address layout
         final LinearLayout addressLayout = (LinearLayout) LayoutInflater.from(getActivity())
-                .inflate(R.layout.task6_contact_detail_item, mDetailsLayout, false);
+                .inflate(R.layout.activity_task6_contact_detail_item, mDetailsLayout, false);
 
         // Gets handles to the view objects in the layout
         final TextView headerTextView =

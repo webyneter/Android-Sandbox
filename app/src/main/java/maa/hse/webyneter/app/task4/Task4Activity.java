@@ -34,7 +34,7 @@ public class Task4Activity extends AppCompatActivity implements LocationListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task4);
 
-        initializeControls();
+        initializeUiVariables();
 
         btnRequestGpsPermission.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,7 +49,7 @@ public class Task4Activity extends AppCompatActivity implements LocationListener
         toggleUIEnabledIfGPSPermissionGrantedOrDenied();
     }
 
-    private void initializeControls() {
+    private void initializeUiVariables() {
         btnRequestGpsPermission = (Button) findViewById(R.id.btnRequestGpsPermission);
         tvGpsStatus = (TextView) findViewById(R.id.tvGpsStatus);
         tvLongitude = (TextView) findViewById(R.id.tvLongitude);

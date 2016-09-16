@@ -20,10 +20,14 @@ public class Task1Activity extends AppCompatActivity implements GestureDetector.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task1);
 
-        tvGesture = (TextView) findViewById(R.id.tvGesture);
+        initializeUiVariables();
 
         gestureDetector = new GestureDetectorCompat(this, this);
         gestureDetector.setOnDoubleTapListener(this);
+    }
+
+    private void initializeUiVariables() {
+        tvGesture = (TextView) findViewById(R.id.tvGesture);
     }
 
     @Override
@@ -90,5 +94,29 @@ public class Task1Activity extends AppCompatActivity implements GestureDetector.
     public boolean onSingleTapConfirmed(MotionEvent event) {
         tvGesture.setText(GestureKind.onSingleTap.getValue());
         return true;
+    }
+
+    /**
+     * Created by webyn on 9/7/2016.
+     */
+    public enum GestureKind {
+        onDown("Down"),
+        onFling("Fling"),
+        onLongPress("Long Press"),
+        onScroll("Scroll"),
+        onShowPress("Show Press"),
+        onSingleTap("Single Tap"),
+        onSingleTapUp("Single Tap Up"),
+        onDoubleTap("Double Tap");
+
+        private final String value;
+
+        GestureKind(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return this.value;
+        }
     }
 }

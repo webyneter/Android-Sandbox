@@ -196,7 +196,7 @@ public class ContactsListFragment extends ListFragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the list fragment layout
-        return inflater.inflate(R.layout.task6_contact_list_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_task6_contact_list, container, false);
     }
 
     @Override
@@ -775,7 +775,7 @@ public class ContactsListFragment extends ListFragment implements
         @Override
         public View newView(Context context, Cursor cursor, ViewGroup viewGroup) {
             // Inflates the list item layout.
-            final View itemLayout = mInflater.inflate(R.layout.task6_contact_list_item, viewGroup, false);
+            final View itemLayout = mInflater.inflate(R.layout.activity_task6_contact_list_item, viewGroup, false);
 
             // Creates a new ViewHolder in which to store handles to each view resource. This
             // allows bindView() to retrieve stored references instead of calling findViewById for

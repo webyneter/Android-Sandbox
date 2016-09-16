@@ -28,11 +28,9 @@
     <string name="no_contacts">No Contacts Found</string>
     <string name="no_contact_selected">No Contact Selected</string>
     <string name="search_hint">Find contacts</string>
-
     <!-- Used for the AlphabetIndexer in ContactsListFragment to provide quick navigation by
          alphabet using ListView fast scroll. -->
     <string name="alphabet">ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
-
     <!-- When using ContactsContract.Contacts#CONTENT_FILTER_URI to search contacts, a match occurs
          when using a number of different fields, such as name, e-mail address, address, phone
          number, etc. When a match occurs that is not the name, there is currently no way to tell
@@ -40,8 +38,29 @@
          ContactsListFragment when a search query match occurs that is not the display name.
          -->
     <string name="search_match_other">Matches Other Field</string>
-
     <string name="no_address">No addresses found</string>
     <string name="no_intent_found">No application found to handle this action</string>
 
+    <string name="label_create_gesture">Create a gesture</string>
+    <string name="task2_btnListCreate">Create</string>
+    <string name="task2_btnListReload">Reload</string>
+    <string name="task2_btnCreateDiscard">Discard</string>
+    <string name="task2_btnCreateDone">Done</string>
+    <string name="task2_lblCreateName">Name: </string>
+    <string name="error_missing_name">You must enter a name!</string>
+    <string name="save_success">Gesture saved in %s</string>
+    <string name="rename_action">OK</string>
+    <string name="cancel_action">Cancel</string>
+    <string name="gestures_loading">Loading gestures...</string>
+    <string name="gestures_empty">No gestures found!</string>
+    <string name="gestures_activity">Gestures</string>
+    <string name="gestures_rename">Rename</string>
+    <string name="gestures_delete">Delete</string>
+    <string name="gestures_delete_success">Gesture deleted</string>
+    <string name="gestures_rename_title">Rename gesture</string>
+    <string name="gestures_rename_label">Gesture name</string>
+    <string name="gestures_error_loading">Could not load %s! Make sure you have storage available.</string>
+    <string name="task2_btnListRecognize">Recognize</string>
+    <string name="task2_tvRecognitionMsg">Perform gesture:</string>
+    <string name="task2_no_match_found">No match found.</string>
 </resources>

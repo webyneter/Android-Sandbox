@@ -2,12 +2,12 @@ package maa.hse.webyneter.app;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
 import maa.hse.webyneter.app.task1.Task1Activity;
+import maa.hse.webyneter.app.task2.Task2Activity;
 import maa.hse.webyneter.app.task4.Task4Activity;
 import maa.hse.webyneter.app.task6.Task6Activity;
 
@@ -24,11 +24,10 @@ public class MainActivity extends AppCompatActivity {
 //            bar.setDisplayShowHomeEnabled(true);
 //        }
 
-
-        android.app.ActionBar t = getActionBar();
+//        android.app.ActionBar t = getActionBar();
 
         redirectToActivityOnButtonClick(R.id.btnTask1, Task1Activity.class);
-//        redirectToActivityOnButtonClick(R.id.btnTask2, Task2Activity.class);
+        redirectToActivityOnButtonClick(R.id.btnTask2, Task2Activity.class);
 //        redirectToActivityOnButtonClick(R.id.btnTask3, Task3Activity.class);
         redirectToActivityOnButtonClick(R.id.btnTask4, Task4Activity.class);
 //        redirectToActivityOnButtonClick(R.id.btnTask5, Task5Activity.class);
