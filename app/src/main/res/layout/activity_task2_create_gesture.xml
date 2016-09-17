@@ -51,13 +51,16 @@
         android:id="@+id/task2_cvCreateOverlay"
         android:layout_width="match_parent"
         android:layout_height="0dip"
+        android:layout_marginTop="10dp"
         android:layout_weight="1.0"
+        android:background="@drawable/stroke"
         android:gestureStrokeType="multiple"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingTop="10dp">
 
         <Button
             android:id="@+id/task2_btnCreateDiscard"

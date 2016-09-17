@@ -37,42 +37,49 @@
                 android:id="@+id/btnTask1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:enabled="false"
                 android:text="Task #1"/>
 
             <Button
                 android:id="@+id/btnTask2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:enabled="false"
                 android:text="Task #2"/>
 
             <Button
                 android:id="@+id/btnTask3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:enabled="false"
                 android:text="Task #3"/>
 
             <Button
                 android:id="@+id/btnTask4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:enabled="false"
                 android:text="Task #4"/>
 
             <Button
                 android:id="@+id/btnTask5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:enabled="false"
                 android:text="Task #5"/>
 
             <Button
                 android:id="@+id/btnTask6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:enabled="false"
                 android:text="Task #6"/>
 
             <Button
                 android:id="@+id/btnTask7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:enabled="false"
                 android:text="Task #7"/>
         </LinearLayout>
 
