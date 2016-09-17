@@ -86,7 +86,6 @@ public class Task1Activity extends AppCompatActivity implements GestureDetector.
 
     @Override
     public boolean onDoubleTapEvent(MotionEvent event) {
-//        tvGesture.setText(GestureKind.onDoubleTapEvent.getValue());
         return true;
     }
 
