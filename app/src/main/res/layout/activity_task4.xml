@@ -20,14 +20,14 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/btnRequestGpsPermission"
+            android:id="@+id/task4_btnRequestGpsPermission"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="Request GPS Permission"/>
 
         <TextView
-            android:id="@+id/tvGpsStatus"
+            android:id="@+id/task4_tvGpsStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -44,7 +44,7 @@
             android:useDefaultMargins="true">
 
             <TextView
-                android:id="@+id/tvLatitude"
+                android:id="@+id/task4_tvLatitude"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -56,7 +56,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
 
             <TextView
-                android:id="@+id/tvLatitudeValue"
+                android:id="@+id/task4_tvLatitudeValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -68,7 +68,7 @@
                 android:textStyle="bold"/>
 
             <TextView
-                android:id="@+id/tvLongitude"
+                android:id="@+id/task4_tvLongitude"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -81,7 +81,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
 
             <TextView
-                android:id="@+id/tvLongitudeValue"
+                android:id="@+id/task4_tvLongitudeValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -93,7 +93,7 @@
                 android:textStyle="bold"/>
 
             <TextView
-                android:id="@+id/tvAltitude"
+                android:id="@+id/task4_tvAltitude"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -105,7 +105,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
 
             <TextView
-                android:id="@+id/tvAltitudeValue"
+                android:id="@+id/task4_tvAltitudeValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -117,7 +117,7 @@
                 android:textStyle="bold"/>
 
             <TextView
-                android:id="@+id/tvAccuracy"
+                android:id="@+id/task4_tvAccuracy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -129,7 +129,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
 
             <TextView
-                android:id="@+id/tvAccuracyValue"
+                android:id="@+id/task4_tvAccuracyValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"

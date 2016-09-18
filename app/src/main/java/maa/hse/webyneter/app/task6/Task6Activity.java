@@ -62,7 +62,7 @@ public class Task6Activity extends FragmentActivity implements
             // results instead of all contacts.
             String searchQuery = getIntent().getStringExtra(SearchManager.QUERY);
             ContactsListFragment mContactsListFragment = (ContactsListFragment)
-                    getSupportFragmentManager().findFragmentById(R.id.contact_list);
+                    getSupportFragmentManager().findFragmentById(R.id.task6_contact_list);
 
             // This flag notes that the Activity is doing a search, and so the result will be
             // search results rather than all contacts. This prevents the Activity and Fragment
@@ -78,7 +78,7 @@ public class Task6Activity extends FragmentActivity implements
         if (isTwoPaneLayout) {
             // If two pane layout, locate the contact detail fragment
             contactDetailFragment = (ContactDetailFragment)
-                    getSupportFragmentManager().findFragmentById(R.id.contact_detail);
+                    getSupportFragmentManager().findFragmentById(R.id.task6_contact_detail);
         }
     }
 

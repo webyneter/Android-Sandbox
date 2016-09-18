@@ -19,7 +19,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvMsg"
+            android:id="@+id/main_tvWelcome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
@@ -34,49 +34,49 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/btnTask1"
+                android:id="@+id/main_btnTask1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:enabled="false"
                 android:text="Task #1"/>
 
             <Button
-                android:id="@+id/btnTask2"
+                android:id="@+id/main_btnTask2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:enabled="false"
                 android:text="Task #2"/>
 
             <Button
-                android:id="@+id/btnTask3"
+                android:id="@+id/main_btnTask3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:enabled="false"
                 android:text="Task #3"/>
 
             <Button
-                android:id="@+id/btnTask4"
+                android:id="@+id/main_btnTask4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:enabled="false"
                 android:text="Task #4"/>
 
             <Button
-                android:id="@+id/btnTask5"
+                android:id="@+id/main_btnTask5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:enabled="false"
                 android:text="Task #5"/>
 
             <Button
-                android:id="@+id/btnTask6"
+                android:id="@+id/main_btnTask6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:enabled="false"
                 android:text="Task #6"/>
 
             <Button
-                android:id="@+id/btnTask7"
+                android:id="@+id/main_btnTask7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:enabled="false"

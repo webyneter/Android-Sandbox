@@ -50,16 +50,16 @@ public class Task4Activity extends AppCompatActivity implements LocationListener
     }
 
     private void initializeUiVariables() {
-        btnRequestGpsPermission = (Button) findViewById(R.id.btnRequestGpsPermission);
-        tvGpsStatus = (TextView) findViewById(R.id.tvGpsStatus);
-        tvLongitude = (TextView) findViewById(R.id.tvLongitude);
-        tvLongitudeValue = (TextView) findViewById(R.id.tvLongitudeValue);
-        tvLatitude = (TextView) findViewById(R.id.tvLatitude);
-        tvLatitudeValue = (TextView) findViewById(R.id.tvLatitudeValue);
-        tvAltitude = (TextView) findViewById(R.id.tvAltitude);
-        tvAltitudeValue = (TextView) findViewById(R.id.tvAltitudeValue);
-        tvAccuracy = (TextView) findViewById(R.id.tvAccuracy);
-        tvAccuracyValue = (TextView) findViewById(R.id.tvAccuracyValue);
+        btnRequestGpsPermission = (Button) findViewById(R.id.task4_btnRequestGpsPermission);
+        tvGpsStatus = (TextView) findViewById(R.id.task4_tvGpsStatus);
+        tvLongitude = (TextView) findViewById(R.id.task4_tvLongitude);
+        tvLongitudeValue = (TextView) findViewById(R.id.task4_tvLongitudeValue);
+        tvLatitude = (TextView) findViewById(R.id.task4_tvLatitude);
+        tvLatitudeValue = (TextView) findViewById(R.id.task4_tvLatitudeValue);
+        tvAltitude = (TextView) findViewById(R.id.task4_tvAltitude);
+        tvAltitudeValue = (TextView) findViewById(R.id.task4_tvAltitudeValue);
+        tvAccuracy = (TextView) findViewById(R.id.task4_tvAccuracy);
+        tvAccuracyValue = (TextView) findViewById(R.id.task4_tvAccuracyValue);
     }
 
     @Override

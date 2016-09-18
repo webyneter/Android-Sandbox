@@ -18,7 +18,7 @@
      displays a list of contacts. Tapping on a contact will start a new activity to display the
      contact details. -->
 <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-          android:id="@+id/contact_list"
+          android:id="@+id/task6_contact_list"
           android:name="maa.hse.webyneter.app.task6.ContactsListFragment"
           android:layout_width="match_parent"
           android:layout_height="match_parent"/>

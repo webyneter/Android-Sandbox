@@ -427,11 +427,11 @@ public class ContactDetailFragment extends Fragment implements
 
         // Gets handles to the view objects in the layout
         final TextView headerTextView =
-                (TextView) addressLayout.findViewById(R.id.contact_detail_header);
+                (TextView) addressLayout.findViewById(R.id.task6_contact_detail_header);
         final TextView addressTextView =
-                (TextView) addressLayout.findViewById(R.id.contact_detail_item);
+                (TextView) addressLayout.findViewById(R.id.task6_contact_detail_item);
         final ImageButton viewAddressButton =
-                (ImageButton) addressLayout.findViewById(R.id.button_view_address);
+                (ImageButton) addressLayout.findViewById(R.id.task6_button_view_address);
 
         // If there's no addresses for the contact, shows the empty view and message, and hides the
         // header and button.

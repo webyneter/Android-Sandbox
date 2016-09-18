@@ -47,13 +47,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initializeUiControls() {
-        btnTask1 = (Button) findViewById(R.id.btnTask1);
-        btnTask2 = (Button) findViewById(R.id.btnTask2);
-        btnTask3 = (Button) findViewById(R.id.btnTask3);
-        btnTask4 = (Button) findViewById(R.id.btnTask4);
-        btnTask5 = (Button) findViewById(R.id.btnTask5);
-        btnTask6 = (Button) findViewById(R.id.btnTask6);
-        btnTask7 = (Button) findViewById(R.id.btnTask7);
+        btnTask1 = (Button) findViewById(R.id.main_btnTask1);
+        btnTask2 = (Button) findViewById(R.id.main_btnTask2);
+        btnTask3 = (Button) findViewById(R.id.main_btnTask3);
+        btnTask4 = (Button) findViewById(R.id.main_btnTask4);
+        btnTask5 = (Button) findViewById(R.id.main_btnTask5);
+        btnTask6 = (Button) findViewById(R.id.main_btnTask6);
+        btnTask7 = (Button) findViewById(R.id.main_btnTask7);
     }
 
     private void redirectToActivityOnButtonClick(final Button btn, final Class<?> redirectToActivityClass) {

@@ -27,7 +27,7 @@ public class Task1Activity extends AppCompatActivity implements GestureDetector.
     }
 
     private void initializeUiVariables() {
-        tvGesture = (TextView) findViewById(R.id.tvGesture);
+        tvGesture = (TextView) findViewById(R.id.task1_tvGesture);
     }
 
     @Override

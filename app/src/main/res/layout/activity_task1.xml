@@ -23,15 +23,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvTask1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="Task #1"
-            android:textAppearance="?android:attr/textAppearanceLarge"/>
-
-        <TextView
-            android:id="@+id/tvHelp"
+            android:id="@+id/task1_tvHelp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -40,6 +32,15 @@
             android:textAlignment="center"
             android:textAppearance="?android:attr/textAppearanceMedium"/>
 
+        <TextView
+            android:id="@+id/task1_tvTask1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Task #1"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -47,7 +48,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tvGesture"
+                android:id="@+id/task1_tvGesture"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"

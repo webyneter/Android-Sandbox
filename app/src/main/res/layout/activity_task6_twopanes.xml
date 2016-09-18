@@ -27,14 +27,14 @@
               android:weightSum="100">
 
     <fragment
-        android:id="@+id/contact_list"
+        android:id="@+id/task6_contact_list"
         class="maa.hse.webyneter.app.task6.ContactsListFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="@integer/contact_list_percent"/>
 
     <fragment
-        android:id="@+id/contact_detail"
+        android:id="@+id/task6_contact_detail"
         class="maa.hse.webyneter.app.task6.ContactDetailFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
