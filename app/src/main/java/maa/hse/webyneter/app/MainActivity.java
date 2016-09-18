@@ -10,6 +10,7 @@ import maa.hse.webyneter.app.task1.Task1Activity;
 import maa.hse.webyneter.app.task2.Task2Activity;
 import maa.hse.webyneter.app.task4.Task4Activity;
 import maa.hse.webyneter.app.task6.Task6Activity;
+import maa.hse.webyneter.app.task7.Task7Activity;
 
 // TODO: 9/15/2016 preemptively request all necessary permissions
 public class MainActivity extends AppCompatActivity {
@@ -28,22 +29,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initializeUiControls();
-
-//        ActionBar bar = getSupportActionBar();
-//        if (bar != null) {
-//            bar.setHomeButtonEnabled(true);
-//            bar.setDisplayShowHomeEnabled(true);
-//        }
-
-//        android.app.ActionBar t = getActionBar();
-
+        
         redirectToActivityOnButtonClick(btnTask1, Task1Activity.class);
         redirectToActivityOnButtonClick(btnTask2, Task2Activity.class);
 //        redirectToActivityOnButtonClick(btnTask3, Task3Activity.class);
         redirectToActivityOnButtonClick(btnTask4, Task4Activity.class);
 //        redirectToActivityOnButtonClick(btnTask5, Task5Activity.class);
         redirectToActivityOnButtonClick(btnTask6, Task6Activity.class);
-//        redirectToActivityOnButtonClick(btnTask7, Task7Activity.class);
+        redirectToActivityOnButtonClick(btnTask7, Task7Activity.class);
     }
 
     private void initializeUiControls() {

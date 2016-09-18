@@ -63,4 +63,6 @@
     <string name="task2_btnListRecognize">Recognize</string>
     <string name="task2_tvRecognitionMsg">Perform gesture:</string>
     <string name="task2_no_match_found">No match found.</string>
+    <string name="task7_tbtnRecognition_off">Start recording...</string>
+    <string name="task7_tbtnRecognition_on">End recording</string>
 </resources>
