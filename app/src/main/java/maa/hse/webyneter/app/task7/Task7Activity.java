@@ -64,9 +64,10 @@ public class Task7Activity extends AppCompatActivity implements RecognitionListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task7);
 
-        initializeUiControls();
+        initUiVariables();
 
-        lvRecognizedSpeechAdapter = new ArrayAdapter<>(this, R.layout.fragment_task7_recognition_result, R.id.task7_tvRecognitionResult);
+        lvRecognizedSpeechAdapter = new ArrayAdapter<>(this, R.layout.fragment_task7_recognition_result,
+                R.id.task7_tvRecognitionResult);
         lvRecognizedSpeech.setAdapter(lvRecognizedSpeechAdapter);
 
         btnRequestRecordAudioPermission.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +82,7 @@ public class Task7Activity extends AppCompatActivity implements RecognitionListe
 
         recognizer = SpeechRecognizer.createSpeechRecognizer(this);
         recognizer.setRecognitionListener(this);
+
         final Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_PREFERENCE, Locale.getDefault());
         intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, this.getPackageName());
@@ -97,6 +99,14 @@ public class Task7Activity extends AppCompatActivity implements RecognitionListe
                 }
             }
         });
+
+//        lcAudioRecording.setDescription("");
+//
+//        lcAudioRecordingDataSet = new LineDataSet(new ArrayList<Entry>(), "");
+//        lcAudioRecording.setData(new LineData(lcAudioRecordingDataSet));
+//        lcAudioRecording.getData().notifyDataChanged();
+//        lcAudioRecordingDataSet.notifyDataSetChanged();
+//        lcAudioRecording.invalidate();
     }
 
     @Override
@@ -116,7 +126,7 @@ public class Task7Activity extends AppCompatActivity implements RecognitionListe
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (recordAudioPermissionGranted()) {
-            updateUi(true);
+            updateUiControls(true);
         }
     }
 
@@ -185,7 +195,7 @@ public class Task7Activity extends AppCompatActivity implements RecognitionListe
 
     }
 
-    private void initializeUiControls() {
+    private void initUiVariables() {
         btnRequestRecordAudioPermission = (Button) findViewById(R.id.task7_btnRequestRecordAudioPermission);
         tbtnRecognition = (ToggleButton) findViewById(R.id.task7_tbtnRecognition);
         pbRecognition = (ProgressBar) findViewById(R.id.task7_pbRecognition);
@@ -193,7 +203,7 @@ public class Task7Activity extends AppCompatActivity implements RecognitionListe
         lvRecognizedSpeech = (ListView) findViewById(R.id.task7_lvRecognizedSpeech);
     }
 
-    private void updateUi(final boolean isEnabled) {
+    private void updateUiControls(final boolean isEnabled) {
         tbtnRecognition.setEnabled(isEnabled);
         pbRecognition.setEnabled(isEnabled);
         lvRecognizedSpeech.setEnabled(isEnabled);
@@ -202,10 +212,10 @@ public class Task7Activity extends AppCompatActivity implements RecognitionListe
     private void updateUiIfRecordAudioPermissionGrantedOrDenied() {
         if (recordAudioPermissionGranted()) {
             btnRequestRecordAudioPermission.setVisibility(View.GONE);
-            updateUi(true);
+            updateUiControls(true);
         } else {
             btnRequestRecordAudioPermission.setVisibility(View.VISIBLE);
-            updateUi(false);
+            updateUiControls(false);
         }
     }
 

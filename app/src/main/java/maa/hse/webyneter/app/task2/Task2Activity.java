@@ -92,7 +92,7 @@ public class Task2Activity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task2_gestures_list);
 
-        initializeUiVariables();
+        initUiVariables();
 
         gesturesAdapter = new GesturesAdapter(this);
         gesturesAdapter.registerDataSetObserver(new DataSetObserver() {
@@ -119,7 +119,7 @@ public class Task2Activity extends ListActivity {
         registerForContextMenu(getListView());
     }
 
-    private void initializeUiVariables() {
+    private void initUiVariables() {
         btnListCreate = (Button) findViewById(R.id.task2_btnListCreate);
         btnListReload = (Button) findViewById(R.id.task2_btnListReload);
         btnListRecognize = (Button) findViewById(R.id.task2_btnListRecognize);

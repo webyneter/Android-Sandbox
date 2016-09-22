@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "maa.hse.webyneter.app"
-        minSdkVersion 11
+        minSdkVersion 9
         targetSdkVersion 24
         versionCode 1
         versionName "0.1"
@@ -26,4 +26,5 @@ dependencies {
     compile 'com.android.support:support-v4:24.2.1'
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.0-beta1'
+    compile 'joda-time:joda-time:2.9.4'
 }
