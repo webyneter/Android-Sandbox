@@ -20,13 +20,13 @@ public class Task1Activity extends AppCompatActivity implements GestureDetector.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task1);
 
-        initializeUiVariables();
+        initUiVariables();
 
         gestureDetector = new GestureDetectorCompat(this, this);
         gestureDetector.setOnDoubleTapListener(this);
     }
 
-    private void initializeUiVariables() {
+    private void initUiVariables() {
         tvGesture = (TextView) findViewById(R.id.task1_tvGesture);
     }
 

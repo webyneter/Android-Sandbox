@@ -14,14 +14,13 @@
         android:label="HSE MAA"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat">
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
+
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
         <activity
             android:name=".task1.Task1Activity"
             android:parentActivityName=".MainActivity">
@@ -29,7 +28,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>
-
         <activity
             android:name=".task2.Task2Activity"
             android:parentActivityName=".MainActivity">
@@ -51,7 +49,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".task2.Task2Activity"/>
         </activity>
-
         <activity
             android:name=".task4.Task4Activity"
             android:parentActivityName=".MainActivity">
@@ -59,7 +56,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>
-
         <activity
             android:name=".task6.Task6Activity"
             android:parentActivityName=".MainActivity">
@@ -74,9 +70,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>
-
         <activity
             android:name=".task7.Task7Activity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
+
+        <activity
+            android:name=".task3.Task3Activity"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

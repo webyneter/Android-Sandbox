@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="maa.hse.webyneter.app.task3.Task3Activity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:orientation="vertical">
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/task3_lcPressure"
+            style="@style/task3_lc"/>
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/task3_lcLight"
+            style="@style/task3_lc"/>
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/task3_lcAmbientTemperature"
+            style="@style/task3_lc"/>
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/task3_lcRelativeHumidity"
+            style="@style/task3_lc"/>
+
+    </LinearLayout>
+
+</ScrollView>
