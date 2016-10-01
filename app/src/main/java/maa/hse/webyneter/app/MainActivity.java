@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initUiVariables();
-        
+
         redirectToActivityOnButtonClick(btnTask1, Task1Activity.class);
         redirectToActivityOnButtonClick(btnTask2, Task2Activity.class);
         redirectToActivityOnButtonClick(btnTask3, Task3Activity.class);

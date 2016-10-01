@@ -7,24 +7,24 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-
-import org.joda.time.Duration;
-import org.joda.time.Instant;
+import com.github.mikephil.charting.utils.Utils;
 
 import java.util.ArrayList;
 
 import maa.hse.webyneter.app.R;
 
 public class Task3Activity extends Activity implements SensorEventListener {
-    private static final Duration SENSOR_CHANGED_HANDLE_DELAY = Duration.standardSeconds(15);
-
-    private ListView lvCharts;
+    private static final String PRESSURE_SENSOR_DATA_SET_LABEL = "Pressure Sensor";
+    private static final String AMBIENT_TEMPERATURE_SENSOR_DATA_SET_LABEL = "Ambient Temperature Sensor";
+    private static final String LIGHT_SENSOR_DATA_SET_LABEL = "Light Sensor";
+    private static final String RELATIVE_HUMIDITY_SENSOR_DATA_SET_LABEL = "Relative Humidity Sensor";
 
     private SensorManager sensorManager;
     private Sensor pressureSensor;
@@ -32,11 +32,15 @@ public class Task3Activity extends Activity implements SensorEventListener {
     private Sensor lightSensor;
     private Sensor relativeHumiditySensor;
 
-    private LineDataSet pressureDataSet = new LineDataSet(new ArrayList<Entry>(), "Pressure");
-    private LineDataSet ambientTemperatureDataSet = new LineDataSet(new ArrayList<Entry>(), "Ambient Temperature");
-    private LineDataSet lightDataSet = new LineDataSet(new ArrayList<Entry>(), "Light");
-    private LineDataSet relativeHumidityDataSet = new LineDataSet(new ArrayList<Entry>(), "Relative Humidity");
-    private Instant lastSensorChangedAt = null;
+    private LineChart lcPressure;
+    private LineChart lcAmbientTemperature;
+    private LineChart lcLight;
+    private LineChart lcRelativeHumidity;
+
+    private LineDataSet pressureDataSet = new LineDataSet(new ArrayList<Entry>(), PRESSURE_SENSOR_DATA_SET_LABEL);
+    private LineDataSet ambientTemperatureDataSet = new LineDataSet(new ArrayList<Entry>(), AMBIENT_TEMPERATURE_SENSOR_DATA_SET_LABEL);
+    private LineDataSet lightDataSet = new LineDataSet(new ArrayList<Entry>(), LIGHT_SENSOR_DATA_SET_LABEL);
+    private LineDataSet relativeHumidityDataSet = new LineDataSet(new ArrayList<Entry>(), RELATIVE_HUMIDITY_SENSOR_DATA_SET_LABEL);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,14 +48,15 @@ public class Task3Activity extends Activity implements SensorEventListener {
         setContentView(R.layout.activity_task3);
 
         initUiVariables();
-
         initSensors();
-
-        initCharts();
+        setUpCharts();
     }
 
     private void initUiVariables() {
-        lvCharts = (ListView) findViewById(R.id.task3_lvCharts);
+        lcPressure = (LineChart) findViewById(R.id.task3_lcPressure);
+        lcAmbientTemperature = (LineChart) findViewById(R.id.task3_lcAmbientTemperature);
+        lcLight = (LineChart) findViewById(R.id.task3_lcLight);
+        lcRelativeHumidity = (LineChart) findViewById(R.id.task3_lcRelativeHumidity);
     }
 
     private void initSensors() {
@@ -62,45 +67,75 @@ public class Task3Activity extends Activity implements SensorEventListener {
         relativeHumiditySensor = sensorManager.getDefaultSensor(Sensor.TYPE_RELATIVE_HUMIDITY);
     }
 
-    private void initCharts() {
-        LineData pressureData = new LineData(pressureDataSet);
-        LineData ambientTemperatureData = new LineData(pressureDataSet);
-        LineData lightData = new LineData(pressureDataSet);
-        LineData relativeHumidityData = new LineData(pressureDataSet);
+    private void setUpCharts() {
+        Utils.init(getApplicationContext());
+        setUpChartOrSetNoDataText(pressureSensor, lcPressure, pressureDataSet);
+        setUpChartOrSetNoDataText(ambientTemperatureSensor, lcAmbientTemperature, ambientTemperatureDataSet);
+        setUpChartOrSetNoDataText(lightSensor, lcLight, lightDataSet);
+        setUpChartOrSetNoDataText(relativeHumiditySensor, lcRelativeHumidity, relativeHumidityDataSet);
+    }
 
-        ArrayList<LineChartItem> linechartItems = new ArrayList<>();
-        linechartItems.add(new LineChartItem(pressureData, getApplicationContext()));
-        linechartItems.add(new LineChartItem(ambientTemperatureData, getApplicationContext()));
-        linechartItems.add(new LineChartItem(lightData, getApplicationContext()));
-        linechartItems.add(new LineChartItem(relativeHumidityData, getApplicationContext()));
+    private void setUpChartOrSetNoDataText(Sensor sensor, LineChart lineChart, LineDataSet lineDataSet) {
+        if (sensor != null) {
+            setUpChart(lineChart, lineDataSet);
+        } else {
+            lineChart.setNoDataText(String.format("%s not available!", lineDataSet.getLabel()));
+        }
+    }
 
-        ArrayAdapter<LineChartItem> lvChartsAdapter = new ArrayAdapter<>(getApplicationContext(), 0, linechartItems);
-        lvCharts.setAdapter(lvChartsAdapter);
+    private void setUpChart(LineChart lineChart, LineDataSet lineDataSet) {
+        LineData lineData = new LineData(lineDataSet);
+        lineChart.setData(lineData);
+        customizeChartAndData(lineChart, lineData);
+        lineData.notifyDataChanged();
+        lineChart.notifyDataSetChanged();
+        lineChart.invalidate();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        registerSensorListeners();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterSensorListeners();
+    }
+
+    private void registerSensorListeners() {
+        sensorManager.registerListener(this, pressureSensor, SensorManager.SENSOR_DELAY_NORMAL);
+        sensorManager.registerListener(this, ambientTemperatureSensor, SensorManager.SENSOR_DELAY_NORMAL);
+        sensorManager.registerListener(this, lightSensor, SensorManager.SENSOR_DELAY_NORMAL);
+        sensorManager.registerListener(this, relativeHumiditySensor, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    private void unregisterSensorListeners() {
+        sensorManager.unregisterListener(this, pressureSensor);
+        sensorManager.unregisterListener(this, ambientTemperatureSensor);
+        sensorManager.unregisterListener(this, lightSensor);
+        sensorManager.unregisterListener(this, relativeHumiditySensor);
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        if (lastSensorChangedAt != null) {
-            Instant nowAt = new Instant();
-            Duration fromLastSensorChangedToNow = new Duration(lastSensorChangedAt, nowAt);
-            if (fromLastSensorChangedToNow.isLongerThan(SENSOR_CHANGED_HANDLE_DELAY)) {
-                return;
-            }
-        } else {
-            lastSensorChangedAt = new Instant();
-            return;
-        }
-
         switch (event.sensor.getType()) {
             case Sensor.TYPE_PRESSURE:
-                float mbarPressure = event.values[0];
-                updatePressureChart(mbarPressure);
+                float mbar = event.values[0];
+                addValueToChart(mbar, pressureDataSet, lcPressure);
                 break;
             case Sensor.TYPE_AMBIENT_TEMPERATURE:
+                float degreeCelsius = event.values[0];
+                addValueToChart(degreeCelsius, ambientTemperatureDataSet, lcAmbientTemperature);
                 break;
             case Sensor.TYPE_LIGHT:
+                float lx = event.values[0];
+                addValueToChart(lx, lightDataSet, lcLight);
                 break;
             case Sensor.TYPE_RELATIVE_HUMIDITY:
+                float percent = event.values[0];
+                addValueToChart(percent, relativeHumidityDataSet, lcRelativeHumidity);
                 break;
         }
     }
@@ -110,31 +145,16 @@ public class Task3Activity extends Activity implements SensorEventListener {
 
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        sensorManager.registerListener(this, pressureSensor, SensorManager.SENSOR_DELAY_NORMAL);
-        sensorManager.registerListener(this, ambientTemperatureSensor, SensorManager.SENSOR_DELAY_NORMAL);
-        sensorManager.registerListener(this, lightSensor, SensorManager.SENSOR_DELAY_NORMAL);
-        sensorManager.registerListener(this, relativeHumiditySensor, SensorManager.SENSOR_DELAY_NORMAL);
+    private void addValueToChart(float value, LineDataSet lineDataSet, LineChart lineChart) {
+        Entry newEntry = createEntryOneXShiftFromLastOrZeroXShift(lineDataSet, value);
+        lineDataSet.addEntry(newEntry);
+        lineChart.getLineData().notifyDataChanged();
+        lineChart.notifyDataSetChanged();
+        lineChart.invalidate();
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        sensorManager.unregisterListener(this);
-    }
-
-    private void updatePressureChart(float mbarPressure) {
-        Entry newEntry = createEntryOneXShiftFromLastOrZeroXShift(pressureDataSet, mbarPressure);
-        pressureDataSet.addEntry(newEntry);
-        pressureDataSet.notifyDataSetChanged();
-//        lcAudioRecording.getData().notifyDataChanged();
-//        lcAudioRecording.invalidate();
-    }
-
-    private Entry createEntryOneXShiftFromLastOrZeroXShift(LineDataSet ds, float y) {
-        Entry lastEntry = getLastEntryOrNull(pressureDataSet);
+    private Entry createEntryOneXShiftFromLastOrZeroXShift(LineDataSet lineDataSet, float y) {
+        Entry lastEntry = getLastEntryOrNull(lineDataSet);
         Entry newEntry;
         if (lastEntry != null) {
             newEntry = new Entry(lastEntry.getX() + 1, y);
@@ -144,11 +164,23 @@ public class Task3Activity extends Activity implements SensorEventListener {
         return newEntry;
     }
 
-    private Entry getLastEntryOrNull(LineDataSet ds) {
-        int entryCount = ds.getEntryCount();
+    private Entry getLastEntryOrNull(LineDataSet lineDataSet) {
+        int entryCount = lineDataSet.getEntryCount();
         if (entryCount == 0) {
             return null;
         }
-        return ds.getEntryForIndex(entryCount - 1);
+        return lineDataSet.getEntryForIndex(entryCount - 1);
+    }
+
+    private void customizeChartAndData(LineChart lineChart, LineData lineData) {
+        int whiteColor = Integer.MAX_VALUE;
+        lineChart.setDescription("");
+        lineChart.getLegend().setPosition(Legend.LegendPosition.ABOVE_CHART_CENTER);
+        lineChart.getLegend().setTextColor(whiteColor);
+        lineChart.getXAxis().setTextColor(whiteColor);
+        lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+        lineChart.getAxisLeft().setTextColor(whiteColor);
+        lineChart.getAxisRight().setTextColor(whiteColor);
+        lineData.setValueTextColor(whiteColor);
     }
 }
