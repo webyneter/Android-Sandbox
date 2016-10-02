@@ -7,24 +7,37 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.utils.Utils;
 
 import java.util.ArrayList;
 
 import maa.hse.webyneter.app.R;
 
-public class Task3Activity extends Activity implements SensorEventListener {
-    private static final String PRESSURE_SENSOR_DATA_SET_LABEL = "Pressure Sensor";
-    private static final String AMBIENT_TEMPERATURE_SENSOR_DATA_SET_LABEL = "Ambient Temperature Sensor";
-    private static final String LIGHT_SENSOR_DATA_SET_LABEL = "Light Sensor";
-    private static final String RELATIVE_HUMIDITY_SENSOR_DATA_SET_LABEL = "Relative Humidity Sensor";
+// TODO: 10/2/2016 implement user chart interaction results (zooming in/out, viewport shift, ...) resetting
+public class Task3Activity extends Activity implements SensorEventListener, SeekBar.OnSeekBarChangeListener {
+    private static final String PRESSURE_SENSOR_DATA_SET_LABEL = "Pressure (mBar) Sensor";
+    private static final String AMBIENT_TEMPERATURE_SENSOR_DATA_SET_LABEL = "Ambient Temperature (°C) Sensor";
+    private static final String LIGHT_SENSOR_DATA_SET_LABEL = "Light (lx) Sensor";
+    private static final String RELATIVE_HUMIDITY_SENSOR_DATA_SET_LABEL = "Relative Humidity (%) Sensor";
+    private static final int VISIBLE_X_RANGE_MAXIMUM_MIN = 1;
+    private static final int VISIBLE_X_RANGE_MAXIMUM_MAX = 125;
+    private static final float VISIBLE_X_RANGE_MAXIMUM_DEFAULT_PERCENT = 0.25f;
+
+    private LineChart lcPressure;
+    private LineChart lcAmbientTemperature;
+    private LineChart lcLight;
+    private LineChart lcRelativeHumidity;
+    private TextView tvVisibleXRangeMaximum;
+    private SeekBar sbVisibleXRangeMaximum;
 
     private SensorManager sensorManager;
     private Sensor pressureSensor;
@@ -32,15 +45,12 @@ public class Task3Activity extends Activity implements SensorEventListener {
     private Sensor lightSensor;
     private Sensor relativeHumiditySensor;
 
-    private LineChart lcPressure;
-    private LineChart lcAmbientTemperature;
-    private LineChart lcLight;
-    private LineChart lcRelativeHumidity;
-
     private LineDataSet pressureDataSet = new LineDataSet(new ArrayList<Entry>(), PRESSURE_SENSOR_DATA_SET_LABEL);
-    private LineDataSet ambientTemperatureDataSet = new LineDataSet(new ArrayList<Entry>(), AMBIENT_TEMPERATURE_SENSOR_DATA_SET_LABEL);
+    private LineDataSet ambientTemperatureDataSet = new LineDataSet(new ArrayList<Entry>(),
+            AMBIENT_TEMPERATURE_SENSOR_DATA_SET_LABEL);
     private LineDataSet lightDataSet = new LineDataSet(new ArrayList<Entry>(), LIGHT_SENSOR_DATA_SET_LABEL);
-    private LineDataSet relativeHumidityDataSet = new LineDataSet(new ArrayList<Entry>(), RELATIVE_HUMIDITY_SENSOR_DATA_SET_LABEL);
+    private LineDataSet relativeHumidityDataSet = new LineDataSet(new ArrayList<Entry>(),
+            RELATIVE_HUMIDITY_SENSOR_DATA_SET_LABEL);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,15 +58,35 @@ public class Task3Activity extends Activity implements SensorEventListener {
         setContentView(R.layout.activity_task3);
 
         initUiVariables();
+        initUiHandlers();
         initSensors();
-        setUpCharts();
+        initUiCharts();
+        initUiState();
     }
 
     private void initUiVariables() {
+        tvVisibleXRangeMaximum = (TextView) findViewById(R.id.task3_tvVisibleXRangeMaximum);
+        sbVisibleXRangeMaximum = (SeekBar) findViewById(R.id.task3_sbVisibleXRangeMaximum);
         lcPressure = (LineChart) findViewById(R.id.task3_lcPressure);
         lcAmbientTemperature = (LineChart) findViewById(R.id.task3_lcAmbientTemperature);
         lcLight = (LineChart) findViewById(R.id.task3_lcLight);
         lcRelativeHumidity = (LineChart) findViewById(R.id.task3_lcRelativeHumidity);
+    }
+
+    private void initUiHandlers() {
+        sbVisibleXRangeMaximum.setOnSeekBarChangeListener(this);
+    }
+
+    private void initUiState() {
+        sbVisibleXRangeMaximum.setMax(VISIBLE_X_RANGE_MAXIMUM_MAX);
+        int progress = calcPoint(VISIBLE_X_RANGE_MAXIMUM_DEFAULT_PERCENT,
+                VISIBLE_X_RANGE_MAXIMUM_MIN,
+                VISIBLE_X_RANGE_MAXIMUM_MAX);
+        sbVisibleXRangeMaximum.setProgress(progress);
+    }
+
+    private int calcPoint(float minShiftPercent, int min, int max) {
+        return Math.round(minShiftPercent * (max - min) + min);
     }
 
     private void initSensors() {
@@ -67,26 +97,27 @@ public class Task3Activity extends Activity implements SensorEventListener {
         relativeHumiditySensor = sensorManager.getDefaultSensor(Sensor.TYPE_RELATIVE_HUMIDITY);
     }
 
-    private void setUpCharts() {
-        Utils.init(getApplicationContext());
-        setUpChartOrSetNoDataText(pressureSensor, lcPressure, pressureDataSet);
-        setUpChartOrSetNoDataText(ambientTemperatureSensor, lcAmbientTemperature, ambientTemperatureDataSet);
-        setUpChartOrSetNoDataText(lightSensor, lcLight, lightDataSet);
-        setUpChartOrSetNoDataText(relativeHumiditySensor, lcRelativeHumidity, relativeHumidityDataSet);
+    private void initUiCharts() {
+        initUiChartOrSetNoDataText(pressureSensor, lcPressure, pressureDataSet);
+        initUiChartOrSetNoDataText(ambientTemperatureSensor, lcAmbientTemperature, ambientTemperatureDataSet);
+        initUiChartOrSetNoDataText(lightSensor, lcLight, lightDataSet);
+        initUiChartOrSetNoDataText(relativeHumiditySensor, lcRelativeHumidity, relativeHumidityDataSet);
     }
 
-    private void setUpChartOrSetNoDataText(Sensor sensor, LineChart lineChart, LineDataSet lineDataSet) {
+    private void initUiChartOrSetNoDataText(Sensor sensor, LineChart lineChart, LineDataSet lineDataSet) {
         if (sensor != null) {
-            setUpChart(lineChart, lineDataSet);
+            initUiChart(lineChart, lineDataSet);
         } else {
             lineChart.setNoDataText(String.format("%s not available!", lineDataSet.getLabel()));
         }
     }
 
-    private void setUpChart(LineChart lineChart, LineDataSet lineDataSet) {
+    private void initUiChart(LineChart lineChart, LineDataSet lineDataSet) {
         LineData lineData = new LineData(lineDataSet);
         lineChart.setData(lineData);
-        customizeChartAndData(lineChart, lineData);
+
+        customizeUiChart(lineChart);
+
         lineData.notifyDataChanged();
         lineChart.notifyDataSetChanged();
         lineChart.invalidate();
@@ -122,20 +153,20 @@ public class Task3Activity extends Activity implements SensorEventListener {
     public void onSensorChanged(SensorEvent event) {
         switch (event.sensor.getType()) {
             case Sensor.TYPE_PRESSURE:
-                float mbar = event.values[0];
-                addValueToChart(mbar, pressureDataSet, lcPressure);
+                float mBar = event.values[0];
+                addValueToUiChart(mBar, pressureDataSet, lcPressure);
                 break;
             case Sensor.TYPE_AMBIENT_TEMPERATURE:
                 float degreeCelsius = event.values[0];
-                addValueToChart(degreeCelsius, ambientTemperatureDataSet, lcAmbientTemperature);
+                addValueToUiChart(degreeCelsius, ambientTemperatureDataSet, lcAmbientTemperature);
                 break;
             case Sensor.TYPE_LIGHT:
                 float lx = event.values[0];
-                addValueToChart(lx, lightDataSet, lcLight);
+                addValueToUiChart(lx, lightDataSet, lcLight);
                 break;
             case Sensor.TYPE_RELATIVE_HUMIDITY:
                 float percent = event.values[0];
-                addValueToChart(percent, relativeHumidityDataSet, lcRelativeHumidity);
+                addValueToUiChart(percent, relativeHumidityDataSet, lcRelativeHumidity);
                 break;
         }
     }
@@ -145,12 +176,35 @@ public class Task3Activity extends Activity implements SensorEventListener {
 
     }
 
-    private void addValueToChart(float value, LineDataSet lineDataSet, LineChart lineChart) {
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+        if (progress < VISIBLE_X_RANGE_MAXIMUM_MIN) {
+            sbVisibleXRangeMaximum.setProgress(VISIBLE_X_RANGE_MAXIMUM_MIN);
+            return;
+        }
+        tvVisibleXRangeMaximum.setText(Integer.toString(progress));
+    }
+
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+
+    }
+
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
+
+    }
+
+    private void addValueToUiChart(float value, LineDataSet lineDataSet, LineChart lineChart) {
         Entry newEntry = createEntryOneXShiftFromLastOrZeroXShift(lineDataSet, value);
         lineDataSet.addEntry(newEntry);
+
         lineChart.getLineData().notifyDataChanged();
         lineChart.notifyDataSetChanged();
         lineChart.invalidate();
+
+        lineChart.setVisibleXRangeMaximum(sbVisibleXRangeMaximum.getProgress());
+        lineChart.moveViewToX(getLastEntryOrNull(lineDataSet).getX());
     }
 
     private Entry createEntryOneXShiftFromLastOrZeroXShift(LineDataSet lineDataSet, float y) {
@@ -172,15 +226,30 @@ public class Task3Activity extends Activity implements SensorEventListener {
         return lineDataSet.getEntryForIndex(entryCount - 1);
     }
 
-    private void customizeChartAndData(LineChart lineChart, LineData lineData) {
+    private void customizeUiChart(LineChart lineChart) {
         int whiteColor = Integer.MAX_VALUE;
-        lineChart.setDescription("");
-        lineChart.getLegend().setPosition(Legend.LegendPosition.ABOVE_CHART_CENTER);
-        lineChart.getLegend().setTextColor(whiteColor);
-        lineChart.getXAxis().setTextColor(whiteColor);
-        lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
-        lineChart.getAxisLeft().setTextColor(whiteColor);
-        lineChart.getAxisRight().setTextColor(whiteColor);
+
+        LineData lineData = lineChart.getLineData();
         lineData.setValueTextColor(whiteColor);
+
+        lineChart.setDescription("");
+        lineChart.setDragEnabled(true);
+        lineChart.setScaleEnabled(true);
+        lineChart.setPinchZoom(true);
+
+        Legend legend = lineChart.getLegend();
+        legend.setPosition(Legend.LegendPosition.ABOVE_CHART_CENTER);
+        legend.setTextColor(whiteColor);
+        legend.setTextSize(14f);
+
+        XAxis xAxis = lineChart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setTextColor(whiteColor);
+
+        YAxis yAxisLeft = lineChart.getAxisLeft();
+        yAxisLeft.setEnabled(false);
+
+        YAxis yAxisRight = lineChart.getAxisRight();
+        yAxisRight.setTextColor(whiteColor);
     }
 }
