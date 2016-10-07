@@ -46,6 +46,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.yandex.metrica.YandexMetrica;
+
 import java.io.File;
 import java.util.Collections;
 import java.util.Comparator;
@@ -117,6 +119,18 @@ public class Task2Activity extends ListActivity {
         loadOrReloadGestures();
 
         registerForContextMenu(getListView());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        YandexMetrica.onResumeActivity(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        YandexMetrica.onPauseActivity(this);
     }
 
     private void initUiVariables() {

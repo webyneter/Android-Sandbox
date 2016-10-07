@@ -18,6 +18,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import com.yandex.metrica.YandexMetrica;
+
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -115,11 +117,13 @@ public class Task7Activity extends AppCompatActivity implements RecognitionListe
         if (recognizer != null) {
             recognizer.destroy();
         }
+        YandexMetrica.onPauseActivity(this);
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        YandexMetrica.onResumeActivity(this);
     }
 
     @Override

@@ -35,4 +35,6 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.4.0'
     compile 'com.github.lawloretienne:imagegallery:0.0.15'
     compile 'com.squareup.picasso:picasso:2.5.2'
+
+    compile 'com.yandex.android:mobmetricalib:2.51'
 }

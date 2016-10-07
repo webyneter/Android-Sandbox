@@ -17,6 +17,7 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.yandex.metrica.YandexMetrica;
 
 import java.util.ArrayList;
 
@@ -127,12 +128,14 @@ public class Task3Activity extends Activity implements SensorEventListener, Seek
     protected void onResume() {
         super.onResume();
         registerSensorListeners();
+        YandexMetrica.onResumeActivity(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         unregisterSensorListeners();
+        YandexMetrica.onPauseActivity(this);
     }
 
     private void registerSensorListeners() {

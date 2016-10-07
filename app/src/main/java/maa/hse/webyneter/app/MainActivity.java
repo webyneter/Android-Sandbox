@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.yandex.metrica.YandexMetrica;
+
 import maa.hse.webyneter.app.task1.Task1Activity;
 import maa.hse.webyneter.app.task2.Task2Activity;
 import maa.hse.webyneter.app.task3.Task3Activity;
@@ -59,6 +61,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }));
 
         initUiHandlers();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        YandexMetrica.onResumeActivity(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        YandexMetrica.onPauseActivity(this);
     }
 
     @Override

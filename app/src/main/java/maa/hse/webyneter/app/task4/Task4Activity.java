@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.yandex.metrica.YandexMetrica;
+
 import maa.hse.webyneter.app.R;
 
 public class Task4Activity extends AppCompatActivity implements LocationListener {
@@ -66,12 +68,14 @@ public class Task4Activity extends AppCompatActivity implements LocationListener
     protected void onPause() {
         super.onPause();
         removeGPSUpdatesIfGPSPermissionGranted();
+        YandexMetrica.onPauseActivity(this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         requestGPSUpdatesIfGPSPermissionGranted();
+        YandexMetrica.onResumeActivity(this);
     }
 
     @Override

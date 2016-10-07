@@ -25,6 +25,8 @@ import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+import com.yandex.metrica.YandexMetrica;
+
 
 /**
  * This class defines a simple FragmentActivity as the parent of {@link ContactDetailFragment}.
@@ -64,6 +66,18 @@ public class ContactDetailActivity extends AppCompatActivity {
             // No intent provided, nothing to do so finish()
             finish();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        YandexMetrica.onResumeActivity(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        YandexMetrica.onPauseActivity(this);
     }
 
     @Override

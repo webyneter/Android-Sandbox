@@ -20,6 +20,7 @@ import com.etiennelawlor.imagegallery.library.adapters.ImageGalleryAdapter;
 import com.etiennelawlor.imagegallery.library.enums.PaletteColorType;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
+import com.yandex.metrica.YandexMetrica;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -51,6 +52,18 @@ public class Task5Activity extends AppCompatActivity implements ImageGalleryAdap
         startImageGalleryActivity();
     }
     // endregion
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        YandexMetrica.onResumeActivity(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        YandexMetrica.onPauseActivity(this);
+    }
 
     private void startImageGalleryActivity() {
         Intent intent = new Intent(this, ImageGalleryActivity.class);

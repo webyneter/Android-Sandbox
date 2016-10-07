@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.yandex.metrica.YandexMetrica;
+
 import maa.hse.webyneter.app.R;
 
 public class Task1Activity extends AppCompatActivity implements GestureDetector.OnGestureListener,
@@ -43,6 +45,18 @@ public class Task1Activity extends AppCompatActivity implements GestureDetector.
         rlXandY.setVisibility(View.GONE);
         rlFlingVelocities.setVisibility(View.GONE);
         rlScrollDistances.setVisibility(View.GONE);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        YandexMetrica.onResumeActivity(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        YandexMetrica.onPauseActivity(this);
     }
 
     private void initUiHandlers() {

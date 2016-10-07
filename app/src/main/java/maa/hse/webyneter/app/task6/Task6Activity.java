@@ -23,6 +23,8 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 
+import com.yandex.metrica.YandexMetrica;
+
 import maa.hse.webyneter.app.R;
 
 /**
@@ -80,6 +82,18 @@ public class Task6Activity extends FragmentActivity implements
             contactDetailFragment = (ContactDetailFragment)
                     getSupportFragmentManager().findFragmentById(R.id.task6_contact_detail);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        YandexMetrica.onResumeActivity(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        YandexMetrica.onPauseActivity(this);
     }
 
     @Override

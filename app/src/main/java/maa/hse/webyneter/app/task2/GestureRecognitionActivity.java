@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.widget.TextView;
 
+import com.yandex.metrica.YandexMetrica;
+
 import java.util.ArrayList;
 
 import maa.hse.webyneter.app.R;
@@ -36,6 +38,18 @@ public class GestureRecognitionActivity extends Activity
         GestureOverlayView gov = (GestureOverlayView) findViewById(R.id.task2_cvCreateOverlay);
         gov.addOnGesturePerformedListener(this);
         gov.addOnGestureListener(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        YandexMetrica.onResumeActivity(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        YandexMetrica.onPauseActivity(this);
     }
 
     private void initializeUiVariables() {
