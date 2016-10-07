@@ -15,7 +15,29 @@
 -->
 
 <resources>
-    <string name="app_name">Task1</string>
+    <string name="app_name">HSE MAA Course Homework</string>
+
+    <string name="task1_name">#1. Gesture Handler</string>
+    <string name="task1_desc">\"Application which can recognize all kinds of built-it system gestures. 1 activity, 1 textView which contains information about the gesture.\"</string>
+
+    <string name="task2_name">#2. Custom Gesture Builder</string>
+    <string name="task2_desc">\"Working with Gesture Builder –application contains a panel to enter the custom gestures and a textViewelement to inform user if the gesture was recognized or not.\"</string>
+
+    <string name="task3_name">#3. Sensor Data Charting</string>
+    <string name="task3_desc">\"Working with third-party libraries (AChartEngine, YandexAPI for getting your application analytics, etc.)\"</string>
+
+    <string name="task4_name">#4. GPS</string>
+    <string name="task4_desc">\"Working with GPS: 3 textViews, 2 of them show coordinates and the 3rdshows GPS module status.\"</string>
+
+    <string name="task5_name">#5. Image Gallery</string>
+    <string name="task5_desc">\"Image gallery containing navigational elements, information on the current image number and name / total number of images, etc.\"</string>
+
+    <string name="task6_name">#6. Contacts</string>
+    <string name="task6_desc">\"A custom contact list application where you can add, edit or delete contacts (name, phone, comment) and call or text them.\"</string>
+
+    <string name="task7_name">#7. Speech-to-Text</string>
+    <string name="task7_desc">\"Application which uses one of the voice recognition systems. It can contain a button and a textView; pressing a button activates the voice input, textViewelement shows the recognition result. The textViewelement should remember multiple recognition results.\"</string>
+
     <string name="activity_contacts_list">Contacts List</string>
     <string name="activity_contact_detail">Contact Detail</string>
     <string name="contacts_list_search_results_title">Contacts List Search for \"%s\"</string>

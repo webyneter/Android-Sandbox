@@ -11,7 +11,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="HSE MAA"
+        android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat">
         <activity android:name=".MainActivity">
@@ -23,6 +23,7 @@
         </activity>
         <activity
             android:name=".task1.Task1Activity"
+            android:label="@string/task1_name"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -30,6 +31,7 @@
         </activity>
         <activity
             android:name=".task2.Task2Activity"
+            android:label="@string/task2_name"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -51,6 +53,7 @@
         </activity>
         <activity
             android:name=".task4.Task4Activity"
+            android:label="@string/task4_name"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -58,6 +61,7 @@
         </activity>
         <activity
             android:name=".task6.Task6Activity"
+            android:label="@string/task6_name"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -72,6 +76,7 @@
         </activity>
         <activity
             android:name=".task7.Task7Activity"
+            android:label="@string/task7_name"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -86,6 +91,7 @@
         </activity>
         <activity
             android:name=".task5.Task5Activity"
+            android:label="@string/task5_name"
             android:parentActivityName=".MainActivity"
             android:theme="@style/ImageGalleryTheme">
             <meta-data

@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
 import android.text.TextUtils;
@@ -15,7 +13,6 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.etiennelawlor.imagegallery.library.ImageGalleryFragment;
 import com.etiennelawlor.imagegallery.library.activities.FullScreenImageGalleryActivity;
 import com.etiennelawlor.imagegallery.library.activities.ImageGalleryActivity;
 import com.etiennelawlor.imagegallery.library.adapters.FullScreenImageGalleryAdapter;
@@ -28,8 +25,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import butterknife.ButterKnife;
-import butterknife.OnClick;
-import maa.hse.webyneter.app.MainActivity;
 import maa.hse.webyneter.app.R;
 
 public class Task5Activity extends AppCompatActivity implements ImageGalleryAdapter.ImageThumbnailLoader,
@@ -62,7 +57,7 @@ public class Task5Activity extends AppCompatActivity implements ImageGalleryAdap
         String[] images = getResources().getStringArray(R.array.sample_images);
         Bundle bundle = new Bundle();
         bundle.putStringArrayList(ImageGalleryActivity.KEY_IMAGES, new ArrayList<>(Arrays.asList(images)));
-        bundle.putString(ImageGalleryActivity.KEY_TITLE, "Sample Images");
+        bundle.putString(ImageGalleryActivity.KEY_TITLE, getResources().getString(R.string.task5_name));
         intent.putExtras(bundle);
         startActivity(intent);
     }
