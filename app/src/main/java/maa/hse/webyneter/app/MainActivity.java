@@ -10,6 +10,7 @@ import maa.hse.webyneter.app.task1.Task1Activity;
 import maa.hse.webyneter.app.task2.Task2Activity;
 import maa.hse.webyneter.app.task3.Task3Activity;
 import maa.hse.webyneter.app.task4.Task4Activity;
+import maa.hse.webyneter.app.task5.Task5Activity;
 import maa.hse.webyneter.app.task6.Task6Activity;
 import maa.hse.webyneter.app.task7.Task7Activity;
 
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         redirectToActivityOnButtonClick(btnTask2, Task2Activity.class);
         redirectToActivityOnButtonClick(btnTask3, Task3Activity.class);
         redirectToActivityOnButtonClick(btnTask4, Task4Activity.class);
-//        redirectToActivityOnButtonClick(btnTask5, Task5Activity.class);
+        redirectToActivityOnButtonClick(btnTask5, Task5Activity.class);
         redirectToActivityOnButtonClick(btnTask6, Task6Activity.class);
         redirectToActivityOnButtonClick(btnTask7, Task7Activity.class);
     }

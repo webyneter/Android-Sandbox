@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="TypographyDashes">
+    <string-array name="sample_images">
+        <item>https://upload.wikimedia.org/wikipedia/commons/1/18/Knot_Garden_at_Little_Moreton_Hall,_Cheshire_-_geograph.org.uk_-_1527.jpg</item>
+        <item>http://www.architectureartdesigns.com/wp-content/uploads/2016/01/15-Wonderful-Transitional-Landscape-Designs-For-A-Heavenly-Garden-4.jpg</item>
+        <item>http://st.hzcdn.com/simgs/7581b777007901dd_4-7620/contemporary-landscape.jpg</item>
+        <item>http://www.nordmarx.com/wp-content/uploads/2016/08/leave-landscape-outside-and-carpet-cleaning-inside.jpg</item>
+        <item>http://www.walltor.com/images/wallpaper/olive-trees--french-landscape-oil-paintings--16001200-85612.jpg</item>
+        <item>http://www.pd4pic.com/images/slovenia-landscape-scenic-corn-fields-farm-rural.jpg</item>
+        <item>https://ae01.alicdn.com/kf/HTB1yJeLKVXXXXbcXXXXq6xXFXXX6/Wild-Landscape-View-Beauty-Nature-Retro-Decorative-Poster-Kraft-Alloy-Solid-Wood-Frame-DIY-Wall-Sticker.jpg_640x640.jpg</item>
+        <item>http://www.walltor.com/images/wallpaper/bob-ross--landscape-paintings--autumn-glory-88454.jpg</item>
+        <item>http://www.bestourism.com/img/items/big/801/Kinkaku-ji-Temple-in-Kyoto_Stunning-landscape_3137.jpg</item>
+        <item>http://kimbriggs.com/photos/us-virgin-islands-usvi/st-john/st-john-landscape/st-john-landscape-001.jpg</item>
+        <item>http://photovide.com/wp-content/uploads/2013/05/Landscape-Photography03.jpg</item>
+        <item>https://ae01.alicdn.com/kf/HTB1aLpaKpXXXXXVaXXXq6xXFXXXf/Modern-art-Landscape-the-way-to-hope-beautiful-oil-Painting-Gallery-online-High-quality-handmade.jpg_640x640.jpg</item>
+    </string-array>
+</resources>

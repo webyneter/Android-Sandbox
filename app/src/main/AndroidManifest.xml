@@ -77,10 +77,27 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>
-
         <activity
             android:name=".task3.Task3Activity"
             android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
+        <activity
+            android:name=".task5.Task5Activity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/ImageGalleryTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
+        <activity
+            android:name="com.etiennelawlor.imagegallery.library.activities.ImageGalleryActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label=""
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/ImageGalleryTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
