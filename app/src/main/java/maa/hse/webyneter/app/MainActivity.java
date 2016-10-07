@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         lvTaskDescriptions.setOnItemClickListener(this);
     }
 
-    private void redirectToActivity(Class<?> redirectToActivityClass) {
-        startActivity(new Intent(MainActivity.this, redirectToActivityClass));
+    private void redirectToActivity(Class<?> cls) {
+        startActivity(new Intent(MainActivity.this, cls));
     }
 }
