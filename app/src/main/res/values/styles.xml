@@ -41,5 +41,10 @@
         <item name="android:layout_marginBottom">25dp</item>
     </style>
 
+    <style name="task1_tvValue">
+        <item name="android:textAlignment">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 
 </resources>
