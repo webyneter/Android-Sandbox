@@ -99,7 +99,7 @@ public class GestureCreationActivity extends Activity {
                 return;
             }
 
-            final GestureLibrary store = Task2Activity.getGestureLibrary();
+            final GestureLibrary store = GestureBuilderActivity.getGestureLibrary();
             store.addGesture(name.toString(), gesture);
             store.save();
 

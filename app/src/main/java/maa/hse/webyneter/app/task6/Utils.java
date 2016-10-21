@@ -52,7 +52,7 @@ public class Utils {
                 // For each activity class, set an instance limit of 1. Any more instances and
                 // there could be a memory leak.
                 vmPolicyBuilder
-                        .setClassInstanceLimit(Task6Activity.class, 1)
+                        .setClassInstanceLimit(ContactsActivity.class, 1)
                         .setClassInstanceLimit(ContactDetailActivity.class, 1);
             }
 

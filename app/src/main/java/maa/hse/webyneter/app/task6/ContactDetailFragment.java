@@ -52,7 +52,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import maa.hse.webyneter.app.R;
-import maa.hse.webyneter.app.misc.ImageLoader;
+import maa.hse.webyneter.app.util.ImageLoader;
 
 /**
  * This fragment displays details of a specific contact from the contacts provider. It shows the

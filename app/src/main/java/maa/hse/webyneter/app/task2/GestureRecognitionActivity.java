@@ -30,7 +30,7 @@ public class GestureRecognitionActivity extends Activity
 
         initializeUiVariables();
 
-        gestureLibrary = Task2Activity.getGestureLibrary();
+        gestureLibrary = GestureBuilderActivity.getGestureLibrary();
         if (!gestureLibrary.load()) {
             finish();
         }

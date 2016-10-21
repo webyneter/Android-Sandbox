@@ -28,7 +28,7 @@ import java.util.Arrays;
 import butterknife.ButterKnife;
 import maa.hse.webyneter.app.R;
 
-public class Task5Activity extends AppCompatActivity implements ImageGalleryAdapter.ImageThumbnailLoader,
+public class ThirdPartyImageGalleryActivity extends AppCompatActivity implements ImageGalleryAdapter.ImageThumbnailLoader,
         FullScreenImageGalleryAdapter.FullScreenImageLoader {
 
     // region Member Variables

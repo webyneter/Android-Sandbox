@@ -13,7 +13,7 @@ import com.yandex.metrica.YandexMetrica;
 
 import maa.hse.webyneter.app.R;
 
-public class Task1Activity extends AppCompatActivity implements GestureDetector.OnGestureListener,
+public class GestureHandlerActivity extends AppCompatActivity implements GestureDetector.OnGestureListener,
         GestureDetector.OnDoubleTapListener {
     private TextView tvGesture;
 

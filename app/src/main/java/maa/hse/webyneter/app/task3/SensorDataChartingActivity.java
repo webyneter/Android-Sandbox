@@ -23,8 +23,8 @@ import java.util.ArrayList;
 
 import maa.hse.webyneter.app.R;
 
-// TODO: 10/2/2016 implement user chart interaction results (zooming in/out, viewport shift, ...) resetting
-public class Task3Activity extends Activity implements SensorEventListener, SeekBar.OnSeekBarChangeListener {
+public class SensorDataChartingActivity extends Activity
+        implements SensorEventListener, SeekBar.OnSeekBarChangeListener {
     private static final String PRESSURE_SENSOR_DATA_SET_LABEL = "Pressure (mBar) Sensor";
     private static final String AMBIENT_TEMPERATURE_SENSOR_DATA_SET_LABEL = "Ambient Temperature (°C) Sensor";
     private static final String LIGHT_SENSOR_DATA_SET_LABEL = "Light (lx) Sensor";

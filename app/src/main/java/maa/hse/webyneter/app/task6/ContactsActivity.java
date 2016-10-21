@@ -31,7 +31,7 @@ import maa.hse.webyneter.app.R;
  * FragmentActivity to hold the main {@link ContactsListFragment}. On larger screen devices which
  * can fit two panes also load {@link ContactDetailFragment}.
  */
-public class Task6Activity extends FragmentActivity implements
+public class ContactsActivity extends FragmentActivity implements
         ContactsListFragment.OnContactsInteractionListener {
     private ContactDetailFragment contactDetailFragment;
 

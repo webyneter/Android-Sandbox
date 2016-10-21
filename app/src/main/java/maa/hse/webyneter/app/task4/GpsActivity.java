@@ -17,7 +17,7 @@ import com.yandex.metrica.YandexMetrica;
 
 import maa.hse.webyneter.app.R;
 
-public class Task4Activity extends AppCompatActivity implements LocationListener {
+public class GpsActivity extends AppCompatActivity implements LocationListener {
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 666;
 
     private TextView btnRequestGpsPermission;
@@ -41,7 +41,7 @@ public class Task4Activity extends AppCompatActivity implements LocationListener
         btnRequestGpsPermission.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActivityCompat.requestPermissions(Task4Activity.this,
+                ActivityCompat.requestPermissions(GpsActivity.this,
                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                         PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
             }

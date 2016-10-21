@@ -25,7 +25,8 @@ import java.util.Locale;
 
 import maa.hse.webyneter.app.R;
 
-public class Task7Activity extends AppCompatActivity implements RecognitionListener {
+public class SpeechToTextActivity extends AppCompatActivity
+        implements RecognitionListener {
     final private int RECORD_AUDIO_REQUEST_CODE = 666;
 
     private Button btnRequestRecordAudioPermission;
@@ -75,7 +76,7 @@ public class Task7Activity extends AppCompatActivity implements RecognitionListe
         btnRequestRecordAudioPermission.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActivityCompat.requestPermissions(Task7Activity.this, new String[]{Manifest.permission.RECORD_AUDIO},
+                ActivityCompat.requestPermissions(SpeechToTextActivity.this, new String[]{Manifest.permission.RECORD_AUDIO},
                         RECORD_AUDIO_REQUEST_CODE);
             }
         });

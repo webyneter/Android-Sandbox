@@ -57,7 +57,7 @@ import java.util.Set;
 
 import maa.hse.webyneter.app.R;
 
-public class Task2Activity extends ListActivity {
+public class GestureBuilderActivity extends ListActivity {
     private static final int STATUS_SUCCESS = 0;
     private static final int STATUS_CANCELLED = 1;
     private static final int STATUS_NO_STORAGE = 2;

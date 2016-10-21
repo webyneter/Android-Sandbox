@@ -4,7 +4,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
-              tools:context="maa.hse.webyneter.app.task3.Task3Activity">
+              tools:context="maa.hse.webyneter.app.task3.SensorDataChartingActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

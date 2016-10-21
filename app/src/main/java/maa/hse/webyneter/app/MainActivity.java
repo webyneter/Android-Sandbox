@@ -10,13 +10,13 @@ import android.widget.ListView;
 
 import com.yandex.metrica.YandexMetrica;
 
-import maa.hse.webyneter.app.task1.Task1Activity;
-import maa.hse.webyneter.app.task2.Task2Activity;
-import maa.hse.webyneter.app.task3.Task3Activity;
-import maa.hse.webyneter.app.task4.Task4Activity;
-import maa.hse.webyneter.app.task5.Task5Activity;
-import maa.hse.webyneter.app.task6.Task6Activity;
-import maa.hse.webyneter.app.task7.Task7Activity;
+import maa.hse.webyneter.app.task1.GestureHandlerActivity;
+import maa.hse.webyneter.app.task2.GestureBuilderActivity;
+import maa.hse.webyneter.app.task3.SensorDataChartingActivity;
+import maa.hse.webyneter.app.task4.GpsActivity;
+import maa.hse.webyneter.app.task5.ThirdPartyImageGalleryActivity;
+import maa.hse.webyneter.app.task6.ContactsActivity;
+import maa.hse.webyneter.app.task7.SpeechToTextActivity;
 
 // TODO: 9/15/2016 preemptively request all necessary permissions
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
@@ -79,25 +79,25 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (position) {
             case 0:
-                redirectToActivity(Task1Activity.class);
+                redirectToActivity(GestureHandlerActivity.class);
                 break;
             case 1:
-                redirectToActivity(Task2Activity.class);
+                redirectToActivity(GestureBuilderActivity.class);
                 break;
             case 2:
-                redirectToActivity(Task3Activity.class);
+                redirectToActivity(SensorDataChartingActivity.class);
                 break;
             case 3:
-                redirectToActivity(Task4Activity.class);
+                redirectToActivity(GpsActivity.class);
                 break;
             case 4:
-                redirectToActivity(Task5Activity.class);
+                redirectToActivity(ThirdPartyImageGalleryActivity.class);
                 break;
             case 5:
-                redirectToActivity(Task6Activity.class);
+                redirectToActivity(ContactsActivity.class);
                 break;
             case 6:
-                redirectToActivity(Task7Activity.class);
+                redirectToActivity(SpeechToTextActivity.class);
                 break;
         }
     }

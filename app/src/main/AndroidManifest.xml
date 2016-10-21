@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".task1.Task1Activity"
+            android:name=".task1.GestureHandlerActivity"
             android:label="@string/task1_name"
             android:parentActivityName=".MainActivity">
             <meta-data
@@ -31,7 +31,7 @@
                 android:value=".MainActivity"/>
         </activity>
         <activity
-            android:name=".task2.Task2Activity"
+            android:name=".task2.GestureBuilderActivity"
             android:label="@string/task2_name"
             android:parentActivityName=".MainActivity">
             <meta-data
@@ -40,20 +40,20 @@
         </activity>
         <activity
             android:name=".task2.GestureCreationActivity"
-            android:parentActivityName=".task2.Task2Activity">
+            android:parentActivityName=".task2.GestureBuilderActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".task2.Task2Activity"/>
+                android:value=".task2.GestureBuilderActivity"/>
         </activity>
         <activity
             android:name=".task2.GestureRecognitionActivity"
-            android:parentActivityName=".task2.Task2Activity">
+            android:parentActivityName=".task2.GestureBuilderActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".task2.Task2Activity"/>
+                android:value=".task2.GestureBuilderActivity"/>
         </activity>
         <activity
-            android:name=".task4.Task4Activity"
+            android:name=".task4.GpsActivity"
             android:label="@string/task4_name"
             android:parentActivityName=".MainActivity">
             <meta-data
@@ -61,7 +61,7 @@
                 android:value=".MainActivity"/>
         </activity>
         <activity
-            android:name=".task6.Task6Activity"
+            android:name=".task6.ContactsActivity"
             android:label="@string/task6_name"
             android:parentActivityName=".MainActivity">
             <meta-data
@@ -76,7 +76,7 @@
                 android:value=".MainActivity"/>
         </activity>
         <activity
-            android:name=".task7.Task7Activity"
+            android:name=".task7.SpeechToTextActivity"
             android:label="@string/task7_name"
             android:parentActivityName=".MainActivity">
             <meta-data
@@ -84,14 +84,14 @@
                 android:value=".MainActivity"/>
         </activity>
         <activity
-            android:name=".task3.Task3Activity"
+            android:name=".task3.SensorDataChartingActivity"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>
         <activity
-            android:name=".task5.Task5Activity"
+            android:name=".task5.ThirdPartyImageGalleryActivity"
             android:label="@string/task5_name"
             android:parentActivityName=".MainActivity"
             android:theme="@style/ImageGalleryTheme">

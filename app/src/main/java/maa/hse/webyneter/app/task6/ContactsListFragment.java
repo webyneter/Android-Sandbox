@@ -62,7 +62,7 @@ import java.io.IOException;
 import java.util.Locale;
 
 import maa.hse.webyneter.app.R;
-import maa.hse.webyneter.app.misc.ImageLoader;
+import maa.hse.webyneter.app.util.ImageLoader;
 
 /**
  * This fragment displays a list of contacts stored in the Contacts Provider. Each item in the list
