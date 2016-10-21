@@ -1,4 +1,4 @@
-package maa.hse.webyneter.app;
+package maa.hse.webyneter.app.tasks;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import maa.hse.webyneter.app.R;
 
 /**
  * Created by webyn on 10/7/2016.
@@ -21,6 +23,14 @@ public class ImmutableTaskDescriptionsAdapter extends BaseAdapter {
         this.context = context;
         this.descriptions = descriptions;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
+    public TaskDescription[] getDescriptions() {
+        return descriptions;
     }
 
     @Override
@@ -53,7 +63,7 @@ public class ImmutableTaskDescriptionsAdapter extends BaseAdapter {
         ImageView ivScreenshot = (ImageView) v.findViewById(R.id.taskdesclistitem_ivScreenshot);
         ivScreenshot.setImageResource(descriptionForPosition.getScreenshotResourceId());
 
-        TextView tvDescription =(TextView) v.findViewById(R.id.taskdesclistitem_tvDescription);
+        TextView tvDescription = (TextView) v.findViewById(R.id.taskdesclistitem_tvDescription);
         tvDescription.setText(descriptionForPosition.getDescription());
 
         return v;

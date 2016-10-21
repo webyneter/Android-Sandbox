@@ -1,4 +1,4 @@
-package maa.hse.webyneter.app.task4;
+package maa.hse.webyneter.app.tasks.task4;
 
 import android.Manifest;
 import android.content.pm.PackageManager;

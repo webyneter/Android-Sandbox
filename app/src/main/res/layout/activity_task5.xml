@@ -9,6 +9,6 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="maa.hse.webyneter.app.task5.ThirdPartyImageGalleryActivity">
+    tools:context=".tasks.task5.ThirdPartyImageGalleryActivity">
 
 </RelativeLayout>

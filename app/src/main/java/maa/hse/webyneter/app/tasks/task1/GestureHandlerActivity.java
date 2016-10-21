@@ -1,4 +1,4 @@
-package maa.hse.webyneter.app.task1;
+package maa.hse.webyneter.app.tasks.task1;
 
 import android.os.Bundle;
 import android.support.v4.view.GestureDetectorCompat;

@@ -10,16 +10,18 @@ import android.widget.ListView;
 
 import com.yandex.metrica.YandexMetrica;
 
-import maa.hse.webyneter.app.task1.GestureHandlerActivity;
-import maa.hse.webyneter.app.task2.GestureBuilderActivity;
-import maa.hse.webyneter.app.task3.SensorDataChartingActivity;
-import maa.hse.webyneter.app.task4.GpsActivity;
-import maa.hse.webyneter.app.task5.ThirdPartyImageGalleryActivity;
-import maa.hse.webyneter.app.task6.ContactsActivity;
-import maa.hse.webyneter.app.task7.SpeechToTextActivity;
+import maa.hse.webyneter.app.tasks.ImmutableTaskDescriptionsAdapter;
+import maa.hse.webyneter.app.tasks.TaskDescription;
+import maa.hse.webyneter.app.tasks.task1.GestureHandlerActivity;
+import maa.hse.webyneter.app.tasks.task2.GestureBuilderActivity;
+import maa.hse.webyneter.app.tasks.task3.SensorDataChartingActivity;
+import maa.hse.webyneter.app.tasks.task4.GpsActivity;
+import maa.hse.webyneter.app.tasks.task5.ThirdPartyImageGalleryActivity;
+import maa.hse.webyneter.app.tasks.task6.ContactsActivity;
+import maa.hse.webyneter.app.tasks.task7.SpeechToTextActivity;
 
-// TODO: 9/15/2016 preemptively request all necessary permissions
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class MainActivity extends AppCompatActivity
+        implements AdapterView.OnItemClickListener {
     private ListView lvTaskDescriptions;
 
     @Override
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_main);
 
         initUiVariables();
+        initUiHandlers();
 
         Resources rs = getResources();
         lvTaskDescriptions.setAdapter(new ImmutableTaskDescriptionsAdapter(this, new TaskDescription[]{
@@ -60,7 +63,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                         rs.getString(R.string.task7_desc)),
         }));
 
-        initUiHandlers();
     }
 
     @Override

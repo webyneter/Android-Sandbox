@@ -1,4 +1,4 @@
-package maa.hse.webyneter.app;
+package maa.hse.webyneter.app.tasks;
 
 /**
  * Created by webyn on 10/7/2016.

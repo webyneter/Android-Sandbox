@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package maa.hse.webyneter.app.task6;
+package maa.hse.webyneter.app.tasks.task6;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -69,7 +69,7 @@ import maa.hse.webyneter.app.util.ImageLoader;
  */
 public class ContactDetailFragment extends Fragment implements
         LoaderManager.LoaderCallbacks<Cursor> {
-    public static final String EXTRA_CONTACT_URI = " maa.hse.webyneter.app.task6.EXTRA_CONTACT_URI";
+    public static final String EXTRA_CONTACT_URI = " maa.hse.webyneter.app.tasks.task6.EXTRA_CONTACT_URI";
 
     // The geo Uri scheme prefix, used with Intent.ACTION_VIEW to form a geographical address
     // intent that will trigger available apps to handle viewing a location (such as Maps)

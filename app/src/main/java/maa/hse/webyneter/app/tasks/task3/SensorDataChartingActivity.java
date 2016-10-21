@@ -1,4 +1,4 @@
-package maa.hse.webyneter.app.task3;
+package maa.hse.webyneter.app.tasks.task3;
 
 import android.app.Activity;
 import android.content.Context;

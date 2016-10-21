@@ -1,4 +1,4 @@
-package maa.hse.webyneter.app.task2;
+package maa.hse.webyneter.app.tasks.task2;
 
 import android.app.Activity;
 import android.gesture.Gesture;

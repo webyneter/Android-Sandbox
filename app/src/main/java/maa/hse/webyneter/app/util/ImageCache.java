@@ -23,7 +23,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.util.LruCache;
 
-import maa.hse.webyneter.app.task6.Utils;
+import maa.hse.webyneter.app.tasks.task6.Utils;
 
 
 /**

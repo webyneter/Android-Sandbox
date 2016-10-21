@@ -1,6 +1,6 @@
 /* Source: https://github.com/lawloretienne/ImageGallery */
 
-package maa.hse.webyneter.app.task5;
+package maa.hse.webyneter.app.tasks.task5;
 
 import android.content.Intent;
 import android.graphics.Bitmap;

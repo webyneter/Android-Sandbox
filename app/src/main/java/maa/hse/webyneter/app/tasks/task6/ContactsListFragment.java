@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package maa.hse.webyneter.app.task6;
+package maa.hse.webyneter.app.tasks.task6;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -85,7 +85,7 @@ import maa.hse.webyneter.app.util.ImageLoader;
 public class ContactsListFragment extends ListFragment implements
         AdapterView.OnItemClickListener, LoaderManager.LoaderCallbacks<Cursor> {
     // Bundle key for saving previously selected search result item
-    private static final String STATE_PREVIOUSLY_SELECTED_KEY = "maa.hse.webyneter.app.task6.SELECTED_ITEM";
+    private static final String STATE_PREVIOUSLY_SELECTED_KEY = "maa.hse.webyneter.app.tasks.task6.SELECTED_ITEM";
 
     private ContactsAdapter contactsAdapter; // The main query adapter
     private ImageLoader imageLoader; // Handles loading the contact image in a background thread

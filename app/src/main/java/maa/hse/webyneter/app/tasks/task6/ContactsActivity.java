@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package maa.hse.webyneter.app.task6;
+package maa.hse.webyneter.app.tasks.task6;
 
 import android.app.SearchManager;
 import android.content.Intent;

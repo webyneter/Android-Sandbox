@@ -19,6 +19,6 @@
      contact details. -->
 <fragment xmlns:android="http://schemas.android.com/apk/res/android"
           android:id="@+id/task6_contact_list"
-          android:name="maa.hse.webyneter.app.task6.ContactsListFragment"
+          android:name="maa.hse.webyneter.app.tasks.task6.ContactsListFragment"
           android:layout_width="match_parent"
           android:layout_height="match_parent"/>

@@ -1,4 +1,4 @@
-package maa.hse.webyneter.app.task7;
+package maa.hse.webyneter.app.tasks.task7;
 
 import android.Manifest;
 import android.content.Intent;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package maa.hse.webyneter.app.task2;
+package maa.hse.webyneter.app.tasks.task2;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
