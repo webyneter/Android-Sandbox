@@ -18,8 +18,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import com.yandex.metrica.YandexMetrica;
-
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -118,13 +116,11 @@ public class SpeechToTextActivity extends AppCompatActivity
         if (recognizer != null) {
             recognizer.destroy();
         }
-        YandexMetrica.onPauseActivity(this);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        YandexMetrica.onResumeActivity(this);
     }
 
     @Override

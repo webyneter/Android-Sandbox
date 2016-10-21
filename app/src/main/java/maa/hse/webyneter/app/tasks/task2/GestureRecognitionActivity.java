@@ -9,8 +9,6 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.widget.TextView;
 
-import com.yandex.metrica.YandexMetrica;
-
 import java.util.ArrayList;
 
 import maa.hse.webyneter.app.R;
@@ -43,13 +41,11 @@ public class GestureRecognitionActivity extends Activity
     @Override
     protected void onResume() {
         super.onResume();
-        YandexMetrica.onResumeActivity(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        YandexMetrica.onPauseActivity(this);
     }
 
     private void initializeUiVariables() {

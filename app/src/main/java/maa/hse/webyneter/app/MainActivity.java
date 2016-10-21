@@ -8,8 +8,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.yandex.metrica.YandexMetrica;
-
 import maa.hse.webyneter.app.tasks.ImmutableTaskDescriptionsAdapter;
 import maa.hse.webyneter.app.tasks.TaskDescription;
 import maa.hse.webyneter.app.tasks.task1.GestureHandlerActivity;
@@ -68,13 +66,11 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
-        YandexMetrica.onResumeActivity(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        YandexMetrica.onPauseActivity(this);
     }
 
     @Override

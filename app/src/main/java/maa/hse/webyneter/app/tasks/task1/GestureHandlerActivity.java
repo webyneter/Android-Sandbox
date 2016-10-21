@@ -9,8 +9,6 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.yandex.metrica.YandexMetrica;
-
 import maa.hse.webyneter.app.R;
 
 public class GestureHandlerActivity extends AppCompatActivity implements GestureDetector.OnGestureListener,
@@ -50,13 +48,11 @@ public class GestureHandlerActivity extends AppCompatActivity implements Gesture
     @Override
     protected void onResume() {
         super.onResume();
-        YandexMetrica.onResumeActivity(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        YandexMetrica.onPauseActivity(this);
     }
 
     private void initUiHandlers() {

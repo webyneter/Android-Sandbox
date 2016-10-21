@@ -23,8 +23,6 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 
-import com.yandex.metrica.YandexMetrica;
-
 import maa.hse.webyneter.app.R;
 
 /**
@@ -87,13 +85,11 @@ public class ContactsActivity extends FragmentActivity implements
     @Override
     protected void onResume() {
         super.onResume();
-        YandexMetrica.onResumeActivity(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        YandexMetrica.onPauseActivity(this);
     }
 
     @Override

@@ -26,8 +26,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.yandex.metrica.YandexMetrica;
-
 import java.io.File;
 
 import maa.hse.webyneter.app.R;
@@ -53,13 +51,11 @@ public class GestureCreationActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        YandexMetrica.onResumeActivity(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        YandexMetrica.onPauseActivity(this);
     }
 
     @Override
