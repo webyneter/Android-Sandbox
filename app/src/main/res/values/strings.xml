@@ -15,7 +15,7 @@
 -->
 
 <resources>
-    <string name="app_name">HSE MAA Course Homework</string>
+    <string name="app_name">Android Playground</string>
 
     <string name="task1_name">Task 1. Gesture Handler</string>
     <string name="task1_desc">\"Application which can recognize all kinds of built-it system gestures. 1 activity, 1 textView which contains information about the gesture.\"</string>
