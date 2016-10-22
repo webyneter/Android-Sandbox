@@ -18,25 +18,25 @@
     <string name="app_name">Android Playground</string>
 
     <string name="task1_name">Task 1. Gesture Handler</string>
-    <string name="task1_desc">\"Application which can recognize all kinds of built-it system gestures. 1 activity, 1 textView which contains information about the gesture.\"</string>
+    <string name="task1_desc">Handles a number of basic gestures and displays the corresponding info.</string>
 
     <string name="task2_name">Task 2. Gesture Builder</string>
-    <string name="task2_desc">\"Working with Gesture Builder –application contains a panel to enter the custom gestures and a textViewelement to inform user if the gesture was recognized or not.\"</string>
+    <string name="task2_desc">Create, save, and recognize custom gestures.</string>
 
     <string name="task3_name">Task 3. Sensor Data Charting</string>
-    <string name="task3_desc">\"Working with third-party libraries (AChartEngine, YandexAPI for getting your application analytics, etc.)\"</string>
+    <string name="task3_desc">Plots real-time data from Ambient Temperature, Light, Pressure, and Relative Humidity environment sensors provided any of them is available. Allows for dynamic sliding window width altering. ()</string>
 
     <string name="task4_name">Task 4. GPS</string>
-    <string name="task4_desc">\"Working with GPS: 3 textViews, 2 of them show coordinates and the 3rdshows GPS module status.\"</string>
+    <string name="task4_desc">Handles real-time GPS data.</string>
 
-    <string name="task5_name">Task 5. Third-party Image Gallery</string>
-    <string name="task5_desc">\"Image gallery containing navigational elements, information on the current image number and name / total number of images, etc.\"</string>
+    <string name="task5_name">Task 5. Image Gallery</string>
+    <string name="task5_desc">lawloretienne's ImageGallery-based photo album.</string>
 
     <string name="task6_name">Task 6. Contacts</string>
-    <string name="task6_desc">\"A custom contact list application where you can add, edit or delete contacts (name, phone, comment) and call or text them.\"</string>
+    <string name="task6_desc">Android sample project-based contact list.</string>
 
     <string name="task7_name">Task 7. Speech-to-Text</string>
-    <string name="task7_desc">\"Application which uses one of the voice recognition systems. It can contain a button and a textView; pressing a button activates the voice input, textViewelement shows the recognition result. The textViewelement should remember multiple recognition results.\"</string>
+    <string name="task7_desc">A naive speech-to-text converter.</string>
 
     <string name="activity_contacts_list">Contacts List</string>
     <string name="activity_contact_detail">Contact Detail</string>
@@ -73,7 +73,7 @@
     <string name="save_success">Gesture saved in %s</string>
     <string name="rename_action">OK</string>
     <string name="cancel_action">Cancel</string>
-    <string name="gestures_loading">Loading gestures...</string>
+    <string name="gestures_loading">Loading gestures…</string>
     <string name="gestures_empty">No gestures found!</string>
     <string name="gestures_activity">Gestures</string>
     <string name="gestures_rename">Rename</string>
@@ -85,6 +85,6 @@
     <string name="task2_btnListRecognize">Recognize</string>
     <string name="task2_tvRecognitionMsg">Perform gesture:</string>
     <string name="task2_no_match_found">No match found.</string>
-    <string name="task7_tbtnRecognition_off">Start recording...</string>
+    <string name="task7_tbtnRecognition_off">Start recording…</string>
     <string name="task7_tbtnRecognition_on">End recording</string>
 </resources>
