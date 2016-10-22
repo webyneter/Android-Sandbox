@@ -25,7 +25,7 @@ import maa.hse.webyneter.app.R;
 
 public class SpeechToTextActivity extends AppCompatActivity
         implements RecognitionListener {
-    final private int RECORD_AUDIO_REQUEST_CODE = 666;
+    final private int RECORD_AUDIO_REQUEST_CODE = 4242;
 
     private Button btnRequestRecordAudioPermission;
     private ToggleButton tbtnRecognition;

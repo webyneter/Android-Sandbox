@@ -25,6 +25,8 @@ import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+import maa.hse.webyneter.app.util.AndroidApiHelper;
+
 
 /**
  * This class defines a simple FragmentActivity as the parent of {@link ContactDetailFragment}.
@@ -42,7 +44,7 @@ public class ContactDetailActivity extends AppCompatActivity {
         if (getIntent() != null) {
 
             // For OS versions honeycomb and higher use action bar
-            if (Utils.hasHoneycomb()) {
+            if (AndroidApiHelper.hasHoneycomb()) {
                 // Enables action bar "up" navigation
                 getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             }

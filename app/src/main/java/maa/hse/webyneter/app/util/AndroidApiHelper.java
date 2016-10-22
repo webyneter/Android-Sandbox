@@ -14,14 +14,17 @@
  * limitations under the License.
  */
 
-package maa.hse.webyneter.app.tasks.task6;
+package maa.hse.webyneter.app.util;
 
 import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.StrictMode;
 
-public class Utils {
-    private Utils() {
+import maa.hse.webyneter.app.tasks.task6.ContactDetailActivity;
+import maa.hse.webyneter.app.tasks.task6.ContactsActivity;
+
+public class AndroidApiHelper {
+    private AndroidApiHelper() {
     }
 
     /**
@@ -31,7 +34,7 @@ public class Utils {
     @TargetApi(11)
     public static void enableStrictMode() {
         // Strict mode is only available on gingerbread or later
-        if (Utils.hasGingerbread()) {
+        if (AndroidApiHelper.hasGingerbread()) {
 
             // Enable all thread strict mode policies
             StrictMode.ThreadPolicy.Builder threadPolicyBuilder =
@@ -46,7 +49,7 @@ public class Utils {
                             .penaltyLog();
 
             // Honeycomb introduced some additional strict mode features
-            if (Utils.hasHoneycomb()) {
+            if (AndroidApiHelper.hasHoneycomb()) {
                 // Flash screen when thread policy is violated
                 threadPolicyBuilder.penaltyFlashScreen();
                 // For each activity class, set an instance limit of 1. Any more instances and

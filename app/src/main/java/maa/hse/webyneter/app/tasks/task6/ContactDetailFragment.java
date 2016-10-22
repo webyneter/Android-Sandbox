@@ -52,6 +52,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import maa.hse.webyneter.app.R;
+import maa.hse.webyneter.app.util.AndroidApiHelper;
 import maa.hse.webyneter.app.util.ImageLoader;
 
 /**
@@ -130,7 +131,7 @@ public class ContactDetailFragment extends Fragment implements
     public void setContact(Uri contactLookupUri) {
         // In version 3.0 and later, stores the provided contact lookup Uri in a class field. This
         // Uri is then used at various points in this class to map to the provided contact.
-        if (Utils.hasHoneycomb()) {
+        if (AndroidApiHelper.hasHoneycomb()) {
             contactUri = contactLookupUri;
         } else {
             // For versions earlier than Android 3.0, stores a contact Uri that's constructed from
@@ -538,7 +539,7 @@ public class ContactDetailFragment extends Fragment implements
         // ContentResolver can return an AssetFileDescriptor for the file.
         AssetFileDescriptor afd = null;
 
-        if (Utils.hasICS()) {
+        if (AndroidApiHelper.hasICS()) {
             // On platforms running Android 4.0 (API version 14) and later, a high resolution image
             // is available from Photo.DISPLAY_PHOTO.
             try {
@@ -619,7 +620,7 @@ public class ContactDetailFragment extends Fragment implements
         @SuppressLint("InlinedApi")
         String[] PROJECTION = {
                 Contacts._ID,
-                Utils.hasHoneycomb() ? Contacts.DISPLAY_NAME_PRIMARY : Contacts.DISPLAY_NAME,
+                AndroidApiHelper.hasHoneycomb() ? Contacts.DISPLAY_NAME_PRIMARY : Contacts.DISPLAY_NAME,
         };
 
         // The query column numbers which map to each value in the projection

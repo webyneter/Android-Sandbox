@@ -62,6 +62,7 @@ import java.io.IOException;
 import java.util.Locale;
 
 import maa.hse.webyneter.app.R;
+import maa.hse.webyneter.app.util.AndroidApiHelper;
 import maa.hse.webyneter.app.util.ImageLoader;
 
 /**
@@ -319,7 +320,7 @@ public class ContactsListFragment extends ListFragment implements
         }
 
         // In version 3.0 and later, sets up and configures the ActionBar SearchView
-        if (Utils.hasHoneycomb()) {
+        if (AndroidApiHelper.hasHoneycomb()) {
 
             // Retrieves the system search manager service
             final SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
@@ -367,7 +368,7 @@ public class ContactsListFragment extends ListFragment implements
                 }
             });
 
-            if (Utils.hasICS()) {
+            if (AndroidApiHelper.hasICS()) {
                 // This listener added in ICS
                 searchItem.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
                     @Override
@@ -401,7 +402,7 @@ public class ContactsListFragment extends ListFragment implements
                 final String savedSearchTerm = searchTerm;
 
                 // Expands the search menu item
-                if (Utils.hasICS()) {
+                if (AndroidApiHelper.hasICS()) {
                     searchItem.expandActionView();
                 }
 
@@ -433,7 +434,7 @@ public class ContactsListFragment extends ListFragment implements
                 break;
             // For platforms earlier than Android 3.0, triggers the search activity
             case R.id.menu_search:
-                if (!Utils.hasHoneycomb()) {
+                if (!AndroidApiHelper.hasHoneycomb()) {
                     getActivity().onSearchRequested();
                 }
                 break;
@@ -572,7 +573,7 @@ public class ContactsListFragment extends ListFragment implements
         try {
             Uri thumbUri;
             // If Android 3.0 or later, converts the Uri passed as a string to a Uri object.
-            if (Utils.hasHoneycomb()) {
+            if (AndroidApiHelper.hasHoneycomb()) {
                 thumbUri = Uri.parse(photoData);
             } else {
                 // For versions prior to Android 3.0, appends the string argument to the content
@@ -656,7 +657,7 @@ public class ContactsListFragment extends ListFragment implements
         // the search string to CONTENT_FILTER_URI.
         @SuppressLint("InlinedApi")
         String SELECTION =
-                (Utils.hasHoneycomb() ? Contacts.DISPLAY_NAME_PRIMARY : Contacts.DISPLAY_NAME) +
+                (AndroidApiHelper.hasHoneycomb() ? Contacts.DISPLAY_NAME_PRIMARY : Contacts.DISPLAY_NAME) +
                         "<>''" + " AND " + Contacts.IN_VISIBLE_GROUP + "=1";
 
         // The desired sort order for the returned Cursor. In Android 3.0 and later, the primary
@@ -664,7 +665,7 @@ public class ContactsListFragment extends ListFragment implements
         // key.
         @SuppressLint("InlinedApi")
         String SORT_ORDER =
-                Utils.hasHoneycomb() ? Contacts.SORT_KEY_PRIMARY : Contacts.DISPLAY_NAME;
+                AndroidApiHelper.hasHoneycomb() ? Contacts.SORT_KEY_PRIMARY : Contacts.DISPLAY_NAME;
 
         // The projection for the CursorLoader query. This is a list of columns that the Contacts
         // Provider should return in the Cursor.
@@ -684,13 +685,13 @@ public class ContactsListFragment extends ListFragment implements
                 // some other useful identifier such as an email address. This column isn't
                 // available in earlier versions of Android, so you must use Contacts.DISPLAY_NAME
                 // instead.
-                Utils.hasHoneycomb() ? Contacts.DISPLAY_NAME_PRIMARY : Contacts.DISPLAY_NAME,
+                AndroidApiHelper.hasHoneycomb() ? Contacts.DISPLAY_NAME_PRIMARY : Contacts.DISPLAY_NAME,
 
                 // In Android 3.0 and later, the thumbnail image is pointed to by
                 // PHOTO_THUMBNAIL_URI. In earlier versions, there is no direct pointer; instead,
                 // you generate the pointer from the contact's ID value and constants defined in
                 // android.provider.ContactsContract.Contacts.
-                Utils.hasHoneycomb() ? Contacts.PHOTO_THUMBNAIL_URI : Contacts._ID,
+                AndroidApiHelper.hasHoneycomb() ? Contacts.PHOTO_THUMBNAIL_URI : Contacts._ID,
 
                 // The sort order column for the returned Cursor, used by the AlphabetIndexer
                 SORT_ORDER,

@@ -16,7 +16,7 @@ import android.widget.TextView;
 import maa.hse.webyneter.app.R;
 
 public class GpsActivity extends AppCompatActivity implements LocationListener {
-    private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 666;
+    private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 42;
 
     private TextView btnRequestGpsPermission;
     private TextView tvGpsStatus;

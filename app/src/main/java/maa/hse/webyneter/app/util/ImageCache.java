@@ -23,8 +23,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.util.LruCache;
 
-import maa.hse.webyneter.app.tasks.task6.Utils;
-
 
 /**
  * This class holds our bitmap caches (memory and disk).
@@ -76,7 +74,7 @@ public class ImageCache {
      */
     @TargetApi(12)
     public static int getBitmapSize(Bitmap bitmap) {
-        if (Utils.hasHoneycombMR1()) {
+        if (AndroidApiHelper.hasHoneycombMR1()) {
             return bitmap.getByteCount();
         }
         // Pre HC-MR1
