@@ -49,7 +49,6 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AlphabetIndexer;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.QuickContactBadge;
 import android.widget.SearchView;
@@ -915,9 +914,6 @@ public class ContactsListFragment extends ListFragment implements
             TextView text1;
             TextView text2;
             QuickContactBadge icon;
-            // TODO: 9/15/2016 GONE while searching contacts
-            Button btnCall;
-            Button btnText;
         }
     }
 }

@@ -31,7 +31,6 @@ import maa.hse.webyneter.app.util.AndroidApiHelper;
 /**
  * This class defines a simple FragmentActivity as the parent of {@link ContactDetailFragment}.
  */
-// TODO: 9/15/2016 the fact that the activity extends AppCompat... is a hacky way to fix getActionBar null return value
 public class ContactDetailActivity extends AppCompatActivity {
     private static final String TAG = ContactDetailActivity.class.getSimpleName();
 

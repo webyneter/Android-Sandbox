@@ -115,6 +115,7 @@ public class ThirdPartyImageGalleryActivity extends AppCompatActivity implements
                                 }
                             });
                         }
+
                         @Override
                         public void onError() {
 
