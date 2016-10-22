@@ -30,9 +30,15 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:palette-v7:24.2.1'
 
+    // https://github.com/PhilJay/MPAndroidChart
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.0-beta1'
 
+    // https://github.com/JakeWharton/butterknife
     compile 'com.jakewharton:butterknife:8.4.0'
+
+    // https://github.com/lawloretienne/ImageGallery
     compile 'com.github.lawloretienne:imagegallery:0.0.15'
+
+    // https://github.com/square/picasso
     compile 'com.squareup.picasso:picasso:2.5.2'
 }
