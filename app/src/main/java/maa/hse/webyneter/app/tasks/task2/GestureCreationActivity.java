@@ -42,10 +42,13 @@ public class GestureCreationActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task2_create_gesture);
 
-        btnCreateDone = findViewById(R.id.task2_btnCreateDone);
+        initUiVariables();
+    }
 
-        GestureOverlayView gov = (GestureOverlayView) findViewById(R.id.task2_cvCreateOverlay);
-        gov.addOnGestureListener(new GesturesProcessor());
+    private void initUiVariables() {
+        btnCreateDone = findViewById(R.id.task2_btnCreateDone);
+        ((GestureOverlayView) findViewById(R.id.task2_cvCreateOverlay))
+                .addOnGestureListener(new GesturesProcessor());
     }
 
     @Override

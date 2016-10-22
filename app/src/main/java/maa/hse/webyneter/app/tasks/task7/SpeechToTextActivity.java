@@ -100,14 +100,6 @@ public class SpeechToTextActivity extends AppCompatActivity
                 }
             }
         });
-
-//        lcAudioRecording.setDescription("");
-//
-//        lcAudioRecordingDataSet = new LineDataSet(new ArrayList<Entry>(), "");
-//        lcAudioRecording.setData(new LineData(lcAudioRecordingDataSet));
-//        lcAudioRecording.getData().notifyDataChanged();
-//        lcAudioRecordingDataSet.notifyDataSetChanged();
-//        lcAudioRecording.invalidate();
     }
 
     @Override
