@@ -17,26 +17,26 @@
 <resources>
     <string name="app_name">Android Sandbox</string>
 
-    <string name="task1_name">Task 1. Gesture Handler</string>
-    <string name="task1_desc">Handles a number of basic gestures and displays the corresponding info</string>
+    <string name="cap1_name">#1. Handling Gestures</string>
+    <string name="cap1_desc">Handles a number of basic gestures and displays the corresponding info</string>
 
-    <string name="task2_name">Task 2. Gesture Builder</string>
-    <string name="task2_desc">Create, save, and recognize custom gestures</string>
+    <string name="cap2_name">#2. Building Custom Gestures</string>
+    <string name="cap2_desc">Create, save, and recognize custom gestures</string>
 
-    <string name="task3_name">Task 3. Sensor Data Charting</string>
-    <string name="task3_desc">Plots real-time data from Ambient Temperature, Light, Pressure, and Relative Humidity environment sensors provided any of them is available. Allows for dynamic sliding window width altering</string>
+    <string name="cap3_name">#3. Plotting Environment Sensors Data</string>
+    <string name="cap3_desc">Plots real-time data from Ambient Temperature, Light, Pressure, and Relative Humidity environment sensors provided any of them is available. Allows for dynamic sliding window width altering</string>
 
-    <string name="task4_name">Task 4. GPS</string>
-    <string name="task4_desc">Handles real-time GPS data</string>
+    <string name="cap4_name">#4. Handling GPS Data</string>
+    <string name="cap4_desc">Handles real-time GPS data</string>
 
-    <string name="task5_name">Task 5. Image Gallery</string>
-    <string name="task5_desc">lawloretienne\'s ImageGallery-based photo album</string>
+    <string name="cap5_name">#5. Image Loading</string>
+    <string name="cap5_desc">lawloretienne\'s ImageGallery-based photo album</string>
 
-    <string name="task6_name">Task 6. Contacts</string>
-    <string name="task6_desc">Android sample project-based contact list</string>
+    <string name="cap6_name">#6. Address Book</string>
+    <string name="cap6_desc">Android sample project-based contact list</string>
 
-    <string name="task7_name">Task 7. Speech-to-Text</string>
-    <string name="task7_desc">Provides naive speech-to-text converter</string>
+    <string name="cap7_name">#7. Speech-to-Text</string>
+    <string name="cap7_desc">Provides naive speech-to-text converter</string>
 
     <string name="activity_contacts_list">Contacts List</string>
     <string name="activity_contact_detail">Contact Detail</string>
@@ -64,11 +64,11 @@
     <string name="no_intent_found">No application found to handle this action</string>
 
     <string name="label_create_gesture">Create a gesture</string>
-    <string name="task2_btnListCreate">Create</string>
-    <string name="task2_btnListReload">Reload</string>
-    <string name="task2_btnCreateDiscard">Discard</string>
-    <string name="task2_btnCreateDone">Done</string>
-    <string name="task2_lblCreateName">Name: </string>
+    <string name="cap2_btnListCreate">Create</string>
+    <string name="cap2_btnListReload">Reload</string>
+    <string name="cap2_btnCreateDiscard">Discard</string>
+    <string name="cap2_btnCreateDone">Done</string>
+    <string name="cap2_lblCreateName">Name: </string>
     <string name="error_missing_name">You must enter a name!</string>
     <string name="save_success">Gesture saved in %s</string>
     <string name="rename_action">OK</string>
@@ -82,9 +82,9 @@
     <string name="gestures_rename_title">Rename gesture</string>
     <string name="gestures_rename_label">Gesture name</string>
     <string name="gestures_error_loading">Could not load %s! Make sure you have storage available.</string>
-    <string name="task2_btnListRecognize">Recognize</string>
-    <string name="task2_tvRecognitionMsg">Perform gesture:</string>
-    <string name="task2_no_match_found">No match found.</string>
-    <string name="task7_tbtnRecognition_off">Start recording…</string>
-    <string name="task7_tbtnRecognition_on">End recording</string>
+    <string name="cap2_btnListRecognize">Recognize</string>
+    <string name="cap2_tvRecognitionMsg">Perform gesture:</string>
+    <string name="cap2_no_match_found">No match found.</string>
+    <string name="cap7_tbtnRecognition_off">Start recording…</string>
+    <string name="cap7_tbtnRecognition_on">End recording</string>
 </resources>

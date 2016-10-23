@@ -34,14 +34,14 @@
 
     <style name="addressButton"/>
 
-    <style name="task3_lc">
+    <style name="cap3_lc">
         <item name="android:minHeight">225dp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginBottom">25dp</item>
     </style>
 
-    <style name="task1_tvValue">
+    <style name="cap1_tvValue">
         <item name="android:textAlignment">center</item>
         <item name="android:textStyle">bold</item>
     </style>

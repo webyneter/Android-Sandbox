@@ -22,76 +22,76 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".tasks.task1.GestureHandlerActivity"
-            android:label="@string/task1_name"
+            android:name=".capabilities.capability1.HandlingGesturesActivity"
+            android:label="@string/cap1_name"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>
         <activity
-            android:name=".tasks.task2.GestureBuilderActivity"
-            android:label="@string/task2_name"
+            android:name=".capabilities.capability2.GestureBuilderActivity"
+            android:label="@string/cap2_name"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>
         <activity
-            android:name=".tasks.task2.GestureCreationActivity"
-            android:parentActivityName=".tasks.task2.GestureBuilderActivity">
+            android:name=".capabilities.capability2.BuildingCustomGesturesActivity"
+            android:parentActivityName=".capabilities.capability2.GestureBuilderActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".tasks.task2.GestureBuilderActivity"/>
+                android:value=".capabilities.capability2.GestureBuilderActivity"/>
         </activity>
         <activity
-            android:name=".tasks.task2.GestureRecognitionActivity"
-            android:parentActivityName=".tasks.task2.GestureBuilderActivity">
+            android:name=".capabilities.capability2.GestureRecognitionActivity"
+            android:parentActivityName=".capabilities.capability2.GestureBuilderActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".tasks.task2.GestureBuilderActivity"/>
+                android:value=".capabilities.capability2.GestureBuilderActivity"/>
         </activity>
         <activity
-            android:name=".tasks.task4.GpsActivity"
-            android:label="@string/task4_name"
+            android:name=".capabilities.capability4.HandlingGpsDataActivity"
+            android:label="@string/cap4_name"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>
         <activity
-            android:name=".tasks.task6.ContactsActivity"
-            android:label="@string/task6_name"
+            android:name=".capabilities.capability6.AddressBookActivity"
+            android:label="@string/cap6_name"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>
         <activity
-            android:name=".tasks.task6.ContactDetailActivity"
+            android:name=".capabilities.capability6.ContactDetailActivity"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>
         <activity
-            android:name=".tasks.task7.SpeechToTextActivity"
-            android:label="@string/task7_name"
+            android:name=".capabilities.capability7.SpeechToTextActivity"
+            android:label="@string/cap7_name"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>
         <activity
-            android:name=".tasks.task3.SensorDataChartingActivity"
+            android:name=".capabilities.capability3.PlottingEnvironmentSensorsDataActivity"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>
         <activity
-            android:name=".tasks.task5.ThirdPartyImageGalleryActivity"
-            android:label="@string/task5_name"
+            android:name=".capabilities.capability5.ImageLoadingActivity"
+            android:label="@string/cap5_name"
             android:parentActivityName=".MainActivity"
             android:theme="@style/ImageGalleryTheme">
             <meta-data

@@ -8,15 +8,15 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import maa.hse.webyneter.app.tasks.ImmutableTaskDescriptionsAdapter;
-import maa.hse.webyneter.app.tasks.TaskDescription;
-import maa.hse.webyneter.app.tasks.task1.GestureHandlerActivity;
-import maa.hse.webyneter.app.tasks.task2.GestureBuilderActivity;
-import maa.hse.webyneter.app.tasks.task3.SensorDataChartingActivity;
-import maa.hse.webyneter.app.tasks.task4.GpsActivity;
-import maa.hse.webyneter.app.tasks.task5.ThirdPartyImageGalleryActivity;
-import maa.hse.webyneter.app.tasks.task6.ContactsActivity;
-import maa.hse.webyneter.app.tasks.task7.SpeechToTextActivity;
+import maa.hse.webyneter.app.capabilities.ImmutableCapabilityDescriptionsAdapter;
+import maa.hse.webyneter.app.capabilities.CapabilityDescription;
+import maa.hse.webyneter.app.capabilities.capability1.HandlingGesturesActivity;
+import maa.hse.webyneter.app.capabilities.capability2.GestureBuilderActivity;
+import maa.hse.webyneter.app.capabilities.capability3.PlottingEnvironmentSensorsDataActivity;
+import maa.hse.webyneter.app.capabilities.capability4.HandlingGpsDataActivity;
+import maa.hse.webyneter.app.capabilities.capability5.ImageLoadingActivity;
+import maa.hse.webyneter.app.capabilities.capability6.AddressBookActivity;
+import maa.hse.webyneter.app.capabilities.capability7.SpeechToTextActivity;
 
 public class MainActivity extends AppCompatActivity
         implements AdapterView.OnItemClickListener {
@@ -31,34 +31,34 @@ public class MainActivity extends AppCompatActivity
         initUiHandlers();
 
         Resources rs = getResources();
-        lvTaskDescriptions.setAdapter(new ImmutableTaskDescriptionsAdapter(this, new TaskDescription[]{
-                new TaskDescription(rs.getString(R.string.task1_name),
+        lvTaskDescriptions.setAdapter(new ImmutableCapabilityDescriptionsAdapter(this, new CapabilityDescription[]{
+                new CapabilityDescription(rs.getString(R.string.cap1_name),
                         R.mipmap.ic_task1,
-                        rs.getString(R.string.task1_desc)),
+                        rs.getString(R.string.cap1_desc)),
 
-                new TaskDescription(rs.getString(R.string.task2_name),
+                new CapabilityDescription(rs.getString(R.string.cap2_name),
                         R.mipmap.ic_task2,
-                        rs.getString(R.string.task2_desc)),
+                        rs.getString(R.string.cap2_desc)),
 
-                new TaskDescription(rs.getString(R.string.task3_name),
+                new CapabilityDescription(rs.getString(R.string.cap3_name),
                         R.mipmap.ic_task3,
-                        rs.getString(R.string.task3_desc)),
+                        rs.getString(R.string.cap3_desc)),
 
-                new TaskDescription(rs.getString(R.string.task4_name),
+                new CapabilityDescription(rs.getString(R.string.cap4_name),
                         R.mipmap.ic_task4,
-                        rs.getString(R.string.task4_desc)),
+                        rs.getString(R.string.cap4_desc)),
 
-                new TaskDescription(rs.getString(R.string.task5_name),
+                new CapabilityDescription(rs.getString(R.string.cap5_name),
                         R.mipmap.ic_task5,
-                        rs.getString(R.string.task5_desc)),
+                        rs.getString(R.string.cap5_desc)),
 
-                new TaskDescription(rs.getString(R.string.task6_name),
+                new CapabilityDescription(rs.getString(R.string.cap6_name),
                         R.mipmap.ic_task6,
-                        rs.getString(R.string.task6_desc)),
+                        rs.getString(R.string.cap6_desc)),
 
-                new TaskDescription(rs.getString(R.string.task7_name),
+                new CapabilityDescription(rs.getString(R.string.cap7_name),
                         R.mipmap.ic_task7,
-                        rs.getString(R.string.task7_desc)),
+                        rs.getString(R.string.cap7_desc)),
         }));
 
     }
@@ -77,22 +77,22 @@ public class MainActivity extends AppCompatActivity
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (position) {
             case 0:
-                redirectToActivity(GestureHandlerActivity.class);
+                redirectToActivity(HandlingGesturesActivity.class);
                 break;
             case 1:
                 redirectToActivity(GestureBuilderActivity.class);
                 break;
             case 2:
-                redirectToActivity(SensorDataChartingActivity.class);
+                redirectToActivity(PlottingEnvironmentSensorsDataActivity.class);
                 break;
             case 3:
-                redirectToActivity(GpsActivity.class);
+                redirectToActivity(HandlingGpsDataActivity.class);
                 break;
             case 4:
-                redirectToActivity(ThirdPartyImageGalleryActivity.class);
+                redirectToActivity(ImageLoadingActivity.class);
                 break;
             case 5:
-                redirectToActivity(ContactsActivity.class);
+                redirectToActivity(AddressBookActivity.class);
                 break;
             case 6:
                 redirectToActivity(SpeechToTextActivity.class);

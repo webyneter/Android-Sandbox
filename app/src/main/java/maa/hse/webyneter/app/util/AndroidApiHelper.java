@@ -20,8 +20,8 @@ import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.StrictMode;
 
-import maa.hse.webyneter.app.tasks.task6.ContactDetailActivity;
-import maa.hse.webyneter.app.tasks.task6.ContactsActivity;
+import maa.hse.webyneter.app.capabilities.capability6.ContactDetailActivity;
+import maa.hse.webyneter.app.capabilities.capability6.AddressBookActivity;
 
 public class AndroidApiHelper {
     private AndroidApiHelper() {
@@ -55,7 +55,7 @@ public class AndroidApiHelper {
                 // For each activity class, set an instance limit of 1. Any more instances and
                 // there could be a memory leak.
                 vmPolicyBuilder
-                        .setClassInstanceLimit(ContactsActivity.class, 1)
+                        .setClassInstanceLimit(AddressBookActivity.class, 1)
                         .setClassInstanceLimit(ContactDetailActivity.class, 1);
             }
 
