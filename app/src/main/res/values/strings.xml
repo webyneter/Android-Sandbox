@@ -15,28 +15,28 @@
 -->
 
 <resources>
-    <string name="app_name">Android Playground</string>
+    <string name="app_name">Android Sandbox</string>
 
     <string name="task1_name">Task 1. Gesture Handler</string>
-    <string name="task1_desc">Handles a number of basic gestures and displays the corresponding info.</string>
+    <string name="task1_desc">Handles a number of basic gestures and displays the corresponding info</string>
 
     <string name="task2_name">Task 2. Gesture Builder</string>
-    <string name="task2_desc">Create, save, and recognize custom gestures.</string>
+    <string name="task2_desc">Create, save, and recognize custom gestures</string>
 
     <string name="task3_name">Task 3. Sensor Data Charting</string>
-    <string name="task3_desc">Plots real-time data from Ambient Temperature, Light, Pressure, and Relative Humidity environment sensors provided any of them is available. Allows for dynamic sliding window width altering. ()</string>
+    <string name="task3_desc">Plots real-time data from Ambient Temperature, Light, Pressure, and Relative Humidity environment sensors provided any of them is available. Allows for dynamic sliding window width altering</string>
 
     <string name="task4_name">Task 4. GPS</string>
-    <string name="task4_desc">Handles real-time GPS data.</string>
+    <string name="task4_desc">Handles real-time GPS data</string>
 
     <string name="task5_name">Task 5. Image Gallery</string>
-    <string name="task5_desc">lawloretienne\'s ImageGallery-based photo album.</string>
+    <string name="task5_desc">lawloretienne\'s ImageGallery-based photo album</string>
 
     <string name="task6_name">Task 6. Contacts</string>
-    <string name="task6_desc">Android sample project-based contact list.</string>
+    <string name="task6_desc">Android sample project-based contact list</string>
 
     <string name="task7_name">Task 7. Speech-to-Text</string>
-    <string name="task7_desc">A naive speech-to-text converter.</string>
+    <string name="task7_desc">Provides naive speech-to-text converter</string>
 
     <string name="activity_contacts_list">Contacts List</string>
     <string name="activity_contact_detail">Contact Detail</string>

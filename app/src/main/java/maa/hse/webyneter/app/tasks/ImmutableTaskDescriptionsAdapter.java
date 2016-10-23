@@ -60,8 +60,8 @@ public class ImmutableTaskDescriptionsAdapter extends BaseAdapter {
         TextView tvName = (TextView) v.findViewById(R.id.taskdesclistitem_tvName);
         tvName.setText(descriptionForPosition.getName());
 
-        ImageView ivScreenshot = (ImageView) v.findViewById(R.id.taskdesclistitem_ivScreenshot);
-        ivScreenshot.setImageResource(descriptionForPosition.getScreenshotResourceId());
+        ImageView ivIcon = (ImageView) v.findViewById(R.id.taskdesclistitem_ivIcon);
+        ivIcon.setImageResource(descriptionForPosition.getImageResourceId());
 
         TextView tvDescription = (TextView) v.findViewById(R.id.taskdesclistitem_tvDescription);
         tvDescription.setText(descriptionForPosition.getDescription());

@@ -33,31 +33,31 @@ public class MainActivity extends AppCompatActivity
         Resources rs = getResources();
         lvTaskDescriptions.setAdapter(new ImmutableTaskDescriptionsAdapter(this, new TaskDescription[]{
                 new TaskDescription(rs.getString(R.string.task1_name),
-                        R.drawable.task1,
+                        R.mipmap.ic_task1,
                         rs.getString(R.string.task1_desc)),
 
                 new TaskDescription(rs.getString(R.string.task2_name),
-                        R.drawable.task2,
+                        R.mipmap.ic_task2,
                         rs.getString(R.string.task2_desc)),
 
                 new TaskDescription(rs.getString(R.string.task3_name),
-                        R.drawable.task3,
+                        R.mipmap.ic_task3,
                         rs.getString(R.string.task3_desc)),
 
                 new TaskDescription(rs.getString(R.string.task4_name),
-                        R.drawable.task4,
+                        R.mipmap.ic_task4,
                         rs.getString(R.string.task4_desc)),
 
                 new TaskDescription(rs.getString(R.string.task5_name),
-                        R.drawable.task5,
+                        R.mipmap.ic_task5,
                         rs.getString(R.string.task5_desc)),
 
                 new TaskDescription(rs.getString(R.string.task6_name),
-                        R.drawable.task6,
+                        R.mipmap.ic_task6,
                         rs.getString(R.string.task6_desc)),
 
                 new TaskDescription(rs.getString(R.string.task7_name),
-                        R.drawable.task7,
+                        R.mipmap.ic_task7,
                         rs.getString(R.string.task7_desc)),
         }));
 
