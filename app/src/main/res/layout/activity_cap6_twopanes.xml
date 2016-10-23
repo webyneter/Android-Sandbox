@@ -28,14 +28,14 @@
 
     <fragment
         android:id="@+id/cap6_contact_list"
-        class="maa.hse.webyneter.app.capabilities.capability6.ContactsListFragment"
+        class="androidsandbox.org.webyneter.app.capabilities.capability6.ContactsListFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="@integer/contact_list_percent"/>
 
     <fragment
         android:id="@+id/cap6_contact_detail"
-        class="maa.hse.webyneter.app.capabilities.capability6.ContactDetailFragment"
+        class="androidsandbox.org.webyneter.app.capabilities.capability6.ContactDetailFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="@integer/contact_detail_percent"/>
