@@ -6,21 +6,21 @@ package maa.hse.webyneter.app.tasks;
 
 public final class TaskDescription {
     private final String name;
-    private final int screenshotResourceId;
+    private final int imageResourceId;
     private final String description;
 
     public TaskDescription(String name, int imageResourceId, String description) {
         this.description = description;
         this.name = name;
-        this.screenshotResourceId = imageResourceId;
+        this.imageResourceId = imageResourceId;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public int getScreenshotResourceId() {
-        return screenshotResourceId;
+    public int getImageResourceId() {
+        return imageResourceId;
     }
 
     public String getName() {
