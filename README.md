@@ -3,7 +3,7 @@ First steps towards Android development
 
 <a href="app/src/main/java/androidsandbox/org/webyneter/app"><img alt="Android Sandbox application screenshot" src="[screenshots]/Android Sandbox.jpg" width="350" align="center"></a>
 
-## Capabilities
+## Features
 1. ![Handling Gestures](app/src/main/java/androidsandbox/org/webyneter/app/capabilities/capability1).
 2. ![Building Custom Gestures](app/src/main/java/androidsandbox/org/webyneter/app/capabilities/capability2).
 3. ![Plotting Environment Sensors Data](app/src/main/java/androidsandbox/org/webyneter/app/capabilities/capability3).
