@@ -22,76 +22,76 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="androidsandbox.org.webyneter.app.capabilities.capability1.HandlingGesturesActivity"
-            android:label="@string/cap1_name"
+            android:name="androidsandbox.org.webyneter.app.features.feature1.HandlingGesturesActivity"
+            android:label="@string/feature1_name"
             android:parentActivityName="androidsandbox.org.webyneter.app.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="androidsandbox.org.webyneter.app.MainActivity"/>
         </activity>
         <activity
-            android:name="androidsandbox.org.webyneter.app.capabilities.capability2.GestureBuilderActivity"
-            android:label="@string/cap2_name"
+            android:name="androidsandbox.org.webyneter.app.features.feature2.GestureBuilderActivity"
+            android:label="@string/feature2_name"
             android:parentActivityName="androidsandbox.org.webyneter.app.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="androidsandbox.org.webyneter.app.MainActivity"/>
         </activity>
         <activity
-            android:name="androidsandbox.org.webyneter.app.capabilities.capability2.BuildingCustomGesturesActivity"
-            android:parentActivityName="androidsandbox.org.webyneter.app.capabilities.capability2.GestureBuilderActivity">
+            android:name="androidsandbox.org.webyneter.app.features.feature2.BuildingCustomGesturesActivity"
+            android:parentActivityName="androidsandbox.org.webyneter.app.features.feature2.GestureBuilderActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="androidsandbox.org.webyneter.app.capabilities.capability2.GestureBuilderActivity"/>
+                android:value="androidsandbox.org.webyneter.app.features.feature2.GestureBuilderActivity"/>
         </activity>
         <activity
-            android:name="androidsandbox.org.webyneter.app.capabilities.capability2.GestureRecognitionActivity"
-            android:parentActivityName="androidsandbox.org.webyneter.app.capabilities.capability2.GestureBuilderActivity">
+            android:name="androidsandbox.org.webyneter.app.features.feature2.GestureRecognitionActivity"
+            android:parentActivityName="androidsandbox.org.webyneter.app.features.feature2.GestureBuilderActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="androidsandbox.org.webyneter.app.capabilities.capability2.GestureBuilderActivity"/>
+                android:value="androidsandbox.org.webyneter.app.features.feature2.GestureBuilderActivity"/>
         </activity>
         <activity
-            android:name="androidsandbox.org.webyneter.app.capabilities.capability4.HandlingGpsDataActivity"
-            android:label="@string/cap4_name"
+            android:name="androidsandbox.org.webyneter.app.features.feature4.HandlingGpsDataActivity"
+            android:label="@string/feature4_name"
             android:parentActivityName="androidsandbox.org.webyneter.app.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="androidsandbox.org.webyneter.app.MainActivity"/>
         </activity>
         <activity
-            android:name="androidsandbox.org.webyneter.app.capabilities.capability6.AddressBookActivity"
-            android:label="@string/cap6_name"
+            android:name="androidsandbox.org.webyneter.app.features.feature6.AddressBookActivity"
+            android:label="@string/feature6_name"
             android:parentActivityName="androidsandbox.org.webyneter.app.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="androidsandbox.org.webyneter.app.MainActivity"/>
         </activity>
         <activity
-            android:name="androidsandbox.org.webyneter.app.capabilities.capability6.ContactDetailActivity"
+            android:name="androidsandbox.org.webyneter.app.features.feature6.ContactDetailActivity"
             android:parentActivityName="androidsandbox.org.webyneter.app.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="androidsandbox.org.webyneter.app.MainActivity"/>
         </activity>
         <activity
-            android:name="androidsandbox.org.webyneter.app.capabilities.capability7.SpeechToTextActivity"
-            android:label="@string/cap7_name"
+            android:name="androidsandbox.org.webyneter.app.features.feature7.SpeechToTextActivity"
+            android:label="@string/feature7_name"
             android:parentActivityName="androidsandbox.org.webyneter.app.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="androidsandbox.org.webyneter.app.MainActivity"/>
         </activity>
         <activity
-            android:name="androidsandbox.org.webyneter.app.capabilities.capability3.PlottingEnvironmentSensorsDataActivity"
+            android:name="androidsandbox.org.webyneter.app.features.feature3.PlottingEnvironmentSensorsDataActivity"
             android:parentActivityName="androidsandbox.org.webyneter.app.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="androidsandbox.org.webyneter.app.MainActivity"/>
         </activity>
         <activity
-            android:name="androidsandbox.org.webyneter.app.capabilities.capability5.ImageLoadingActivity"
-            android:label="@string/cap5_name"
+            android:name="androidsandbox.org.webyneter.app.features.feature5.ImageLoadingActivity"
+            android:label="@string/feature5_name"
             android:parentActivityName="androidsandbox.org.webyneter.app.MainActivity"
             android:theme="@style/ImageGalleryTheme">
             <meta-data

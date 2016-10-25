@@ -20,8 +20,8 @@ import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.StrictMode;
 
-import androidsandbox.org.webyneter.app.capabilities.capability6.ContactDetailActivity;
-import androidsandbox.org.webyneter.app.capabilities.capability6.AddressBookActivity;
+import androidsandbox.org.webyneter.app.features.feature6.ContactDetailActivity;
+import androidsandbox.org.webyneter.app.features.feature6.AddressBookActivity;
 
 public class AndroidApiHelper {
     private AndroidApiHelper() {

@@ -8,19 +8,19 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import androidsandbox.org.webyneter.app.capabilities.ImmutableCapabilityDescriptionsAdapter;
-import androidsandbox.org.webyneter.app.capabilities.CapabilityDescription;
-import androidsandbox.org.webyneter.app.capabilities.capability1.HandlingGesturesActivity;
-import androidsandbox.org.webyneter.app.capabilities.capability2.GestureBuilderActivity;
-import androidsandbox.org.webyneter.app.capabilities.capability3.PlottingEnvironmentSensorsDataActivity;
-import androidsandbox.org.webyneter.app.capabilities.capability4.HandlingGpsDataActivity;
-import androidsandbox.org.webyneter.app.capabilities.capability5.ImageLoadingActivity;
-import androidsandbox.org.webyneter.app.capabilities.capability6.AddressBookActivity;
-import androidsandbox.org.webyneter.app.capabilities.capability7.SpeechToTextActivity;
+import androidsandbox.org.webyneter.app.features.ImmutableFeatureDescriptionsAdapter;
+import androidsandbox.org.webyneter.app.features.FeatureDescription;
+import androidsandbox.org.webyneter.app.features.feature1.HandlingGesturesActivity;
+import androidsandbox.org.webyneter.app.features.feature2.GestureBuilderActivity;
+import androidsandbox.org.webyneter.app.features.feature3.PlottingEnvironmentSensorsDataActivity;
+import androidsandbox.org.webyneter.app.features.feature4.HandlingGpsDataActivity;
+import androidsandbox.org.webyneter.app.features.feature5.ImageLoadingActivity;
+import androidsandbox.org.webyneter.app.features.feature6.AddressBookActivity;
+import androidsandbox.org.webyneter.app.features.feature7.SpeechToTextActivity;
 
 public class MainActivity extends AppCompatActivity
         implements AdapterView.OnItemClickListener {
-    private ListView lvTaskDescriptions;
+    private ListView lvFeatureDescriptions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,34 +31,34 @@ public class MainActivity extends AppCompatActivity
         initUiHandlers();
 
         Resources rs = getResources();
-        lvTaskDescriptions.setAdapter(new ImmutableCapabilityDescriptionsAdapter(this, new CapabilityDescription[]{
-                new CapabilityDescription(rs.getString(R.string.cap1_name),
+        lvFeatureDescriptions.setAdapter(new ImmutableFeatureDescriptionsAdapter(this, new FeatureDescription[]{
+                new FeatureDescription(rs.getString(R.string.feature1_name),
                         R.mipmap.ic_task1,
-                        rs.getString(R.string.cap1_desc)),
+                        rs.getString(R.string.feature1_desc)),
 
-                new CapabilityDescription(rs.getString(R.string.cap2_name),
+                new FeatureDescription(rs.getString(R.string.feature2_name),
                         R.mipmap.ic_task2,
-                        rs.getString(R.string.cap2_desc)),
+                        rs.getString(R.string.feature2_desc)),
 
-                new CapabilityDescription(rs.getString(R.string.cap3_name),
+                new FeatureDescription(rs.getString(R.string.feature3_name),
                         R.mipmap.ic_task3,
-                        rs.getString(R.string.cap3_desc)),
+                        rs.getString(R.string.feature3_desc)),
 
-                new CapabilityDescription(rs.getString(R.string.cap4_name),
+                new FeatureDescription(rs.getString(R.string.feature4_name),
                         R.mipmap.ic_task4,
-                        rs.getString(R.string.cap4_desc)),
+                        rs.getString(R.string.feature4_desc)),
 
-                new CapabilityDescription(rs.getString(R.string.cap5_name),
+                new FeatureDescription(rs.getString(R.string.feature5_name),
                         R.mipmap.ic_task5,
-                        rs.getString(R.string.cap5_desc)),
+                        rs.getString(R.string.feature5_desc)),
 
-                new CapabilityDescription(rs.getString(R.string.cap6_name),
+                new FeatureDescription(rs.getString(R.string.feature6_name),
                         R.mipmap.ic_task6,
-                        rs.getString(R.string.cap6_desc)),
+                        rs.getString(R.string.feature6_desc)),
 
-                new CapabilityDescription(rs.getString(R.string.cap7_name),
+                new FeatureDescription(rs.getString(R.string.feature7_name),
                         R.mipmap.ic_task7,
-                        rs.getString(R.string.cap7_desc)),
+                        rs.getString(R.string.feature7_desc)),
         }));
 
     }
@@ -101,11 +101,11 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void initUiVariables() {
-        lvTaskDescriptions = (ListView) findViewById(R.id.main_lvTaskDescriptions);
+        lvFeatureDescriptions = (ListView) findViewById(R.id.main_lvTaskDescriptions);
     }
 
     private void initUiHandlers() {
-        lvTaskDescriptions.setOnItemClickListener(this);
+        lvFeatureDescriptions.setOnItemClickListener(this);
     }
 
     private void redirectToActivity(Class<?> cls) {
