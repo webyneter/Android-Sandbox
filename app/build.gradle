@@ -5,7 +5,7 @@ android {
     buildToolsVersion "24.0.2"
 
     defaultConfig {
-        applicationId "maa.hse.webyneter.app"
+        applicationId "androidsandbox.org.webyneter.app"
         minSdkVersion 23
         targetSdkVersion 24
         versionCode 2
@@ -34,4 +34,7 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.4.0'
     compile 'com.github.lawloretienne:imagegallery:0.0.15'
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.google.android.gms:play-services-analytics:10.0.1'
 }
+
+apply plugin: 'com.google.gms.google-services'
