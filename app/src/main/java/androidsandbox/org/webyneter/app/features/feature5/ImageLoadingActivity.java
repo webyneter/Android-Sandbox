@@ -24,8 +24,9 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import butterknife.ButterKnife;
 import androidsandbox.org.webyneter.app.R;
+import androidsandbox.org.webyneter.app.util.TrackerHelper;
+import butterknife.ButterKnife;
 
 public class ImageLoadingActivity extends AppCompatActivity implements ImageGalleryAdapter.ImageThumbnailLoader,
         FullScreenImageGalleryAdapter.FullScreenImageLoader {
@@ -55,14 +56,17 @@ public class ImageLoadingActivity extends AppCompatActivity implements ImageGall
     @Override
     protected void onResume() {
         super.onResume();
+        TrackerHelper.sendWithDefaultTracker(this, "onResume");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        TrackerHelper.sendWithDefaultTracker(this, "onPause");
     }
 
     private void startImageGalleryActivity() {
+        TrackerHelper.sendWithDefaultTracker(this, "startImageGalleryActivity");
         Intent intent = new Intent(this, ImageGalleryActivity.class);
         String[] images = getResources().getStringArray(R.array.sample_images);
         Bundle bundle = new Bundle();
@@ -76,6 +80,7 @@ public class ImageLoadingActivity extends AppCompatActivity implements ImageGall
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
+                TrackerHelper.sendWithDefaultTracker(this, "onOptionsItemSelected:home");
                 supportFinishAfterTransition();
 //                NavUtils.navigateUpFromSameTask(this);
                 return true;

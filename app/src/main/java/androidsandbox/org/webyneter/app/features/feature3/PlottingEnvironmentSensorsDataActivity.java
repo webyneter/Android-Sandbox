@@ -21,6 +21,7 @@ import com.github.mikephil.charting.data.LineDataSet;
 import java.util.ArrayList;
 
 import androidsandbox.org.webyneter.app.R;
+import androidsandbox.org.webyneter.app.util.TrackerHelper;
 
 public class PlottingEnvironmentSensorsDataActivity extends Activity
         implements SensorEventListener, SeekBar.OnSeekBarChangeListener {
@@ -126,12 +127,14 @@ public class PlottingEnvironmentSensorsDataActivity extends Activity
     @Override
     protected void onResume() {
         super.onResume();
+        TrackerHelper.sendWithDefaultTracker(this, "onResume");
         registerSensorListeners();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        TrackerHelper.sendWithDefaultTracker(this, "onPause");
         unregisterSensorListeners();
     }
 
@@ -154,18 +157,24 @@ public class PlottingEnvironmentSensorsDataActivity extends Activity
         switch (event.sensor.getType()) {
             case Sensor.TYPE_PRESSURE:
                 float mBar = event.values[0];
+                TrackerHelper.sendWithDefaultTracker(this, "onSensorChanged:TYPE_PRESSURE=" + String.valueOf(mBar));
                 addValueToUiChart(mBar, pressureDataSet, lcPressure);
                 break;
             case Sensor.TYPE_AMBIENT_TEMPERATURE:
                 float degreeCelsius = event.values[0];
+                TrackerHelper.sendWithDefaultTracker(this, "onSensorChanged:TYPE_AMBIENT_TEMPERATURE="
+                        + String.valueOf(degreeCelsius));
                 addValueToUiChart(degreeCelsius, ambientTemperatureDataSet, lcAmbientTemperature);
                 break;
             case Sensor.TYPE_LIGHT:
                 float lx = event.values[0];
+                TrackerHelper.sendWithDefaultTracker(this, "onSensorChanged:TYPE_LIGHT=" + String.valueOf(lx));
                 addValueToUiChart(lx, lightDataSet, lcLight);
                 break;
             case Sensor.TYPE_RELATIVE_HUMIDITY:
                 float percent = event.values[0];
+                TrackerHelper.sendWithDefaultTracker(this, "onSensorChanged:TYPE_RELATIVE_HUMIDITY="
+                        + String.valueOf(percent));
                 addValueToUiChart(percent, relativeHumidityDataSet, lcRelativeHumidity);
                 break;
         }
@@ -173,11 +182,12 @@ public class PlottingEnvironmentSensorsDataActivity extends Activity
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
+        TrackerHelper.sendWithDefaultTracker(this, "onAccuracyChanged:accuracy=" + String.valueOf(accuracy));
     }
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+        TrackerHelper.sendWithDefaultTracker(this, "onProgressChanged:progress=" + String.valueOf(progress));
         if (progress < VISIBLE_X_RANGE_MAXIMUM_MIN) {
             sbVisibleXRangeMaximum.setProgress(VISIBLE_X_RANGE_MAXIMUM_MIN);
             return;
@@ -187,12 +197,12 @@ public class PlottingEnvironmentSensorsDataActivity extends Activity
 
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
-
+        TrackerHelper.sendWithDefaultTracker(this, "onStartTrackingTouch");
     }
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
-
+        TrackerHelper.sendWithDefaultTracker(this, "onStopTrackingTouch");
     }
 
     private void addValueToUiChart(float value, LineDataSet lineDataSet, LineChart lineChart) {

@@ -54,6 +54,7 @@ import java.util.Map;
 import java.util.Set;
 
 import androidsandbox.org.webyneter.app.R;
+import androidsandbox.org.webyneter.app.util.TrackerHelper;
 
 public class GestureBuilderActivity extends ListActivity {
     private static final int STATUS_SUCCESS = 0;
@@ -122,11 +123,13 @@ public class GestureBuilderActivity extends ListActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        TrackerHelper.sendWithDefaultTracker(this, "onResume");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        TrackerHelper.sendWithDefaultTracker(this, "onPause");
     }
 
     private void initUiVariables() {
@@ -137,6 +140,7 @@ public class GestureBuilderActivity extends ListActivity {
 
     @SuppressWarnings({"UnusedDeclaration"})
     public void addGesture(View v) {
+        TrackerHelper.sendWithDefaultTracker(this, "addGesture");
         Intent intent = new Intent(this, BuildingCustomGesturesActivity.class);
         startActivityForResult(intent, REQUEST_NEW_GESTURE);
     }
@@ -148,6 +152,7 @@ public class GestureBuilderActivity extends ListActivity {
 
     @SuppressWarnings({"UnusedDeclaration"})
     public void recognizeGesture(View v) {
+        TrackerHelper.sendWithDefaultTracker(this, "recognizeGesture");
         Intent intent = new Intent(this, GestureRecognitionActivity.class);
         startActivity(intent);
     }
@@ -166,6 +171,7 @@ public class GestureBuilderActivity extends ListActivity {
     }
 
     private void loadOrReloadGestures() {
+        TrackerHelper.sendWithDefaultTracker(this, "loadOrReloadGestures");
         if (gesturesLoadTask != null
                 && gesturesLoadTask.getStatus() != GesturesLoadTask.Status.FINISHED) {
             gesturesLoadTask.cancel(true);
@@ -176,6 +182,8 @@ public class GestureBuilderActivity extends ListActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
+        TrackerHelper.sendWithDefaultTracker(this, "onDestroy");
 
         if (gesturesLoadTask != null
                 && gesturesLoadTask.getStatus() != GesturesLoadTask.Status.FINISHED) {
@@ -196,6 +204,8 @@ public class GestureBuilderActivity extends ListActivity {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
+        TrackerHelper.sendWithDefaultTracker(this, "onSaveInstanceState");
+
         if (currentRenameGesture != null) {
             outState.putLong(GESTURES_INFO_ID, currentRenameGesture.gesture.getID());
         }
@@ -204,6 +214,8 @@ public class GestureBuilderActivity extends ListActivity {
     @Override
     protected void onRestoreInstanceState(Bundle state) {
         super.onRestoreInstanceState(state);
+
+        TrackerHelper.sendWithDefaultTracker(this, "onRestoreInstanceState");
 
         long id = state.getLong(GESTURES_INFO_ID, -1);
         if (id != -1) {
@@ -235,6 +247,8 @@ public class GestureBuilderActivity extends ListActivity {
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
+        TrackerHelper.sendWithDefaultTracker(this, "onContextItemSelected");
+
         AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         final NamedGesture gesture = (NamedGesture) menuInfo.targetView.getTag();
 
@@ -251,6 +265,8 @@ public class GestureBuilderActivity extends ListActivity {
     }
 
     private void renameGesture(NamedGesture gesture) {
+        TrackerHelper.sendWithDefaultTracker(this, "renameGesture");
+
         currentRenameGesture = gesture;
         showDialog(DIALOG_RENAME_GESTURE);
     }
@@ -336,6 +352,8 @@ public class GestureBuilderActivity extends ListActivity {
     }
 
     private void deleteGesture(NamedGesture gesture) {
+        TrackerHelper.sendWithDefaultTracker(this, "deleteGesture");
+
         gestureLibrary.removeGesture(gesture.name, gesture.gesture);
         gestureLibrary.save();
 
