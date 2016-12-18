@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import androidsandbox.org.webyneter.app.features.ImmutableFeatureDescriptionsAdapter;
 import androidsandbox.org.webyneter.app.features.FeatureDescription;
+import androidsandbox.org.webyneter.app.features.ImmutableFeatureDescriptionsAdapter;
 import androidsandbox.org.webyneter.app.features.feature1.HandlingGesturesActivity;
 import androidsandbox.org.webyneter.app.features.feature2.GestureBuilderActivity;
 import androidsandbox.org.webyneter.app.features.feature3.PlottingEnvironmentSensorsDataActivity;

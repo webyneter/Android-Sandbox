@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidsandbox.org.webyneter.app.R;
+import androidsandbox.org.webyneter.app.util.TrackerHelper;
 
 public class HandlingGesturesActivity extends AppCompatActivity implements GestureDetector.OnGestureListener,
         GestureDetector.OnDoubleTapListener {
@@ -48,11 +49,13 @@ public class HandlingGesturesActivity extends AppCompatActivity implements Gestu
     @Override
     protected void onResume() {
         super.onResume();
+        TrackerHelper.sendWithDefaultTracker(this, "onResume");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        TrackerHelper.sendWithDefaultTracker(this, "onPause");
     }
 
     private void initUiHandlers() {
@@ -78,61 +81,72 @@ public class HandlingGesturesActivity extends AppCompatActivity implements Gestu
     @Override
     public void onBackPressed() {
         finish();
+        TrackerHelper.sendWithDefaultTracker(this, "onBackPressed");
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        this.gestureDetector.onTouchEvent(event);
+        TrackerHelper.sendWithDefaultTracker(this, "onTouchEvent");
+        gestureDetector.onTouchEvent(event);
         return super.onTouchEvent(event);
     }
 
     @Override
     public boolean onDown(MotionEvent event) {
+        TrackerHelper.sendWithDefaultTracker(this, "onDown");
         handleGesture(GestureKind.onDown, event);
         return true;
     }
 
     @Override
     public boolean onFling(MotionEvent event1, MotionEvent event2, float velocityX, float velocityY) {
+        TrackerHelper.sendWithDefaultTracker(this, "onFling");
         handleFling(event1, event2, velocityX, velocityY);
         return true;
     }
 
     @Override
     public void onLongPress(MotionEvent event) {
+        TrackerHelper.sendWithDefaultTracker(this, "onLongPress");
         handleGesture(GestureKind.onLongPress, event);
     }
 
     @Override
     public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+        TrackerHelper.sendWithDefaultTracker(this, "onScroll");
         handleScroll(e1, e2, distanceX, distanceY);
         return true;
     }
 
     @Override
     public void onShowPress(MotionEvent event) {
+        TrackerHelper.sendWithDefaultTracker(this, "onShowPress");
         handleGesture(GestureKind.onShowPress, event);
     }
 
     @Override
     public boolean onSingleTapUp(MotionEvent event) {
+        TrackerHelper.sendWithDefaultTracker(this, "onSingleTapUp");
         handleGesture(GestureKind.onSingleTap, event);
         return true;
     }
 
     @Override
     public boolean onDoubleTap(MotionEvent event) {
+        TrackerHelper.sendWithDefaultTracker(this, "onDoubleTap");
         handleGesture(GestureKind.onDoubleTap, event);
         return true;
     }
 
     @Override
     public boolean onDoubleTapEvent(MotionEvent event) {
+        TrackerHelper.sendWithDefaultTracker(this, "onDoubleTapEvent");
         return true;
     }
 
     @Override
     public boolean onSingleTapConfirmed(MotionEvent event) {
+        TrackerHelper.sendWithDefaultTracker(this, "onSingleTapConfirmed");
         handleGesture(GestureKind.onSingleTap, event);
         return true;
     }

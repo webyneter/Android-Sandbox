@@ -14,10 +14,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidsandbox.org.webyneter.app.R;
+import androidsandbox.org.webyneter.app.util.TrackerHelper;
 
 public class HandlingGpsDataActivity extends AppCompatActivity implements LocationListener {
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 42;
-
     private TextView btnRequestGpsPermission;
     private TextView tvGpsStatus;
     private TextView tvLongitude;
@@ -65,12 +65,14 @@ public class HandlingGpsDataActivity extends AppCompatActivity implements Locati
     @Override
     protected void onPause() {
         super.onPause();
+        TrackerHelper.sendWithDefaultTracker(this, "onPause");
         removeGPSUpdatesIfGPSPermissionGranted();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        TrackerHelper.sendWithDefaultTracker(this, "onResume");
         requestGPSUpdatesIfGPSPermissionGranted();
     }
 
@@ -84,6 +86,7 @@ public class HandlingGpsDataActivity extends AppCompatActivity implements Locati
 
     @Override
     public void onLocationChanged(Location location) {
+        TrackerHelper.sendWithDefaultTracker(this, "onLocationChanged");
         populateValues(location);
     }
 
@@ -91,15 +94,18 @@ public class HandlingGpsDataActivity extends AppCompatActivity implements Locati
     public void onStatusChanged(String provider, int status, Bundle extras) {
         switch (status) {
             case LocationProvider.TEMPORARILY_UNAVAILABLE: {
+                TrackerHelper.sendWithDefaultTracker(this, "onStatusChanged:TEMPORARILY_UNAVAILABLE");
                 tvGpsStatus.setVisibility(View.VISIBLE);
                 tvGpsStatus.setText("GPS is temporarily unavailable");
                 toggleUIEnabled(false);
             }
             case LocationProvider.AVAILABLE: {
+                TrackerHelper.sendWithDefaultTracker(this, "onStatusChanged:AVAILABLE");
                 tvGpsStatus.setVisibility(View.GONE);
                 toggleUIEnabled(true);
             }
             case LocationProvider.OUT_OF_SERVICE: {
+                TrackerHelper.sendWithDefaultTracker(this, "onStatusChanged:OUT_OF_SERVICE");
                 tvGpsStatus.setVisibility(View.VISIBLE);
                 tvGpsStatus.setText("GPS is out of service");
                 toggleUIEnabled(false);
@@ -109,6 +115,7 @@ public class HandlingGpsDataActivity extends AppCompatActivity implements Locati
 
     @Override
     public void onProviderEnabled(String provider) {
+        TrackerHelper.sendWithDefaultTracker(this, "onProviderEnabled");
         final LocationManager lm = getLocationManager();
         Location lastKnownLocation = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         if (lastKnownLocation != null) {
@@ -120,6 +127,7 @@ public class HandlingGpsDataActivity extends AppCompatActivity implements Locati
 
     @Override
     public void onProviderDisabled(String provider) {
+        TrackerHelper.sendWithDefaultTracker(this, "onProviderDisabled");
         tvGpsStatus.setText("GPS is off");
         tvGpsStatus.setVisibility(View.VISIBLE);
         toggleUIEnabled(false);

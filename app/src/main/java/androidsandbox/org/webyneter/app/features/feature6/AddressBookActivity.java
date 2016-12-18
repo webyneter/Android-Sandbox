@@ -24,6 +24,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 
 import androidsandbox.org.webyneter.app.R;
+import androidsandbox.org.webyneter.app.util.TrackerHelper;
 
 /**
  * FragmentActivity to hold the main {@link ContactsListFragment}. On larger screen devices which
@@ -85,11 +86,13 @@ public class AddressBookActivity extends FragmentActivity implements
     @Override
     protected void onResume() {
         super.onResume();
+        TrackerHelper.sendWithDefaultTracker(this, "onResume");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        TrackerHelper.sendWithDefaultTracker(this, "onPause");
     }
 
     @Override
@@ -109,6 +112,7 @@ public class AddressBookActivity extends FragmentActivity implements
      */
     @Override
     public void onContactSelected(Uri contactUri) {
+        TrackerHelper.sendWithDefaultTracker(this, "onContactSelected:contactUri=" + contactUri.toString());
         if (isTwoPaneLayout && contactDetailFragment != null) {
             // If two pane layout then update the detail fragment to show the selected contact
             contactDetailFragment.setContact(contactUri);
@@ -127,6 +131,7 @@ public class AddressBookActivity extends FragmentActivity implements
      */
     @Override
     public void onSelectionCleared() {
+        TrackerHelper.sendWithDefaultTracker(this, "onSelectionCleared");
         if (isTwoPaneLayout && contactDetailFragment != null) {
             contactDetailFragment.setContact(null);
         }
@@ -134,6 +139,7 @@ public class AddressBookActivity extends FragmentActivity implements
 
     @Override
     public boolean onSearchRequested() {
+        TrackerHelper.sendWithDefaultTracker(this, "onSearchRequested");
         // Don't allow another search if this activity instance is already showing
         // search results. Only used pre-HC.
         return !isSearchResultView && super.onSearchRequested();

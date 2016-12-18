@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 import androidsandbox.org.webyneter.app.R;
+import androidsandbox.org.webyneter.app.util.TrackerHelper;
 
 public class SpeechToTextActivity extends AppCompatActivity
         implements RecognitionListener {
@@ -105,14 +106,13 @@ public class SpeechToTextActivity extends AppCompatActivity
     @Override
     protected void onPause() {
         super.onPause();
-        if (recognizer != null) {
-            recognizer.destroy();
-        }
+        TrackerHelper.sendWithDefaultTracker(this, "onPause");
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        TrackerHelper.sendWithDefaultTracker(this, "onResume");
     }
 
     @Override
@@ -130,38 +130,44 @@ public class SpeechToTextActivity extends AppCompatActivity
 
     @Override
     public void onReadyForSpeech(Bundle params) {
-
+        TrackerHelper.sendWithDefaultTracker(this, "onReadyForSpeech");
     }
 
     @Override
     public void onBeginningOfSpeech() {
+        TrackerHelper.sendWithDefaultTracker(this, "onBeginningOfSpeech");
         tvErrorMsg.setVisibility(View.GONE);
     }
 
     @Override
     public void onRmsChanged(float rmsdB) {
+        TrackerHelper.sendWithDefaultTracker(this, "onRmsChanged:rmsdB=" + String.valueOf(rmsdB));
         pbRecognition.setProgress((int) rmsdB);
     }
 
     @Override
     public void onBufferReceived(byte[] buffer) {
-
+        TrackerHelper.sendWithDefaultTracker(this, "onBufferReceived");
     }
 
     @Override
     public void onEndOfSpeech() {
+        TrackerHelper.sendWithDefaultTracker(this, "onEndOfSpeech");
         tbtnRecognition.setChecked(false);
         pbRecognition.setIndeterminate(true);
     }
 
     @Override
     public void onError(int error) {
-        tvErrorMsg.setText(getRecognizerErrorText(error));
+        String errorText = getRecognizerErrorText(error);
+        TrackerHelper.sendWithDefaultTracker(this, "onError:errorText=" + errorText);
+        tvErrorMsg.setText(errorText);
         tvErrorMsg.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onResults(Bundle results) {
+        TrackerHelper.sendWithDefaultTracker(this, "onResults");
         float[] confidence_scores = results.getFloatArray(SpeechRecognizer.CONFIDENCE_SCORES);
         float max_confidence_score = Float.MIN_VALUE;
         int ind_max_confidence_score = 0;
@@ -180,12 +186,12 @@ public class SpeechToTextActivity extends AppCompatActivity
 
     @Override
     public void onPartialResults(Bundle partialResults) {
-
+        TrackerHelper.sendWithDefaultTracker(this, "onPartialResults");
     }
 
     @Override
     public void onEvent(int eventType, Bundle params) {
-
+        TrackerHelper.sendWithDefaultTracker(this, "onEvent");
     }
 
     private void initUiVariables() {
