@@ -1,7 +1,7 @@
 # Android Sandbox
-First steps towards Android development
 
 <a href="app/src/main/java/androidsandbox/org/webyneter/app"><img alt="Android Sandbox application screenshot" src="[screenshots]/Android Sandbox.jpg" width="350" align="center"></a>
+
 
 ## Features
 1. ![Handling Gestures](app/src/main/java/androidsandbox/org/webyneter/app/features/feature1).
